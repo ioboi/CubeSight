@@ -15,9 +15,16 @@ struct CubeView: View {
   }
 
   var body: some View {
-    List(cards) { card in
-      CardView(card: card)
+    ScrollView(.vertical) {
+      LazyVStack {
+        ForEach(cards) { card in
+          CardView(card: card)
+        }
+      }
+      .scrollTargetLayout()
     }
+    .scrollTargetBehavior(.viewAligned)
+    .safeAreaPadding(.vertical, 20)
   }
 }
 
@@ -29,7 +36,7 @@ struct CardView: View {
         Image(uiImage: UIImage(data: image)!).resizable().aspectRatio(contentMode: .fit)
       } else {
         AsyncImage(url: URL(string: card.imageNormal)!) { image in
-          image
+          image.resizable().aspectRatio(contentMode: .fit)
         } placeholder: {
           ProgressView()
         }
