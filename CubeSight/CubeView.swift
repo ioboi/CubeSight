@@ -3,15 +3,37 @@ import SwiftUI
 
 struct CubeView: View {
 
-  @Query private var cards: [Card]
+  @State private var cubeId: String
+  @State private var searchTerm: String
 
   init(cube: Cube) {
-    let cubeId = cube.id
-    let predicate = #Predicate<Card> { card in
-      card.mainboards.filter { $0.id == cubeId }.count == 1
+    cubeId = cube.id
+    searchTerm = ""
+  }
+
+  var body: some View {
+    CardListView(cubeId: cubeId, searchTerm: searchTerm)
+      .searchable(text: $searchTerm)
+  }
+}
+
+struct CardListView: View {
+  @Query private var cards: [Card]
+
+  init(cubeId: String, searchTerm: String) {
+    if searchTerm.isEmpty == true {
+      let predicate = #Predicate<Card> { card in
+        card.mainboards.filter { $0.id == cubeId }.count == 1
+      }
+      _cards = Query(filter: predicate, sort: \.sortColorRawValue)
+    } else {
+      let predicate = #Predicate<Card> { card in
+        card.mainboards.filter { $0.id == cubeId }.count == 1
+          && card.name.localizedStandardContains(searchTerm)
+      }
+      _cards = Query(filter: predicate, sort: \.sortColorRawValue)
     }
 
-    _cards = Query(filter: predicate, sort: \.sortColorRawValue)
   }
 
   var body: some View {
