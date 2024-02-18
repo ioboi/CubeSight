@@ -19,6 +19,8 @@
 		78980A572B7D2D5A00E89E68 /* CubeCobraClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A562B7D2D5A00E89E68 /* CubeCobraClient.swift */; };
 		78980A5D2B7D388500E89E68 /* ImportCubeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A5C2B7D388500E89E68 /* ImportCubeView.swift */; };
 		78980A5F2B7D452D00E89E68 /* CubeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A5E2B7D452D00E89E68 /* CubeView.swift */; };
+		78B8835D2B82AC0D00F099AB /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8835C2B82AC0D00F099AB /* CardList.swift */; };
+		78B883602B82ADFE00F099AB /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8835F2B82ADFE00F099AB /* CardRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		78980A562B7D2D5A00E89E68 /* CubeCobraClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeCobraClient.swift; sourceTree = "<group>"; };
 		78980A5C2B7D388500E89E68 /* ImportCubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportCubeView.swift; sourceTree = "<group>"; };
 		78980A5E2B7D452D00E89E68 /* CubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeView.swift; sourceTree = "<group>"; };
+		78B8835C2B82AC0D00F099AB /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
+		78B8835F2B82ADFE00F099AB /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,12 +114,13 @@
 			children = (
 				78980A562B7D2D5A00E89E68 /* CubeCobraClient.swift */,
 				78980A502B7D248500E89E68 /* Data */,
+				78B8835E2B82ADE200F099AB /* Card */,
+				78980A5E2B7D452D00E89E68 /* CubeView.swift */,
+				78980A5C2B7D388500E89E68 /* ImportCubeView.swift */,
 				7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */,
 				7883C4F52B7C0EB70087EAB7 /* ContentView.swift */,
 				7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */,
 				7883C4FB2B7C0EB80087EAB7 /* Preview Content */,
-				78980A5C2B7D388500E89E68 /* ImportCubeView.swift */,
-				78980A5E2B7D452D00E89E68 /* CubeView.swift */,
 			);
 			path = CubeSight;
 			sourceTree = "<group>";
@@ -152,6 +157,15 @@
 				78980A532B7D270400E89E68 /* Card.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		78B8835E2B82ADE200F099AB /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				78B8835C2B82AC0D00F099AB /* CardList.swift */,
+				78B8835F2B82ADFE00F099AB /* CardRow.swift */,
+			);
+			path = Card;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +308,8 @@
 				78980A572B7D2D5A00E89E68 /* CubeCobraClient.swift in Sources */,
 				7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */,
 				78980A5F2B7D452D00E89E68 /* CubeView.swift in Sources */,
+				78B883602B82ADFE00F099AB /* CardRow.swift in Sources */,
+				78B8835D2B82AC0D00F099AB /* CardList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
