@@ -62,4 +62,10 @@ extension Card {
       colors: from.details.colors.map({ c in CardColor.from(c) }))
   }
 
+  static func predicate(cubeId: String, searchText: String) -> Predicate<Card> {
+    return #Predicate<Card> { card in
+      (searchText.isEmpty || card.name.localizedStandardContains(searchText))
+        && card.mainboards.filter { $0.id == cubeId }.count == 1
+    }
+  }
 }

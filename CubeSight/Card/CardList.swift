@@ -6,11 +6,8 @@ struct CardList: View {
   @Query private var cards: [Card]
 
   init(cubeId: String, searchText: String = "") {
-    let predicate = #Predicate<Card> { card in
-      (searchText.isEmpty || card.name.localizedStandardContains(searchText))
-        && card.mainboards.filter { $0.id == cubeId }.count == 1
-    }
-    _cards = Query(filter: predicate, sort: \.sortColorRawValue)
+    _cards = Query(
+      filter: Card.predicate(cubeId: cubeId, searchText: searchText), sort: \.sortColorRawValue)
   }
 
   var body: some View {
