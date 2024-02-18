@@ -21,19 +21,11 @@ struct CardListView: View {
   @Query private var cards: [Card]
 
   init(cubeId: String, searchTerm: String) {
-    if searchTerm.isEmpty == true {
-      let predicate = #Predicate<Card> { card in
-        card.mainboards.filter { $0.id == cubeId }.count == 1
-      }
-      _cards = Query(filter: predicate, sort: \.sortColorRawValue)
-    } else {
-      let predicate = #Predicate<Card> { card in
-        card.mainboards.filter { $0.id == cubeId }.count == 1
-          && card.name.localizedStandardContains(searchTerm)
-      }
-      _cards = Query(filter: predicate, sort: \.sortColorRawValue)
+    let predicate = #Predicate<Card> { card in
+      (searchTerm.isEmpty || card.name.localizedStandardContains(searchTerm))
+        && card.mainboards.filter { $0.id == cubeId }.count == 1
     }
-
+    _cards = Query(filter: predicate, sort: \.sortColorRawValue)
   }
 
   var body: some View {
