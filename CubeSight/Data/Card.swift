@@ -7,33 +7,6 @@ enum CardColor: String, Codable {
   case red = "red"
   case white = "white"
   case black = "black"
-  case multi = "multi"
-  case none = "none"
-}
-
-@Model class Card {
-  @Attribute(.unique) var id: UUID
-  var name: String
-  var imageSmall: String
-  var imageNormal: String
-  @Attribute(.externalStorage) var image: Data?
-  var colors: [CardColor]
-  var sortColorRawValue: String
-
-  @Relationship(inverse: \Cube.mainboard) var mainboards: [Cube] = []
-
-  init(id: UUID, name: String, imageSmall: String, imageNormal: String, colors: [CardColor]) {
-    self.id = id
-    self.name = name
-    self.imageSmall = imageSmall
-    self.imageNormal = imageNormal
-    self.colors = colors
-
-    self.sortColorRawValue = colors.first?.rawValue ?? CardColor.none.rawValue
-    if colors.count > 1 {
-      self.sortColorRawValue = CardColor.multi.rawValue
-    }
-  }
 }
 
 extension CardColor {
@@ -53,13 +26,72 @@ extension CardColor {
   }
 }
 
+enum Colorcategory: String, Codable {
+  case blue = "u"
+  case green = "g"
+  case red = "r"
+  case white = "w"
+  case black = "b"
+  case colorless = "c"
+  case multicolored = "m"
+  case land = "l"
+}
+
+extension Colorcategory {
+  static func from(_ colorCateogry: CubeCobraClient.Card.Details.Colorcategory) -> Colorcategory {
+    switch colorCateogry {
+    case .blue:
+      .blue
+    case .green:
+      .green
+    case .red:
+      .red
+    case .white:
+      .white
+    case .black:
+      .black
+    case .colorless:
+      .colorless
+    case .multicolored:
+      .multicolored
+    case .land:
+      .land
+    }
+  }
+}
+
+@Model class Card {
+  @Attribute(.unique) var id: UUID
+  var name: String
+  var imageSmall: String
+  var imageNormal: String
+  @Attribute(.externalStorage) var image: Data?
+  var colors: [CardColor]
+  var rawColorcategory: String
+
+  @Relationship(inverse: \Cube.mainboard) var mainboards: [Cube] = []
+
+  init(
+    id: UUID, name: String, imageSmall: String, imageNormal: String, colors: [CardColor],
+    colorcategory: Colorcategory
+  ) {
+    self.id = id
+    self.name = name
+    self.imageSmall = imageSmall
+    self.imageNormal = imageNormal
+    self.colors = colors
+    self.rawColorcategory = colorcategory.rawValue
+  }
+}
+
 extension Card {
   convenience init(_ from: CubeCobraClient.Card) {
 
     self.init(
       id: from.cardId, name: from.details.name, imageSmall: from.details.imageSmall,
       imageNormal: from.details.imageNormal,
-      colors: from.details.colors.map({ c in CardColor.from(c) }))
+      colors: from.details.colors.map({ c in CardColor.from(c) }),
+      colorcategory: Colorcategory.from(from.details.colorcategory))
   }
 
   static func predicate(cubeId: String, searchText: String) -> Predicate<Card> {

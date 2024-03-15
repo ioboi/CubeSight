@@ -29,18 +29,31 @@ struct CubeCobraClient {
         case red = "R"
         case white = "W"
         case black = "B"
-
       }
+
+      enum Colorcategory: String, Codable {
+        case blue = "u"
+        case green = "g"
+        case red = "r"
+        case white = "w"
+        case black = "b"
+        case colorless = "c"
+        case multicolored = "m"
+        case land = "l"
+      }
+
       let name: String
       let imageNormal: String
       let imageSmall: String
       let colors: [CardColor]
+      let colorcategory: Colorcategory
 
       enum CodingKeys: String, CodingKey {
         case name
         case imageNormal = "image_normal"
         case imageSmall = "image_small"
         case colors
+        case colorcategory
       }
     }
 
