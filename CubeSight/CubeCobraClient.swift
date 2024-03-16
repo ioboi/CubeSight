@@ -47,6 +47,7 @@ struct CubeCobraClient {
       let imageSmall: String
       let colors: [CardColor]
       let colorcategory: Colorcategory
+      let cmc: Int
 
       enum CodingKeys: String, CodingKey {
         case name
@@ -54,6 +55,7 @@ struct CubeCobraClient {
         case imageSmall = "image_small"
         case colors
         case colorcategory
+        case cmc
       }
     }
 

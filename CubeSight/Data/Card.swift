@@ -67,12 +67,14 @@ extension Colorcategory {
   var imageNormal: String
   @Attribute(.externalStorage) var image: Data?
   var colors: [CardColor]
+  var manaValue: Int
   var rawColorcategory: String
 
   @Relationship(inverse: \Cube.mainboard) var mainboards: [Cube] = []
 
   init(
     id: UUID, name: String, imageSmall: String, imageNormal: String, colors: [CardColor],
+    manaValue: Int,
     colorcategory: Colorcategory
   ) {
     self.id = id
@@ -80,6 +82,7 @@ extension Colorcategory {
     self.imageSmall = imageSmall
     self.imageNormal = imageNormal
     self.colors = colors
+    self.manaValue = manaValue
     self.rawColorcategory = colorcategory.rawValue
   }
 }
@@ -91,6 +94,7 @@ extension Card {
       id: from.cardId, name: from.details.name, imageSmall: from.details.imageSmall,
       imageNormal: from.details.imageNormal,
       colors: from.details.colors.map({ c in CardColor.from(c) }),
+      manaValue: from.details.cmc,
       colorcategory: Colorcategory.from(from.details.colorcategory))
   }
 
