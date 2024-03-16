@@ -7,7 +7,8 @@ struct CardList: View {
 
   init(cubeId: String, searchText: String = "") {
     _cards = Query(
-      filter: Card.predicate(cubeId: cubeId, searchText: searchText), sort: \.rawColorcategory)
+      filter: Card.predicate(cubeId: cubeId, searchText: searchText),
+      sort: [SortDescriptor(\.rawColorcategory), SortDescriptor(\.manaValue)])
   }
 
   var body: some View {
