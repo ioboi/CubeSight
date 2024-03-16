@@ -3,17 +3,35 @@ import SwiftUI
 
 struct CubeView: View {
 
-  @State private var cubeId: String
-  @State private var searchText: String
+  @State private var searchText: String = ""
+
+  private let cube: Cube
 
   init(cube: Cube) {
-    cubeId = cube.id
-    searchText = ""
+    self.cube = cube
   }
 
   var body: some View {
-    CardList(cubeId: cubeId, searchText: searchText)
-      .searchable(text: $searchText)
+    List {
+      if let imageData = cube.image {
+        Section {
+          Image(uiImage: UIImage(data: imageData)!)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .listRowInsets(EdgeInsets())
+        }
+      }
+      Section("Cards") {
+        NavigationLink(
+          destination: CardList(cubeId: cube.id, searchText: searchText).searchable(
+            text: $searchText
+          ).navigationTitle("All")
+        ) {
+          Text("All")
+            .badge(cube.mainboard.count)
+        }
+      }
+    }
   }
 }
 
