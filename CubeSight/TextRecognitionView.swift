@@ -162,9 +162,10 @@ struct TextRecognitionView: View {
             HStack {
               Text(text)
               Spacer()
-              if cardNames.contains(text.lowercased()) {
-                Image(systemName: "checkmark.circle.fill")
-                  .foregroundColor(.green)
+              if cardNames.contains(
+                where: NSPredicate(format: "SELF CONTAINS[cd] %@", text).evaluate)
+              {
+                Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
               }
             }
             .onTapGesture {
