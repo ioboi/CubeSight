@@ -226,7 +226,7 @@ struct TextRecognitionView: View {
 
     let handler = VNImageRequestHandler(cgImage: cgImage, orientation: .up, options: [:])
     do {
-      try await handler.perform([request])
+      try handler.perform([request])
     } catch {
       print("Error performing text recognition: \(error)")
     }
