@@ -23,14 +23,14 @@ struct ContentView: View {
             Text("Import cubes from Cube Cobra.")
           } actions: {
             Button(action: { importing = true }) {
-              Label("Import \"Vintage Cube Season 3\"", systemImage: "square.and.arrow.down")
+              Label("Import \"Vintage Cube Season 4\"", systemImage: "square.and.arrow.down")
             }
           }
         }
       }
       .sheet(isPresented: $importing) {
         NavigationStack {
-          ImportCubeView(shortId: "dimlas3")
+          ImportCubeView(shortId: "dimlas4")
         }.interactiveDismissDisabled()
       }
       .navigationTitle("Cubes")
