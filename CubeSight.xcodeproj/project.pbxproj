@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		464791382C709C62007EC932 /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464791372C709C62007EC932 /* Tournament.swift */; };
 		4647913A2C709D08007EC932 /* TournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464791392C709D08007EC932 /* TournamentView.swift */; };
+		4647913C2C70A05B007EC932 /* StandingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647913B2C70A05B007EC932 /* StandingsView.swift */; };
+		4647913E2C70A1D7007EC932 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647913D2C70A1D7007EC932 /* RoundView.swift */; };
+		464791402C70ACF1007EC932 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647913F2C70ACF1007EC932 /* Round.swift */; };
+		464791422C70AD0F007EC932 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464791412C70AD0F007EC932 /* Match.swift */; };
+		464791442C70AD8B007EC932 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464791432C70AD8B007EC932 /* Player.swift */; };
 		46B2FA012C43C7AD007794D9 /* TextRecognitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */; };
 		7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */; };
 		7883C4F62B7C0EB70087EAB7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F52B7C0EB70087EAB7 /* ContentView.swift */; };
@@ -46,6 +51,11 @@
 /* Begin PBXFileReference section */
 		464791372C709C62007EC932 /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		464791392C709D08007EC932 /* TournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentView.swift; sourceTree = "<group>"; };
+		4647913B2C70A05B007EC932 /* StandingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsView.swift; sourceTree = "<group>"; };
+		4647913D2C70A1D7007EC932 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
+		4647913F2C70ACF1007EC932 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		464791412C70AD0F007EC932 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		464791432C70AD8B007EC932 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionView.swift; sourceTree = "<group>"; };
 		7883C4F02B7C0EB70087EAB7 /* CubeSight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeSight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightApp.swift; sourceTree = "<group>"; };
@@ -129,6 +139,8 @@
 				7883C4F52B7C0EB70087EAB7 /* ContentView.swift */,
 				7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */,
 				464791392C709D08007EC932 /* TournamentView.swift */,
+				4647913B2C70A05B007EC932 /* StandingsView.swift */,
+				4647913D2C70A1D7007EC932 /* RoundView.swift */,
 			);
 			path = CubeSight;
 			sourceTree = "<group>";
@@ -164,6 +176,9 @@
 				464791372C709C62007EC932 /* Tournament.swift */,
 				78980A512B7D24C700E89E68 /* Cube.swift */,
 				78980A532B7D270400E89E68 /* Card.swift */,
+				4647913F2C70ACF1007EC932 /* Round.swift */,
+				464791412C70AD0F007EC932 /* Match.swift */,
+				464791432C70AD8B007EC932 /* Player.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -311,16 +326,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				7883C4F62B7C0EB70087EAB7 /* ContentView.swift in Sources */,
+				4647913E2C70A1D7007EC932 /* RoundView.swift in Sources */,
 				78980A542B7D270400E89E68 /* Card.swift in Sources */,
+				464791422C70AD0F007EC932 /* Match.swift in Sources */,
 				78980A522B7D24C700E89E68 /* Cube.swift in Sources */,
 				78980A5D2B7D388500E89E68 /* ImportCubeView.swift in Sources */,
 				78980A572B7D2D5A00E89E68 /* CubeCobraClient.swift in Sources */,
+				4647913C2C70A05B007EC932 /* StandingsView.swift in Sources */,
 				464791382C709C62007EC932 /* Tournament.swift in Sources */,
 				7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */,
 				78980A5F2B7D452D00E89E68 /* CubeView.swift in Sources */,
 				78B883602B82ADFE00F099AB /* CardRow.swift in Sources */,
 				78B8835D2B82AC0D00F099AB /* CardList.swift in Sources */,
 				46B2FA012C43C7AD007794D9 /* TextRecognitionView.swift in Sources */,
+				464791402C70ACF1007EC932 /* Round.swift in Sources */,
+				464791442C70AD8B007EC932 /* Player.swift in Sources */,
 				4647913A2C709D08007EC932 /* TournamentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -3,8 +3,11 @@ import SwiftData
 
 struct TournamentView: View {
     @Bindable var tournament: Tournament
+    @Environment(\.modelContext) private var context
     @State private var showingAddPlayer = false
     @State private var newPlayerName = ""
+    @State private var navigateToNewRound: Bool = false
+    @State private var newRound: Round?
     
     var body: some View {
         List {
@@ -22,12 +25,28 @@ struct TournamentView: View {
                 Button("Add Player") {
                     showingAddPlayer = true
                 }
+                Button("Add 8 Players") {
+                                    addEightPlayers()
+                                }.disabled(tournament.players.count > 0)
             }
             
-            if tournament.currentRound < tournament.rounds {
-                Button("Start Next Round") {
-                    startNextRound()
+            Section("Rounds") {
+                ForEach(tournament.completedRounds) { round in
+                    NavigationLink("Round \(round.number)", destination: RoundView(round: round, tournament: tournament))
                 }
+                
+                if tournament.currentRound < tournament.rounds && tournament.players.count >= 4 {
+                    Button("Start Next Round") {
+                        if let createdRound = tournament.createNextRound(context: context) {
+                            self.newRound = createdRound
+                            self.navigateToNewRound = true
+                        }
+                    }
+                }
+            }
+            
+            Section {
+                NavigationLink("View Standings", destination: StandingsView(tournament: tournament))
             }
         }
         .sheet(isPresented: $showingAddPlayer) {
@@ -41,6 +60,12 @@ struct TournamentView: View {
                 .navigationTitle("Add Player")
             }
         }
+        .navigationTitle(tournament.name)
+        .navigationDestination(isPresented: $navigateToNewRound) {
+            if let round = newRound {
+                RoundView(round: round, tournament: tournament)
+            }
+        }
     }
     
     private func addPlayer() {
@@ -49,11 +74,13 @@ struct TournamentView: View {
         newPlayerName = ""
         showingAddPlayer = false
     }
-    
-    private func startNextRound() {
-        // Implement pairing logic here
-        tournament.currentRound += 1
-    }
+    private func addEightPlayers() {
+            let playerNames = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry"]
+            for name in playerNames {
+                let newPlayer = Player(name: name)
+                tournament.players.append(newPlayer)
+            }
+        }
 }
 
 struct CreateTournamentView: View {
@@ -83,6 +110,8 @@ struct CreateTournamentView: View {
 }
 
 #Preview {
-    TournamentView(tournament: Tournament(name: "Sample Tournament", season: 1, draft: 1, rounds: 3))
-        .modelContainer(for: [Tournament.self, Player.self], inMemory: true)
+    let tournament = Tournament(name: "Sample Tournament", season: 1, draft: 1, rounds: 3)
+    tournament.players = [Player(name: "Alice"), Player(name: "Bob")]
+    return TournamentView(tournament: tournament)
+        .modelContainer(for: [Tournament.self, Player.self, Round.self, Match.self], inMemory: true)
 }
