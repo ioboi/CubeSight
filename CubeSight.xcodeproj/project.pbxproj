@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		464791382C709C62007EC932 /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464791372C709C62007EC932 /* Tournament.swift */; };
+		4647913A2C709D08007EC932 /* TournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464791392C709D08007EC932 /* TournamentView.swift */; };
 		46B2FA012C43C7AD007794D9 /* TextRecognitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */; };
 		7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */; };
 		7883C4F62B7C0EB70087EAB7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F52B7C0EB70087EAB7 /* ContentView.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		464791372C709C62007EC932 /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
+		464791392C709D08007EC932 /* TournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentView.swift; sourceTree = "<group>"; };
 		46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionView.swift; sourceTree = "<group>"; };
 		7883C4F02B7C0EB70087EAB7 /* CubeSight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeSight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightApp.swift; sourceTree = "<group>"; };
@@ -119,11 +123,12 @@
 				78980A502B7D248500E89E68 /* Data */,
 				78B8835E2B82ADE200F099AB /* Card */,
 				78980A5E2B7D452D00E89E68 /* CubeView.swift */,
+				7883C4FB2B7C0EB80087EAB7 /* Preview Content */,
 				78980A5C2B7D388500E89E68 /* ImportCubeView.swift */,
 				7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */,
 				7883C4F52B7C0EB70087EAB7 /* ContentView.swift */,
 				7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */,
-				7883C4FB2B7C0EB80087EAB7 /* Preview Content */,
+				464791392C709D08007EC932 /* TournamentView.swift */,
 			);
 			path = CubeSight;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 		78980A502B7D248500E89E68 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				464791372C709C62007EC932 /* Tournament.swift */,
 				78980A512B7D24C700E89E68 /* Cube.swift */,
 				78980A532B7D270400E89E68 /* Card.swift */,
 			);
@@ -309,11 +315,13 @@
 				78980A522B7D24C700E89E68 /* Cube.swift in Sources */,
 				78980A5D2B7D388500E89E68 /* ImportCubeView.swift in Sources */,
 				78980A572B7D2D5A00E89E68 /* CubeCobraClient.swift in Sources */,
+				464791382C709C62007EC932 /* Tournament.swift in Sources */,
 				7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */,
 				78980A5F2B7D452D00E89E68 /* CubeView.swift in Sources */,
 				78B883602B82ADFE00F099AB /* CardRow.swift in Sources */,
 				78B8835D2B82AC0D00F099AB /* CardList.swift in Sources */,
 				46B2FA012C43C7AD007794D9 /* TextRecognitionView.swift in Sources */,
+				4647913A2C709D08007EC932 /* TournamentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
