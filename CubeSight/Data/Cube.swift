@@ -9,6 +9,8 @@ import SwiftData
 
   var mainboard: [Card] = []
 
+  @Relationship(deleteRule: .cascade, inverse: \Deck.cube) var decks: [Deck] = []
+
   init(id: String, shortId: String, name: String) {
     self.id = id
     self.shortId = shortId
@@ -20,9 +22,9 @@ extension Cube {
   @MainActor static let sampleCube = Cube(id: UUID().uuidString, shortId: "dimlas4", name: "Vintage Cube")
 
   @MainActor
-  static func makeSampleCube(in context: ModelContainer) {
-    context.mainContext.insert(Card.blackLotus)
-    sampleCube.mainboard = [Card.blackLotus]
-    context.mainContext.insert(sampleCube)
-  }
+    static func makeSampleCube(in context: ModelContainer) {
+      context.mainContext.insert(Card.blackLotus)
+      sampleCube.mainboard = [Card.blackLotus]
+      context.mainContext.insert(sampleCube)
+    }
 }
