@@ -5,7 +5,8 @@ import SwiftUI
 struct CubeSightApp: App {
   var sharedModelContainer: ModelContainer = {
     let schema = Schema([
-      Card.self, Cube.self,
+      Card.self,
+      Cube.self,
     ])
     let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
