@@ -23,7 +23,7 @@ struct MatchResultView: View {
                     selectedWinner = match.player1
                     selectedResult = nil
                 }
-                .foregroundColor(selectedWinner == match.player1 ? .blue : .primary)
+                .foregroundColor(selectedWinner == match.player1 ? .green : .primary)
                 .accessibilityLabel("Select player 1 as winner")
                 
                 if let player2 = match.player2 {
@@ -31,14 +31,14 @@ struct MatchResultView: View {
                         selectedWinner = player2
                         selectedResult = nil
                     }
-                    .foregroundColor(selectedWinner == player2 ? .blue : .primary)
+                    .foregroundColor(selectedWinner == player2 ? .green : .primary)
                     .accessibilityLabel("Select player 2 as winner")
                     
                     Button("Draw") {
                         selectedWinner = nil
                         selectedResult = nil
                     }
-                    .foregroundColor(selectedWinner == nil ? .blue : .primary)
+                    .foregroundColor(selectedWinner == nil ? .green : .primary)
                     .accessibilityLabel("Select draw")
                 } else {
                     Text("Bye")
@@ -50,19 +50,28 @@ struct MatchResultView: View {
             Section("Select Result") {
                 if selectedWinner != nil {
                     Button("1-0") { selectedResult = (1, 0, 0) }
+                        .foregroundColor( (selectedResult ?? (0,0,0)) == (1,0,0) ? .green : .primary )
                         .accessibilityLabel("Select result 1-0")
                     Button("2-0") { selectedResult = (2, 0, 0) }
+                        .foregroundColor( (selectedResult ?? (0,0,0)) == (2,0,0) ? .green : .primary )
                         .accessibilityLabel("Select result 2-0")
                     Button("2-1") { selectedResult = (2, 1, 0) }
+                        .foregroundColor( (selectedResult ?? (0,0,0)) == (2,1,0) ? .green : .primary )
                         .accessibilityLabel("Select result 2-1")
+                    
                 } else if match.player2 != nil {
                     Button("0-0") { selectedResult = (0, 0, 0) }
+                        .foregroundColor( (selectedResult ?? (1,0,0)) == (0,0,0) ? .green : .primary )
                         .accessibilityLabel("Select result 0-0")
                     Button("1-1") { selectedResult = (1, 1, 0) }
+                        .foregroundColor( (selectedResult ?? (0,0,0)) == (1,1,0) ? .green : .primary )
                         .accessibilityLabel("Select result 1-1")
-                } else {
+                }
+                //
+                else {
                     Text("2-0 (Bye)")
                         .onAppear { selectedResult = (2, 0, 0) }
+                        .foregroundColor( (selectedResult ?? (0,0,0)) == (2,0,0) ? .green : .primary )
                         .accessibilityLabel("Bye result 2-0")
                 }
             }
