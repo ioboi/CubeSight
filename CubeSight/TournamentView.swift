@@ -31,7 +31,7 @@ struct TournamentView: View {
             }
             
             Section("Rounds") {
-                ForEach(tournament.completedRounds) { round in
+                ForEach(tournament.completedRounds.sorted(by: { $0.number < $1.number }), id: \.number) { round in
 //                    TODO: editing rounds can lead to wrong standings
                     NavigationLink("Round \(round.number)", destination: RoundView(round: round))
                 }
