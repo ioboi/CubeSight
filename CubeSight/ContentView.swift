@@ -35,8 +35,8 @@ struct ContentView: View {
       }
       .navigationTitle("Cubes")
     }
-  }
 
+  }
 }
 
 #Preview {
