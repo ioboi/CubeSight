@@ -16,7 +16,7 @@ struct CardScannerView: View {
   @State private var state: CardScannerState = .start
 
   @State private var cards: [Card] = []
-  @State private var invalidCards: [(Int, String, Card)] = []
+  @State private var invalidCards: [(Int, String, Card?)] = []
 
   @Environment(\.dismiss) private var dismiss
   @Environment(\.modelContext) private var modelContext
@@ -91,33 +91,42 @@ struct CardScannerView: View {
         guard let image = UIImage(data: imageData) else { return }
         let possibleCards = await performTextRecognition(on: image)
 
-        let found = cube.mainboard.filter { card in
-          possibleCards.contains(where: { foundCardName in
-            foundCardName.compare(card.name, options: [.diacriticInsensitive, .caseInsensitive])
-              == .orderedSame
-          })
+        // Create a dictionary for fast lookups of mainboard cards
+        let mainboardDict = Dictionary(grouping: cube.mainboard) { card in
+          card.name.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
         }
 
-        let levenshteinCandidates = possibleCards.filter { foundCardName in
-          !found.contains { card in
-            foundCardName.compare(card.name, options: [.diacriticInsensitive, .caseInsensitive])
-              == .orderedSame
+        // Find exact matches and keep track of unmatched names
+        let (found, unmatched): ([Card], [String]) = possibleCards.reduce(into: ([], [])) {
+          result, recognizedName in
+          let normalizedName = recognizedName.folding(
+            options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
+          if let matchedCards = mainboardDict[normalizedName] {
+            result.0.append(contentsOf: matchedCards)
+          } else {
+            result.1.append(recognizedName)
           }
         }
 
-        let base = levenshteinCandidates.compactMap { name in
-          cube.mainboard.map { card in
-            (card.name.getLevenshtein(target: name), name, card)
-          }.min { a, b in
-            a.0 < b.0
+        // Find close matches and populate invalidCards
+        invalidCards = []
+        let closeMatches = unmatched.compactMap { unmatchedName -> Card? in
+          let closestMatch = cube.mainboard
+            .map { ($0, unmatchedName.getLevenshtein(target: $0.name)) }
+            .min(by: { $0.1 < $1.1 })
+
+          if let (card, distance) = closestMatch {
+            if distance < 3 {
+              return card
+            }
+            invalidCards.append((distance, unmatchedName, card))
+          } else {
+            invalidCards.append((Int.max, unmatchedName, nil))
           }
+          return nil
         }
 
-        invalidCards = base.filter {
-          $0.0 >= 3
-        }
-
-        cards = found + invalidCards.filter { $0.0 < 3 }.map { $0.2 }
+        cards = found + closeMatches
         state = .success
       }
     }
