@@ -23,6 +23,7 @@ class TournamentViewModel {
 
   func startTournament(players: [Player]) {
     let tournament = Tournament(players: players)
+    modelContext.insert(tournament)
     state = .inProgress(tournament)
     startNextRound()
   }
