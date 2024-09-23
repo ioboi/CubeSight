@@ -43,6 +43,7 @@ class TournamentViewModel {
     if isRoundComplete(roundIndex) {
       tournament.rounds[roundIndex].isCompleted = true
       if roundIndex == tournament.currentRoundIndex {
+        tournament.currentRoundIndex += 1
         startNextRound()
       }
     }
@@ -72,6 +73,5 @@ class TournamentViewModel {
     modelContext.insert(newRound)
 
     tournament.rounds.append(newRound)
-    tournament.currentRoundIndex += 1
   }
 }
