@@ -27,8 +27,8 @@ class Tournament {
 
   private func calculatePerformance() -> [Player: PlayerPerformance] {
     let matches: [Match] = rounds.flatMap { $0.matches }
-    let performance = Dictionary(uniqueKeysWithValues: players.map { ($0, PlayerPerformance()) })
-    matches.forEach { $0.process(into: performance) }
+    var performance = Dictionary(uniqueKeysWithValues: players.map { ($0, PlayerPerformance()) })
+    matches.forEach { $0.process(into: &performance) }
     return performance
   }
 
@@ -77,7 +77,7 @@ class Match {
   }
 
   //  TODO(performance): test with borrowing / inout
-  func process(into performance: [Player: PlayerPerformance]) {
+  func process(into performance: inout [Player: PlayerPerformance]) {
     guard var performance1 = performance[player1],
       var performance2 = performance[player2]
     else {
@@ -107,6 +107,8 @@ class Match {
 
     performance1.draws += draws
     performance2.draws += draws
-
+    
+    performance[player1] = performance1
+    performance[player2] = performance2
   }
 }
