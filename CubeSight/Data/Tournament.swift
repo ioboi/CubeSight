@@ -26,7 +26,7 @@ class Tournament {
   }
 
   private func calculatePerformance() -> [Player: PlayerPerformance] {
-    let matches: [Match] = rounds.flatMap { $0.matches }
+    let matches: [Match] = rounds.flatMap { $0.matches }.filter { $0.isComplete() }
     var performance = Dictionary(uniqueKeysWithValues: players.map { ($0, PlayerPerformance()) })
     matches.forEach { $0.process(into: &performance) }
     return performance
