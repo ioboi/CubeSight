@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		462C285B2CA16D6700189B47 /* TiebreakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C285A2CA16D6700189B47 /* TiebreakerTests.swift */; };
 		464791382C709C62007EC932 /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464791372C709C62007EC932 /* Tournament.swift */; };
 		4647913A2C709D08007EC932 /* TournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464791392C709D08007EC932 /* TournamentView.swift */; };
 		465614382CA0B7B600773B11 /* PairingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465614372CA0B7B600773B11 /* PairingStrategy.swift */; };
@@ -18,9 +19,6 @@
 		7883C4F62B7C0EB70087EAB7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F52B7C0EB70087EAB7 /* ContentView.swift */; };
 		7883C4FA2B7C0EB80087EAB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */; };
 		7883C4FD2B7C0EB80087EAB7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7883C4FC2B7C0EB80087EAB7 /* Preview Assets.xcassets */; };
-		7883C5072B7C0EB80087EAB7 /* CubeSightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C5062B7C0EB80087EAB7 /* CubeSightTests.swift */; };
-		7883C5112B7C0EB80087EAB7 /* CubeSightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C5102B7C0EB80087EAB7 /* CubeSightUITests.swift */; };
-		7883C5132B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C5122B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift */; };
 		78980A522B7D24C700E89E68 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A512B7D24C700E89E68 /* Cube.swift */; };
 		78980A542B7D270400E89E68 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A532B7D270400E89E68 /* Card.swift */; };
 		78980A572B7D2D5A00E89E68 /* CubeCobraClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A562B7D2D5A00E89E68 /* CubeCobraClient.swift */; };
@@ -48,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		462C285A2CA16D6700189B47 /* TiebreakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiebreakerTests.swift; sourceTree = "<group>"; };
 		464791372C709C62007EC932 /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		464791392C709D08007EC932 /* TournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentView.swift; sourceTree = "<group>"; };
 		465614372CA0B7B600773B11 /* PairingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingStrategy.swift; sourceTree = "<group>"; };
@@ -62,10 +61,7 @@
 		7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7883C4FC2B7C0EB80087EAB7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7883C5022B7C0EB80087EAB7 /* CubeSightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeSightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7883C5062B7C0EB80087EAB7 /* CubeSightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightTests.swift; sourceTree = "<group>"; };
 		7883C50C2B7C0EB80087EAB7 /* CubeSightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeSightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7883C5102B7C0EB80087EAB7 /* CubeSightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightUITests.swift; sourceTree = "<group>"; };
-		7883C5122B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		78980A4D2B7D103300E89E68 /* CubeSight-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CubeSight-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		78980A4E2B7D135800E89E68 /* CubeSight.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CubeSight.xcconfig; sourceTree = "<group>"; };
 		78980A512B7D24C700E89E68 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
@@ -165,7 +161,7 @@
 		7883C5052B7C0EB80087EAB7 /* CubeSightTests */ = {
 			isa = PBXGroup;
 			children = (
-				7883C5062B7C0EB80087EAB7 /* CubeSightTests.swift */,
+				462C285A2CA16D6700189B47 /* TiebreakerTests.swift */,
 			);
 			path = CubeSightTests;
 			sourceTree = "<group>";
@@ -173,8 +169,6 @@
 		7883C50F2B7C0EB80087EAB7 /* CubeSightUITests */ = {
 			isa = PBXGroup;
 			children = (
-				7883C5102B7C0EB80087EAB7 /* CubeSightUITests.swift */,
-				7883C5122B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift */,
 			);
 			path = CubeSightUITests;
 			sourceTree = "<group>";
@@ -355,7 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7883C5072B7C0EB80087EAB7 /* CubeSightTests.swift in Sources */,
+				462C285B2CA16D6700189B47 /* TiebreakerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,8 +357,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7883C5112B7C0EB80087EAB7 /* CubeSightUITests.swift in Sources */,
-				7883C5132B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +514,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -535,7 +528,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -557,6 +550,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -570,7 +564,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -578,18 +572,17 @@
 		7883C51A2B7C0EB80087EAB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).CubeSightTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CubeSight.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CubeSight";
 			};
@@ -598,18 +591,17 @@
 		7883C51B2B7C0EB80087EAB7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).CubeSightTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CubeSight.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CubeSight";
 			};
@@ -618,7 +610,6 @@
 		7883C51D2B7C0EB80087EAB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
@@ -627,7 +618,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).CubeSightUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CubeSight;
 			};
@@ -636,7 +627,6 @@
 		7883C51E2B7C0EB80087EAB7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
@@ -645,7 +635,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).CubeSightUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CubeSight;
 			};
