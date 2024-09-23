@@ -122,6 +122,8 @@ struct TiebreakerTests {
     
     // Simulate 1 win, 3 losses
     for i in 0..<4 {
+//      BUG: the order of players can change therefore we can not simply set player2Wins but actually have to know who is player1 / player2.
+//      NOTE: this would not be a problem with a GUI and should not be a problem without it
       viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: i == 0 ? 2 : 0, player2Wins: i == 0 ? 0 : 2, draws: 0)
     }
     
