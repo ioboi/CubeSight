@@ -97,12 +97,14 @@ class Match {
     performance2.opponents.append(player1)
 
     // Update match results
-    if player1Wins > player2Wins {
-      performance1.matchWins += 1
-      performance2.matchLosses += 1
-    } else {
-      performance1.matchLosses += 1
-      performance2.matchWins += 1
+    if winner != nil {
+      if player1Wins > player2Wins {
+        performance1.matchWins += 1
+        performance2.matchLosses += 1
+      } else {
+        performance1.matchLosses += 1
+        performance2.matchWins += 1
+      }
     }
 
     performance1.draws += draws

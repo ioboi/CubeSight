@@ -37,7 +37,7 @@ class TournamentViewModel {
     match.player1Wins = player1Wins
     match.player2Wins = player2Wins
     match.draws = draws
-    match.winner = player1Wins > player2Wins ? match.player1 : match.player2
+    match.winner = player1Wins > player2Wins ? match.player1 : player1Wins < player2Wins ? match.player2 : nil
 
     // TODO: move this into a Finish Round button
     if isRoundComplete(roundIndex) {
