@@ -1,6 +1,7 @@
 
 import SwiftData
 import Testing
+import Numerics
 
 @testable import CubeSight
 
@@ -28,6 +29,7 @@ struct TiebreakerTests {
     for i in 0..<8 {
       viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: i < 6 ? 2 : 0, player2Wins: i < 6 ? 0 : 2, draws: 0)
     }
+    
     
     #expect(tournament.performance[players[0]]?.matchPoints == 18, "Player with 6-2-0 record should have 18 match points")
     
@@ -108,12 +110,12 @@ struct TiebreakerTests {
       }
     }
     
-    #expect(abs(tournament.performance[players[0]]?.matchWinRate ?? 0 - 0.667) < 0.001, "Player with 5-2-1 record in 8 rounds should have 0.667 match-win percentage")
+    #expect((tournament.performance[players[0]]?.matchWinRate ?? 0).isApproximatelyEqual(to: 2.0/3.0), "Player with 5-2-1 record in 8 rounds should have 0.667 match-win percentage")
     
     // Reset tournament
     viewModel.startTournament(players: players)
     
-    guard case .inProgress(let newTournament) = viewModel.state else {
+    guard case .inProgress(let tournament) = viewModel.state else {
       Issue.record("Tournament should be in progress")
       return
     }
@@ -123,7 +125,7 @@ struct TiebreakerTests {
       viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: i == 0 ? 2 : 0, player2Wins: i == 0 ? 0 : 2, draws: 0)
     }
     
-    #expect(newTournament.performance[players[1]]?.matchWinRate == 0.33, "Player with 1-3-0 record in 4 rounds should have 0.33 match-win percentage (minimum)")
+    #expect((tournament.performance[players[1]]?.matchWinRate ?? 0).isApproximatelyEqual(to: 1.0/3.0), "Player with 1-3-0 record in 4 rounds should have 0.33 match-win percentage (minimum)")
   }
   
   @Test("Game win percentage calculation")

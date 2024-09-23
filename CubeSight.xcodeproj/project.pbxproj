@@ -15,6 +15,7 @@
 		4656143C2CA0B8A100773B11 /* PlayerPerformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4656143B2CA0B8A100773B11 /* PlayerPerformance.swift */; };
 		4656143E2CA0B8DA00773B11 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4656143D2CA0B8DA00773B11 /* Player.swift */; };
 		46B2FA012C43C7AD007794D9 /* TextRecognitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */; };
+		46E70EE72CA18EB500878600 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 46E70EE62CA18EB500878600 /* Numerics */; };
 		7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */; };
 		7883C4F62B7C0EB70087EAB7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F52B7C0EB70087EAB7 /* ContentView.swift */; };
 		7883C4FA2B7C0EB80087EAB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */; };
@@ -85,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E70EE72CA18EB500878600 /* Numerics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +285,7 @@
 			mainGroup = 7883C4E72B7C0EB70087EAB7;
 			packageReferences = (
 				78980A4F2B7D1DDC00E89E68 /* XCRemoteSwiftPackageReference "swift-format" */,
+				46E70EE52CA18EB500878600 /* XCRemoteSwiftPackageReference "swift-numerics" */,
 			);
 			productRefGroup = 7883C4F12B7C0EB70087EAB7 /* Products */;
 			projectDirPath = "";
@@ -683,6 +686,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		46E70EE52CA18EB500878600 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-numerics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 		78980A4F2B7D1DDC00E89E68 /* XCRemoteSwiftPackageReference "swift-format" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-format";
@@ -692,6 +703,14 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		46E70EE62CA18EB500878600 /* Numerics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46E70EE52CA18EB500878600 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = Numerics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7883C4E82B7C0EB70087EAB7 /* Project object */;
 }
