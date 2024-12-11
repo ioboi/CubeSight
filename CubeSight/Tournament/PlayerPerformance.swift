@@ -6,6 +6,8 @@
 //
 
 struct PlayerPerformance {
+  static let miniumPercentage: Double = 0.33
+  
   var matchWins: Int = 0
   var matchLosses: Int = 0
   var gameWins: Int = 0
@@ -36,19 +38,19 @@ struct PlayerPerformance {
 
   var matchWinRate: Double {
     let tmp = Double(matchPoints) / Double(totalMatches * 3)
-    if tmp.isFinite && tmp > 0.33 {
+    if tmp.isFinite && tmp > PlayerPerformance.miniumPercentage {
       return tmp
     } else {
-      return 0.33
+      return PlayerPerformance.miniumPercentage
     }
   }
 
   var gameWinRate: Double {
     let tmp = Double(gamePoints) / Double(totalGames * 3)
-    if tmp.isFinite && tmp > 0.33 {
+    if tmp.isFinite && tmp > PlayerPerformance.miniumPercentage {
       return tmp
     } else {
-      return 0.33
+      return PlayerPerformance.miniumPercentage
     }
   }
 
