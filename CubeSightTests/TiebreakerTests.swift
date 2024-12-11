@@ -43,10 +43,20 @@ struct TiebreakerTests {
     
     // Simulate 4 wins, 2 losses, 2 draws for player2
     for i in 0..<8 {
+      let round = viewModel.currentRound()
+      let match = round.matches[0]
       if i < 4 {
-        viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 0, player2Wins: 2, draws: 0)
+        if match.player1 == players[0] {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 0, player2Wins: 2, draws: 0)
+        } else {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 2, player2Wins: 0, draws: 0)
+        }
       } else if i < 6 {
-        viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 2, player2Wins: 0, draws: 0)
+        if match.player1 == players[0] {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 2, player2Wins: 0, draws: 0)
+        } else {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 0, player2Wins: 2, draws: 0)
+        }
       } else {
         viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 1, player2Wins: 1, draws: 1)
       }
@@ -101,17 +111,29 @@ struct TiebreakerTests {
     
     // Simulate 5 wins, 2 losses, 1 draw
     for i in 0..<8 {
+      let round = viewModel.currentRound()
+      let match = round.matches[0]
       if i < 5 {
+        if match.player1 == players[0] {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 2, player2Wins: 0, draws: 0)
+        } else {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 0, player2Wins: 2, draws: 0)
+        }
         viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 2, player2Wins: 0, draws: 0)
       } else if i < 7 {
-        viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 0, player2Wins: 2, draws: 0)
+        if match.player1 == players[0] {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 0, player2Wins: 2, draws: 0)
+        } else {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 2, player2Wins: 0, draws: 0)
+        }
       } else {
         viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 0, player2Wins: 0, draws: 1)
       }
     }
     
-    #expect((tournament.performance[players[0]]?.matchWinRate ?? 0).isApproximatelyEqual(to: 2.0/3.0), "Player with 5-2-1 record in 8 rounds should have 0.667 match-win percentage")
-    
+    #expect((tournament.performance[players[0]]?.matchWinRate ?? 0).isApproximatelyEqual(to: 16.0/24.0), "Player with 5-2-1 record should have 5*3+1 / 8*3 = 0.667 match-win percentage")
+    #expect((tournament.performance[players[1]]?.matchWinRate ?? 0).isApproximatelyEqual(to: PlayerPerformance.miniumPercentage), "Player with 2-5-1 record should have 0.33 (minimum) match-win percentage")
+
     // Reset tournament
     viewModel.startTournament(players: players)
     
@@ -120,14 +142,28 @@ struct TiebreakerTests {
       return
     }
     
-    // Simulate 1 win, 3 losses
+    
+    // Simulate 1 win, 3 losses for player 1
     for i in 0..<4 {
-//      BUG: the order of players can change therefore we can not simply set player2Wins but actually have to know who is player1 / player2.
-//      NOTE: this would not be a problem with a GUI and should not be a problem without it
-      viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: i == 0 ? 2 : 0, player2Wins: i == 0 ? 0 : 2, draws: 0)
+      let round = viewModel.currentRound()
+      let match = round.matches[0]
+      if i == 0 {
+        if match.player1 == players[0] {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 2, player2Wins: 0, draws: 0)
+        } else {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 0, player2Wins: 2, draws: 0)
+        }
+      } else {
+        if match.player1 == players[0] {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 0, player2Wins: 2, draws: 0)
+        } else {
+          viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 2, player2Wins: 0, draws: 0)
+        }
+      }
     }
     
-    #expect((tournament.performance[players[1]]?.matchWinRate ?? 0).isApproximatelyEqual(to: 1.0/3.0), "Player with 1-3-0 record in 4 rounds should have 0.33 match-win percentage (minimum)")
+    #expect((tournament.performance[players[0]]?.matchWinRate ?? 0).isApproximatelyEqual(to: PlayerPerformance.miniumPercentage), "Player with 1-3-0 record in 4 rounds should have 0.33 match-win percentage (minimum)")
+    #expect((tournament.performance[players[1]]?.matchWinRate ?? 0).isApproximatelyEqual(to: 0.75), "Player with 3-1-0 record in 4 rounds should have 0.75 match-win percentage (minimum)")
   }
   
   @Test("Game win percentage calculation")
@@ -156,25 +192,43 @@ struct TiebreakerTests {
       }
     }
     
-    #expect(abs(tournament.performance[players[0]]?.gameWinRate ?? 0 - 0.70) < 0.001, "Player with 21 game points in 10 games should have 0.70 game-win percentage")
+    #expect((tournament.performance[players[0]]?.gameWinRate ?? 0).isApproximatelyEqual(to: 0.7), "Player with 21 game points in 10 games should have 0.70 game-win percentage")
     
     // Reset tournament
     viewModel.startTournament(players: players)
     
-    guard case .inProgress(let newTournament) = viewModel.state else {
+    guard case .inProgress(let tournament) = viewModel.state else {
       Issue.record("Tournament should be in progress")
       return
     }
     
     // Simulate 3 game wins, 8 game losses
     for i in 0..<4 {
+      let round = viewModel.currentRound()
+      let match = round.matches[0]
       if i < 3 {
-        viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 1, player2Wins: 2, draws: 0)
+        if match.player1 == players[0] {
+          match.complete(player1Wins: 1, player2Wins: 2, draws: 0)
+        } else {
+          match.complete(player1Wins: 2, player2Wins: 1, draws: 0)
+        }
       } else {
-        viewModel.completeMatch(roundIndex: i, matchIndex: 0, player1Wins: 0, player2Wins: 2, draws: 0)
+        if match.player1 == players[0] {
+          match.complete(player1Wins: 0, player2Wins: 2, draws: 0)
+        } else {
+          match.complete(player1Wins: 2, player2Wins: 0, draws: 0)
+        }
       }
     }
     
-    #expect(newTournament.performance[players[1]]?.gameWinRate == 0.33, "Player with 9 game points in 11 games should have 0.33 game-win percentage (minimum)")
+    #expect((tournament.performance[players[1]]?.gameWinRate ?? 0).isApproximatelyEqual(to: 0.33), "Player with 9 game points in 11 games should have 0.33 game-win percentage (minimum)")
   }
+  
+//  private func simulate(viewModel: TournamentViewModel, rounds: Int, wins: Int, losses: Int, draws: Int) {
+//    assert(rounds == wins + losses + draws)
+//    for i in 0..<rounds {
+//      let round = viewModel.currentRound()
+//      let match = round.matches[0]
+//    }
+//  }
 }

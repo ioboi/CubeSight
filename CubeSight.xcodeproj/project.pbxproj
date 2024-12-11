@@ -16,6 +16,7 @@
 		4656143E2CA0B8DA00773B11 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4656143D2CA0B8DA00773B11 /* Player.swift */; };
 		46B2FA012C43C7AD007794D9 /* TextRecognitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */; };
 		46E70EE72CA18EB500878600 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 46E70EE62CA18EB500878600 /* Numerics */; };
+		46E70EE92CA1983000878600 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E70EE82CA1983000878600 /* Match.swift */; };
 		7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */; };
 		7883C4F62B7C0EB70087EAB7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F52B7C0EB70087EAB7 /* ContentView.swift */; };
 		7883C4FA2B7C0EB80087EAB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		4656143B2CA0B8A100773B11 /* PlayerPerformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPerformance.swift; sourceTree = "<group>"; };
 		4656143D2CA0B8DA00773B11 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionView.swift; sourceTree = "<group>"; };
+		46E70EE82CA1983000878600 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		46ED5C2D2CA025AD00A30420 /* CubeSight.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CubeSight.xcconfig; sourceTree = SOURCE_ROOT; };
 		7883C4F02B7C0EB70087EAB7 /* CubeSight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeSight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightApp.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		78980A502B7D248500E89E68 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				46E70EE82CA1983000878600 /* Match.swift */,
 				4656143D2CA0B8DA00773B11 /* Player.swift */,
 				464791372C709C62007EC932 /* Tournament.swift */,
 				78980A512B7D24C700E89E68 /* Cube.swift */,
@@ -270,6 +273,7 @@
 					};
 					7883C50B2B7C0EB80087EAB7 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1600;
 						TestTargetID = 7883C4EF2B7C0EB70087EAB7;
 					};
 				};
@@ -286,6 +290,7 @@
 			packageReferences = (
 				78980A4F2B7D1DDC00E89E68 /* XCRemoteSwiftPackageReference "swift-format" */,
 				46E70EE52CA18EB500878600 /* XCRemoteSwiftPackageReference "swift-numerics" */,
+				463624EE2D078D93004057A2 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 			);
 			productRefGroup = 7883C4F12B7C0EB70087EAB7 /* Products */;
 			projectDirPath = "";
@@ -337,6 +342,7 @@
 				464791382C709C62007EC932 /* Tournament.swift in Sources */,
 				4656143C2CA0B8A100773B11 /* PlayerPerformance.swift in Sources */,
 				7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */,
+				46E70EE92CA1983000878600 /* Match.swift in Sources */,
 				78980A5F2B7D452D00E89E68 /* CubeView.swift in Sources */,
 				78B883602B82ADFE00F099AB /* CardRow.swift in Sources */,
 				4656143A2CA0B7CB00773B11 /* TournamentViewModel.swift in Sources */,
@@ -686,6 +692,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		463624EE2D078D93004057A2 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
 		46E70EE52CA18EB500878600 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-numerics.git";

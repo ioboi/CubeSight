@@ -27,6 +27,12 @@ class TournamentViewModel {
     state = .inProgress(tournament)
     startNextRound()
   }
+  
+  func currentRound() -> Round {
+    guard case .inProgress(let tournament) = state else { fatalError("tournament must be started to access round") }
+    
+    return tournament.rounds[tournament.currentRoundIndex]
+  }
 
   func completeMatch(
     roundIndex: Int, matchIndex: Int, player1Wins: Int, player2Wins: Int, draws: Int
@@ -35,10 +41,7 @@ class TournamentViewModel {
     guard case .inProgress(var tournament) = state else { return }
 
     let match = tournament.rounds[roundIndex].matches[matchIndex]
-    match.player1Wins = player1Wins
-    match.player2Wins = player2Wins
-    match.draws = draws
-    match.winner = player1Wins > player2Wins ? match.player1 : player1Wins < player2Wins ? match.player2 : nil
+    match.complete(player1Wins: player1Wins, player2Wins: player2Wins, draws: draws)
 
     // TODO: move this into a Finish Round button
     if isRoundComplete(roundIndex) {
