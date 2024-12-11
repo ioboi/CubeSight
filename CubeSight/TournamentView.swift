@@ -54,7 +54,6 @@ struct TournamentProgressView: View {
         Section(header: Text("Round \(roundIndex + 1)")) {
           ForEach(tournament.rounds[roundIndex].matches.indices, id: \.self) { matchIndex in
             MatchView(
-              viewModel: viewModel, roundIndex: roundIndex, matchIndex: matchIndex,
               match: tournament.rounds[roundIndex].matches[matchIndex])
           }
         }
@@ -86,9 +85,6 @@ struct StandingsView: View {
 }
 
 struct MatchView: View {
-  @Bindable var viewModel: TournamentViewModel
-  let roundIndex: Int
-  let matchIndex: Int
   let match: Match
   @State private var player1Wins = 0
   @State private var player2Wins = 0
@@ -103,9 +99,7 @@ struct MatchView: View {
         Stepper("Draws: \(draws)", value: $draws, in: 0...3)
       }
       Button("Submit Result") {
-        viewModel.completeMatch(
-          roundIndex: roundIndex, matchIndex: matchIndex, player1Wins: player1Wins,
-          player2Wins: player2Wins, draws: draws)
+        match.complete(player1Wins: player1Wins, player2Wins: player2Wins, draws: draws)
       }
       .disabled(player1Wins + player2Wins + draws == 0 || match.isComplete())
     }
