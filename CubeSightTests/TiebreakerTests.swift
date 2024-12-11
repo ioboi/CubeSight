@@ -223,12 +223,4 @@ struct TiebreakerTests {
     
     #expect((tournament.performance[players[1]]?.gameWinRate ?? 0).isApproximatelyEqual(to: 0.33), "Player with 9 game points in 11 games should have 0.33 game-win percentage (minimum)")
   }
-  
-//  private func simulate(viewModel: TournamentViewModel, rounds: Int, wins: Int, losses: Int, draws: Int) {
-//    assert(rounds == wins + losses + draws)
-//    for i in 0..<rounds {
-//      let round = viewModel.currentRound()
-//      let match = round.matches[0]
-//    }
-//  }
 }
