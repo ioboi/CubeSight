@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		462C285B2CA16D6700189B47 /* TiebreakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C285A2CA16D6700189B47 /* TiebreakerTests.swift */; };
+		463515CD2D0A34B700725D5B /* PairingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463515CC2D0A34B700725D5B /* PairingTests.swift */; };
 		464791382C709C62007EC932 /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464791372C709C62007EC932 /* Tournament.swift */; };
 		4647913A2C709D08007EC932 /* TournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464791392C709D08007EC932 /* TournamentView.swift */; };
 		465614382CA0B7B600773B11 /* PairingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465614372CA0B7B600773B11 /* PairingStrategy.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		462C285A2CA16D6700189B47 /* TiebreakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiebreakerTests.swift; sourceTree = "<group>"; };
+		463515CC2D0A34B700725D5B /* PairingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingTests.swift; sourceTree = "<group>"; };
 		464791372C709C62007EC932 /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		464791392C709D08007EC932 /* TournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentView.swift; sourceTree = "<group>"; };
 		465614372CA0B7B600773B11 /* PairingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingStrategy.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				462C285A2CA16D6700189B47 /* TiebreakerTests.swift */,
+				463515CC2D0A34B700725D5B /* PairingTests.swift */,
 			);
 			path = CubeSightTests;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				463515CD2D0A34B700725D5B /* PairingTests.swift in Sources */,
 				462C285B2CA16D6700189B47 /* TiebreakerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
