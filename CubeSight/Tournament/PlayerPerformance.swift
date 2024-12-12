@@ -7,7 +7,7 @@
 
 struct PlayerPerformance {
   static let miniumPercentage: Double = 0.33
-  
+
   var matchWins: Int = 0
   var matchLosses: Int = 0
   var gameWins: Int = 0
