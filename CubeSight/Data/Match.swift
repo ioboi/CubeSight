@@ -7,7 +7,6 @@
 
 import SwiftData
 
-
 @Model
 class Match {
   var player1: Player
@@ -28,12 +27,12 @@ class Match {
   func isComplete() -> Bool {
     return winner != nil || player1Wins + player2Wins + draws > 0
   }
-  
+
   func complete(player1Wins: Int, player2Wins: Int, draws: Int) {
     self.player1Wins = player1Wins
     self.player2Wins = player2Wins
     self.draws = draws
-    
+
     if player1Wins > player2Wins {
       winner = player1
     } else if player2Wins > player1Wins {
@@ -76,7 +75,7 @@ class Match {
 
     performance1.draws += draws
     performance2.draws += draws
-    
+
     performance[player1] = performance1
     performance[player2] = performance2
   }

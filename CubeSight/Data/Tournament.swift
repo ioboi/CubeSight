@@ -54,5 +54,3 @@ class Round {
     self.isCompleted = false
   }
 }
-
-

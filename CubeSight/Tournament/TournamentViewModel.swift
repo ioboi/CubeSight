@@ -27,10 +27,12 @@ class TournamentViewModel {
     state = .inProgress(tournament)
     startNextRound()
   }
-  
+
   func currentRound() -> Round {
-    guard case .inProgress(let tournament) = state else { fatalError("tournament must be started to access round") }
-    
+    guard case .inProgress(let tournament) = state else {
+      fatalError("tournament must be started to access round")
+    }
+
     return tournament.rounds[tournament.currentRoundIndex]
   }
 

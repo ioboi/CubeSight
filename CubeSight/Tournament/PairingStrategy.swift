@@ -18,12 +18,14 @@ struct SwissPairingStrategy: PairingStrategy {
     func hasPlayed(_ player1: Player, _ player2: Player) -> Bool {
       return performance[player1]?.opponents.contains(player2) ?? false
     }
-    
+
     guard players.allSatisfy({ performance[$0] != nil }) else {
       fatalError("all player need to have performance")
     }
-            
-    let unpairedPlayers = players.sorted { performance[$0]!.matchPoints > performance[$1]!.matchPoints }
+
+    let unpairedPlayers = players.sorted {
+      performance[$0]!.matchPoints > performance[$1]!.matchPoints
+    }
 
     var matches: [Match] = []
     var remainingPlayers = unpairedPlayers
