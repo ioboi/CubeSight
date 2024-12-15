@@ -1,45 +1,29 @@
-import SwiftData
+//
+//  ContentView.swift
+//  CubeSight
+//
+//  Created by Noe on 15.12.2024.
+//
+
 import SwiftUI
 
 struct ContentView: View {
-
-  @Query var cubes: [Cube]
-  @State private var importing = false
-
+  @State private var selectedTab: Tab = .cube
   var body: some View {
-    NavigationStack {
-      List {
-        NavigationLink(destination: TextRecognitionView()) {
-          Label("Card Text Recognition", systemImage: "text.viewfinder")
+    TabView(selection: $selectedTab) {
+      CubeContentView()
+        .tabItem {
+          Label("Cube", systemImage: "text.page.badge.magnifyingglass")
         }
-        ForEach(cubes) { cube in
-          NavigationLink(cube.name, destination: CubeView(cube: cube).navigationTitle(cube.name))
-        }
-      }.overlay {
-        if cubes.isEmpty {
-          ContentUnavailableView {
-            Text("No Cubes 😭")
-          } description: {
-            Text("Import cubes from Cube Cobra.")
-          } actions: {
-            Button(action: { importing = true }) {
-              Label("Import \"Vintage Cube Season 4\"", systemImage: "square.and.arrow.down")
-            }
-          }
-        }
-      }
-      .sheet(isPresented: $importing) {
-        NavigationStack {
-          ImportCubeView(shortId: "dimlas4")
-        }.interactiveDismissDisabled()
-      }
-      .navigationTitle("Cubes")
+        .tag(Tab.cube)
     }
   }
-
 }
 
 #Preview {
-  ContentView()
-    .modelContainer(for: [Card.self, Cube.self], inMemory: true)
+    ContentView()
+}
+
+enum Tab {
+    case cube
 }
