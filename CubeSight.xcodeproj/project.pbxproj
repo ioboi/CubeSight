@@ -61,6 +61,7 @@
 		46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionView.swift; sourceTree = "<group>"; };
 		46BE65AC2D0F4553005F062B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		46E70EE82CA1983000878600 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		46F875E72D0F3F70008D567B /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		7883C4F02B7C0EB70087EAB7 /* CubeSight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeSight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightApp.swift; sourceTree = "<group>"; };
 		7883C4F52B7C0EB70087EAB7 /* CubeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +131,7 @@
 		7883C4E72B7C0EB70087EAB7 = {
 			isa = PBXGroup;
 			children = (
+				46F875E72D0F3F70008D567B /* TestPlan.xctestplan */,
 				78980A4E2B7D135800E89E68 /* CubeSight.xcconfig */,
 				78980A4D2B7D103300E89E68 /* CubeSight-release.xcconfig */,
 				46ED5C2D2CA025AD00A30420 /* CubeSight.xcconfig */,
