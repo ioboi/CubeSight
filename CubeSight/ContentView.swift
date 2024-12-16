@@ -16,6 +16,11 @@ struct ContentView: View {
           Label("Cube", systemImage: "text.page.badge.magnifyingglass")
         }
         .tag(Tab.cube)
+      TournamentContentView()
+        .tabItem {
+          Label("Tournament", systemImage: "flag.pattern.checkered")
+        }
+        .tag(Tab.tournament)
     }
   }
 }
@@ -25,5 +30,6 @@ struct ContentView: View {
 }
 
 enum Tab {
-    case cube
+  case cube
+  case tournament
 }
