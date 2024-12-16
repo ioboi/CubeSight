@@ -1,10 +1,4 @@
-//
-//  Tournament.swift
-//  CubeSight
-//
-//  Created by Noe Thalheim on 22.09.2024.
-//
-
+import Foundation
 import SwiftData
 
 @Model
@@ -12,6 +6,7 @@ class Tournament {
   @Relationship(deleteRule: .cascade) var rounds: [Round]
   @Relationship var players: [Player]
   var currentRoundIndex: Int
+  var createdAt: Date
 
   @Transient
   private var _performance: [Player: PlayerPerformance]?
@@ -24,6 +19,10 @@ class Tournament {
     _performance = calculated
     return calculated
   }
+  
+  func getPerformance(for player: Player) -> PlayerPerformance? {
+    performance[player]
+  }
 
   private func calculatePerformance() -> [Player: PlayerPerformance] {
     let matches: [Match] = rounds.flatMap { $0.matches }.filter { $0.isComplete() }
@@ -35,11 +34,23 @@ class Tournament {
   func invalidatePerformanceCache() {
     _performance = nil
   }
+  
+  func startNextRound(strategy: PairingStrategy) {
+    //  TODO(performance): only add current round peformance, i.e. update tournament.performance instead
+    invalidatePerformanceCache()
+    //  TODO: add guard that previous round is complete
+
+    let newMatches = strategy.createPairings(for: players, with: performance)
+    let newRound = Round(matches: newMatches)
+
+    rounds.append(newRound)
+  }
 
   init(players: [Player]) {
     self.rounds = []
     self.currentRoundIndex = 0
     self.players = players
+    self.createdAt = Date.now
   }
 }
 
