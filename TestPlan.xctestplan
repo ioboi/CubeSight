@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "8DF0A645-6317-490C-950E-676C40756111",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:CubeSight.xcodeproj",
+        "identifier" : "7883C5012B7C0EB80087EAB7",
+        "name" : "CubeSightTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:CubeSight.xcodeproj",
+        "identifier" : "7883C50B2B7C0EB80087EAB7",
+        "name" : "CubeSightUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
