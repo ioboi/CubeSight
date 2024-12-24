@@ -1,10 +1,3 @@
-//
-//  PairingStrategy.swift
-//  CubeSight
-//
-//  Created by Noe Thalheim on 22.09.2024.
-//
-
 protocol PairingStrategy {
   func createPairings(for players: [Player], with performance: [Player: PlayerPerformance])
     -> [Match]

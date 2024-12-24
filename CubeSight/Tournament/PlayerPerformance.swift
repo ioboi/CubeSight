@@ -1,10 +1,3 @@
-//
-//  PlayerPerformance.swift
-//  CubeSight
-//
-//  Created by Noe Thalheim on 22.09.2024.
-//
-
 struct PlayerPerformance {
   static let miniumPercentage: Double = 0.33
 

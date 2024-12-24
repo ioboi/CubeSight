@@ -1,10 +1,3 @@
-//
-//  Player.swift
-//  CubeSight
-//
-//  Created by Noe Thalheim on 22.09.2024.
-//
-
 import SwiftData
 
 @Model

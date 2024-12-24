@@ -1,17 +1,17 @@
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct MatchView: View {
   let match: Match
   @State private var showingScoreSheet = false
-  
+
   var body: some View {
     HStack {
       Text("\(match.player1.name) vs \(match.player2.name)")
         .font(.body)
-      
+
       Spacer()
-      
+
       if match.isComplete() {
         Text(resultText)
           .foregroundColor(.secondary)
@@ -41,7 +41,7 @@ struct MatchView: View {
       }
     }
   }
-  
+
   private var resultText: String {
     if match.player1Wins + match.player2Wins + match.draws == 0 {
       return "No games played"
@@ -53,25 +53,33 @@ struct MatchView: View {
 struct MatchResultSelection: View {
   let match: Match
   @Binding var isPresented: Bool
-  
+
   enum Outcome: String, CaseIterable {
     case player1Wins = "Player 1 Wins"
     case player2Wins = "Player 2 Wins"
     case draw = "Draw"
   }
-  
+
   var body: some View {
     List {
       Section {
-        NavigationLink(destination: ScoreOptionsView(match: match, outcome: .player1Wins, isPresented: $isPresented)) {
+        NavigationLink(
+          destination: ScoreOptionsView(
+            match: match, outcome: .player1Wins, isPresented: $isPresented)
+        ) {
           Text("\(match.player1.name) Wins")
         }
-        
-        NavigationLink(destination: ScoreOptionsView(match: match, outcome: .player2Wins, isPresented: $isPresented)) {
+
+        NavigationLink(
+          destination: ScoreOptionsView(
+            match: match, outcome: .player2Wins, isPresented: $isPresented)
+        ) {
           Text("\(match.player2.name) Wins")
         }
-        
-        NavigationLink(destination: ScoreOptionsView(match: match, outcome: .draw, isPresented: $isPresented)) {
+
+        NavigationLink(
+          destination: ScoreOptionsView(match: match, outcome: .draw, isPresented: $isPresented)
+        ) {
           Text("Draw")
         }
       }
@@ -93,7 +101,7 @@ struct ScoreOptionsView: View {
   let outcome: MatchResultSelection.Outcome
   @Binding var isPresented: Bool
   @State private var selectedScore: Score?
-  
+
   enum Score: String, CaseIterable {
     case twoZero = "2-0"
     case twoOne = "2-1"
@@ -103,7 +111,7 @@ struct ScoreOptionsView: View {
     case zeroTwo = "0-2"  // Adding reversed scores
     case oneTwo = "1-2"
     case zeroOne = "0-1"
-    
+
     var scores: (player1: Int, player2: Int) {
       switch self {
       case .twoZero: return (2, 0)
@@ -117,7 +125,7 @@ struct ScoreOptionsView: View {
       }
     }
   }
-  
+
   var availableScores: [Score] {
     switch outcome {
     case .player1Wins:
@@ -128,7 +136,7 @@ struct ScoreOptionsView: View {
       return [.oneOne, .zeroZero]
     }
   }
-  
+
   var body: some View {
     List {
       Section {
@@ -160,29 +168,32 @@ struct ScoreOptionsView: View {
 #Preview {
   List {
     // Incomplete match
-    MatchView(match: Match(
-      player1: Player(name: "Alice"),
-      player2: Player(name: "Bob")
-    ))
-    
+    MatchView(
+      match: Match(
+        player1: Player(name: "Alice"),
+        player2: Player(name: "Bob")
+      ))
+
     // Complete match with a result
-    MatchView(match: {
-      let match = Match(
-        player1: Player(name: "Carol"),
-        player2: Player(name: "David")
-      )
-      match.complete(player1Wins: 2, player2Wins: 1, draws: 0)
-      return match
-    }())
-    
+    MatchView(
+      match: {
+        let match = Match(
+          player1: Player(name: "Carol"),
+          player2: Player(name: "David")
+        )
+        match.complete(player1Wins: 2, player2Wins: 1, draws: 0)
+        return match
+      }())
+
     // Complete match with no games
-    MatchView(match: {
-      let match = Match(
-        player1: Player(name: "Eve"),
-        player2: Player(name: "Frank")
-      )
-      match.complete(player1Wins: 0, player2Wins: 0, draws: 0)
-      return match
-    }())
+    MatchView(
+      match: {
+        let match = Match(
+          player1: Player(name: "Eve"),
+          player2: Player(name: "Frank")
+        )
+        match.complete(player1Wins: 0, player2Wins: 0, draws: 0)
+        return match
+      }())
   }
 }
