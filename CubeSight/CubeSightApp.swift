@@ -7,6 +7,10 @@ struct CubeSightApp: App {
     let schema = Schema([
       Card.self,
       Cube.self,
+      Tournament.self,
+      Player.self,
+      Round.self,
+      Match.self
     ])
     let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
