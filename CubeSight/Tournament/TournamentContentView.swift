@@ -1,10 +1,10 @@
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct TournamentContentView: View {
   @Query(sort: \Tournament.createdAt, order: .reverse) var tournaments: [Tournament]
   @State private var showingSetupSheet = false
-  
+
   var body: some View {
     NavigationStack {
       List {
@@ -35,11 +35,12 @@ struct TournamentContentView: View {
 
 struct TournamentRowView: View {
   let tournament: Tournament
-  
+
   var body: some View {
     HStack {
-      Label("\(tournament.players.count) participants",
-            systemImage: "person.3")
+      Label(
+        "\(tournament.players.count) participants",
+        systemImage: "person.3")
       Spacer()
       Text(tournament.createdAt, style: .date)
         .foregroundStyle(.secondary)

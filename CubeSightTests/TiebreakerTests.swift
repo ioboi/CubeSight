@@ -7,21 +7,20 @@ import Testing
 @MainActor
 struct TiebreakerTests {
   let context: ModelContext
-  
+
   init() async throws {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try ModelContainer(
       for: Player.self, Tournament.self, Round.self, Match.self, configurations: config)
     context = container.mainContext
   }
-  
 
   @Test("Match points calculation")
   func testMatchPoints() throws {
     let players = [Player(name: "Player1"), Player(name: "Player2")]
     var tournament = Tournament(players: players)
-    
-//    TODO: maybe make strategy a member var?
+
+    //    TODO: maybe make strategy a member var?
 
     // Simulate 6 wins, 2 losses for player1
     for _ in 0..<6 {
@@ -72,7 +71,7 @@ struct TiebreakerTests {
     let players = [Player(name: "Player1"), Player(name: "Player2")]
     let tournament = Tournament(players: players)
     tournament.startNextRound(strategy: SwissPairingStrategy())
-    
+
     tournament.rounds.last?.matches.first?.complete(player1Wins: 2, player2Wins: 0, draws: 0)
     tournament.startNextRound(strategy: SwissPairingStrategy())
     #expect(
@@ -117,7 +116,7 @@ struct TiebreakerTests {
       }
       tournament.startNextRound(strategy: SwissPairingStrategy())
     }
-    
+
     tournament.rounds.last?.matches.first?.complete(player1Wins: 0, player2Wins: 0, draws: 1)
     tournament.startNextRound(strategy: SwissPairingStrategy())
 
@@ -179,7 +178,8 @@ struct TiebreakerTests {
       (tournament.performance[players[0]]?.gameWinRate ?? 0).isApproximatelyEqual(to: 0.7),
       "Player with 21 game points in 10 games should have 0.70 game-win percentage")
     #expect(
-      (tournament.performance[players[1]]?.gameWinRate ?? 0).isApproximatelyEqual(to: PlayerPerformance.miniumPercentage),
+      (tournament.performance[players[1]]?.gameWinRate ?? 0).isApproximatelyEqual(
+        to: PlayerPerformance.miniumPercentage),
       "Player with 9 game points in 10 games should have 0.33 game-win percentage")
 
     // Reset tournament
@@ -206,10 +206,12 @@ struct TiebreakerTests {
     }
 
     #expect(
-      (tournament.getPerformance(for: players[0])?.gameWinRate ?? 0).isApproximatelyEqual(to: PlayerPerformance.miniumPercentage),
+      (tournament.getPerformance(for: players[0])?.gameWinRate ?? 0).isApproximatelyEqual(
+        to: PlayerPerformance.miniumPercentage),
       "Player with 9 game points in 11 games should have 0.33 game-win percentage (minimum)")
     #expect(
-      (tournament.getPerformance(for: players[1])?.gameWinRate ?? 0).isApproximatelyEqual(to: 24/33),
+      (tournament.getPerformance(for: players[1])?.gameWinRate ?? 0).isApproximatelyEqual(
+        to: 24 / 33),
       "Player with 24 game points in 11 games should have 24/33 game-win percentage (minimum)")
   }
 }

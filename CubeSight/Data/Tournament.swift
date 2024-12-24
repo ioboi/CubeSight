@@ -19,7 +19,7 @@ class Tournament {
     _performance = calculated
     return calculated
   }
-  
+
   func getPerformance(for player: Player) -> PlayerPerformance? {
     performance[player]
   }
@@ -34,7 +34,7 @@ class Tournament {
   func invalidatePerformanceCache() {
     _performance = nil
   }
-  
+
   func startNextRound(strategy: PairingStrategy) {
     //  TODO(performance): only add current round peformance, i.e. update tournament.performance instead
     invalidatePerformanceCache()

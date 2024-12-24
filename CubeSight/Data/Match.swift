@@ -1,10 +1,3 @@
-//
-//  Match.swift
-//  CubeSight
-//
-//  Created by Noe Thalheim on 23.09.2024.
-//
-
 import SwiftData
 
 @Model

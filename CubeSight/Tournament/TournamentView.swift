@@ -3,21 +3,22 @@ import SwiftUI
 
 struct TournamentView: View {
   private let tournament: Tournament
-  
+
   init(tournament: Tournament) {
     self.tournament = tournament
   }
-  
+
   private var currentRoundComplete: Bool {
     guard let currentRound = tournament.rounds.last else { return true }
     return currentRound.matches.allSatisfy { $0.isComplete() }
   }
-  
+
   var body: some View {
     List {
-      Section(header:
-// TODO: add asc / desc button?
-        Text("Rounds")
+      Section(
+        header:
+          // TODO: add asc / desc button?
+          Text("Rounds")
       ) {
         ForEach(tournament.rounds.indices.reversed(), id: \.self) { roundIndex in
           Section(header: Text("Round \(roundIndex + 1)")) {
@@ -28,7 +29,7 @@ struct TournamentView: View {
           }
         }
       }
-      
+
       if currentRoundComplete {
         Section {
           Button(action: {
@@ -52,15 +53,15 @@ struct TournamentView: View {
   let config = ModelConfiguration(isStoredInMemoryOnly: true)
   let container = try! ModelContainer(
     for: Player.self, Tournament.self, Round.self, Match.self, configurations: config)
-  
+
   let players = [
     Player(name: "Alice"),
     Player(name: "Bob"),
     Player(name: "Charlie"),
     Player(name: "David"),
   ]
-  
+
   let tournament = Tournament(players: players)
   tournament.startNextRound(strategy: SwissPairingStrategy())
-  return  TournamentView(tournament: tournament)
+  return TournamentView(tournament: tournament)
 }
