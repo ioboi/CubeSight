@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		46B2FA012C43C7AD007794D9 /* TextRecognitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */; };
 		46BE65AD2D0F4553005F062B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE65AC2D0F4553005F062B /* ContentView.swift */; };
+		786539B62D1DF6ED00BA056D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786539B52D1DF6ED00BA056D /* SampleData.swift */; };
 		7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */; };
 		7883C4F62B7C0EB70087EAB7 /* CubeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F52B7C0EB70087EAB7 /* CubeContentView.swift */; };
 		7883C4FA2B7C0EB80087EAB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionView.swift; sourceTree = "<group>"; };
 		46BE65AC2D0F4553005F062B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		786539B52D1DF6ED00BA056D /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		7883C4F02B7C0EB70087EAB7 /* CubeSight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeSight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightApp.swift; sourceTree = "<group>"; };
 		7883C4F52B7C0EB70087EAB7 /* CubeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 			path = Cube;
 			sourceTree = "<group>";
 		};
+		786539B42D1DF6D500BA056D /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				786539B52D1DF6ED00BA056D /* SampleData.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
 		7883C4E72B7C0EB70087EAB7 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +141,7 @@
 		7883C4F22B7C0EB70087EAB7 /* CubeSight */ = {
 			isa = PBXGroup;
 			children = (
+				786539B42D1DF6D500BA056D /* Preview */,
 				46BE65AB2D0F44BF005F062B /* Cube */,
 				78980A502B7D248500E89E68 /* Data */,
 				78B8835E2B82ADE200F099AB /* Card */,
@@ -325,6 +336,7 @@
 				78980A5D2B7D388500E89E68 /* ImportCubeView.swift in Sources */,
 				78980A572B7D2D5A00E89E68 /* CubeCobraClient.swift in Sources */,
 				7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */,
+				786539B62D1DF6ED00BA056D /* SampleData.swift in Sources */,
 				78980A5F2B7D452D00E89E68 /* CubeView.swift in Sources */,
 				78B883602B82ADFE00F099AB /* CardRow.swift in Sources */,
 				78B8835D2B82AC0D00F099AB /* CardList.swift in Sources */,
