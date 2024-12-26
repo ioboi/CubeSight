@@ -252,7 +252,7 @@ struct TextRecognitionView: View {
   }
 }
 
-#Preview {
+@available(iOS 18.0, *)
+#Preview(traits: .sampleData) {
   TextRecognitionView()
-    .modelContainer(for: [Card.self, Cube.self], inMemory: true)
 }

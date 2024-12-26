@@ -39,7 +39,7 @@ struct CubeContentView: View {
 
 }
 
-#Preview {
+@available(iOS 18.0, *)
+#Preview(traits: .sampleData) {
   CubeContentView()
-    .modelContainer(for: [Card.self, Cube.self], inMemory: true)
 }

@@ -55,9 +55,9 @@ struct ImportCubeView: View {
   }
 }
 
-#Preview {
+@available(iOS 18.0, *)
+#Preview(traits: .sampleData) {
   NavigationStack {
     ImportCubeView(shortId: "dimlas3")
   }
-  .modelContainer(for: [Card.self, Cube.self], inMemory: true)
 }

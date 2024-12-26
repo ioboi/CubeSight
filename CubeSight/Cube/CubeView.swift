@@ -35,6 +35,7 @@ struct CubeView: View {
   }
 }
 
-#Preview {
-  CubeView(cube: Cube(id: "", shortId: "", name: "Sample Cube"))
+@available(iOS 18.0, *)
+#Preview(traits: .sampleData) {
+  CubeView(cube: Cube.sampleCube)
 }
