@@ -61,7 +61,7 @@
 		78980A532B7D270400E89E68 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		78980A562B7D2D5A00E89E68 /* CubeCobraClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeCobraClient.swift; sourceTree = "<group>"; };
 		78980A5C2B7D388500E89E68 /* ImportCubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportCubeView.swift; sourceTree = "<group>"; };
-		78980A5E2B7D452D00E89E68 /* CubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeView.swift; sourceTree = "<group>"; };
+		78980A5E2B7D452D00E89E68 /* CubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		78B8835C2B82AC0D00F099AB /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		78B8835F2B82ADFE00F099AB /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,7 +113,10 @@
 				7883C50F2B7C0EB80087EAB7 /* CubeSightUITests */,
 				7883C4F12B7C0EB70087EAB7 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
+			wrapsLines = 0;
 		};
 		7883C4F12B7C0EB70087EAB7 /* Products */ = {
 			isa = PBXGroup;
