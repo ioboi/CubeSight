@@ -15,3 +15,14 @@ import SwiftData
     self.name = name
   }
 }
+
+extension Cube {
+  static let sampleCube = Cube(id: UUID().uuidString, shortId: "dimlas4", name: "Vintage Cube")
+
+  @MainActor
+  static func makeSampleCube(in context: ModelContainer) {
+    context.mainContext.insert(Card.blackLotus)
+    sampleCube.mainboard = [Card.blackLotus]
+    context.mainContext.insert(sampleCube)
+  }
+}

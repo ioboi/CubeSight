@@ -105,3 +105,17 @@ extension Card {
     }
   }
 }
+
+extension Card {
+  static let blackLotus = Card(
+    id: UUID(uuidString: "bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd")!,
+    name: "Black Lotus",
+    imageSmall:
+      "https://cards.scryfall.io/small/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838",
+    imageNormal:
+      "https://cards.scryfall.io/normal/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838",
+    colors: [],
+    manaValue: 0,
+    colorcategory: .colorless
+  )
+}
