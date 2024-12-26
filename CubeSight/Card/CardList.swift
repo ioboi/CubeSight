@@ -26,6 +26,7 @@ struct CardList: View {
   }
 }
 
-#Preview {
-  CardList(cubeId: "")
+@available(iOS 18.0, *)
+#Preview(traits: .sampleData) {
+  CardList(cubeId: Cube.sampleCube.id)
 }
