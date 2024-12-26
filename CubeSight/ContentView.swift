@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  CubeSight
-//
-//  Created by Noe on 15.12.2024.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -21,9 +14,9 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }
 
 enum Tab {
-    case cube
+  case cube
 }
