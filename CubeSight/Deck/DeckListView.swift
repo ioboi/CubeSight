@@ -27,6 +27,7 @@ struct DeckListView: View {
       .onDelete(perform: removeDeck)
     }
     .fullScreenCover(isPresented: $isEditorPresented) {
+      DeckScanner()
       //DeckEditor(cube: cube, deck: nil)
     }
     .overlay {
