@@ -9,9 +9,12 @@ struct CubeContentView: View {
   var body: some View {
     NavigationStack {
       List {
-        NavigationLink(destination: TextRecognitionView()) {
-          Label("Card Text Recognition", systemImage: "text.viewfinder")
+        Section {
+          NavigationLink(destination: TextRecognitionView()) {
+            Label("Card Text Recognition", systemImage: "text.viewfinder")
+          }
         }
+        
         ForEach(cubes) { cube in
           NavigationLink(cube.name, destination: CubeView(cube: cube).navigationTitle(cube.name))
         }
