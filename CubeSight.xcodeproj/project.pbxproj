@@ -19,6 +19,10 @@
 		7883C5132B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C5122B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift */; };
 		788A2C472D1EEC2C007DDC37 /* DeckCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788A2C462D1EEC2C007DDC37 /* DeckCard.swift */; };
 		788A2C492D1EEC32007DDC37 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788A2C482D1EEC32007DDC37 /* Deck.swift */; };
+		788A2C4C2D1EEDC0007DDC37 /* DeckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788A2C4B2D1EEDC0007DDC37 /* DeckListView.swift */; };
+		788A2C4E2D1EEE01007DDC37 /* DeckEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788A2C4D2D1EEE01007DDC37 /* DeckEditor.swift */; };
+		788A2C502D1EEE36007DDC37 /* SmallCardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788A2C4F2D1EEE36007DDC37 /* SmallCardRow.swift */; };
+		788A2C522D1EEE7B007DDC37 /* DeckDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788A2C512D1EEE7B007DDC37 /* DeckDetailView.swift */; };
 		78980A522B7D24C700E89E68 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A512B7D24C700E89E68 /* Cube.swift */; };
 		78980A542B7D270400E89E68 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A532B7D270400E89E68 /* Card.swift */; };
 		78980A572B7D2D5A00E89E68 /* CubeCobraClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A562B7D2D5A00E89E68 /* CubeCobraClient.swift */; };
@@ -61,6 +65,10 @@
 		7883C5122B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		788A2C462D1EEC2C007DDC37 /* DeckCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCard.swift; sourceTree = "<group>"; };
 		788A2C482D1EEC32007DDC37 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		788A2C4B2D1EEDC0007DDC37 /* DeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListView.swift; sourceTree = "<group>"; };
+		788A2C4D2D1EEE01007DDC37 /* DeckEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckEditor.swift; sourceTree = "<group>"; };
+		788A2C4F2D1EEE36007DDC37 /* SmallCardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCardRow.swift; sourceTree = "<group>"; };
+		788A2C512D1EEE7B007DDC37 /* DeckDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDetailView.swift; sourceTree = "<group>"; };
 		78980A4D2B7D103300E89E68 /* CubeSight-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CubeSight-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		78980A4E2B7D135800E89E68 /* CubeSight.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CubeSight.xcconfig; sourceTree = "<group>"; };
 		78980A512B7D24C700E89E68 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
@@ -149,6 +157,7 @@
 				46BE65AB2D0F44BF005F062B /* Cube */,
 				78980A502B7D248500E89E68 /* Data */,
 				78B8835E2B82ADE200F099AB /* Card */,
+				788A2C4A2D1EEDB0007DDC37 /* Deck */,
 				7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */,
 				7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */,
 				7883C4FB2B7C0EB80087EAB7 /* Preview Content */,
@@ -182,6 +191,16 @@
 			path = CubeSightUITests;
 			sourceTree = "<group>";
 		};
+		788A2C4A2D1EEDB0007DDC37 /* Deck */ = {
+			isa = PBXGroup;
+			children = (
+				788A2C4B2D1EEDC0007DDC37 /* DeckListView.swift */,
+				788A2C4D2D1EEE01007DDC37 /* DeckEditor.swift */,
+				788A2C512D1EEE7B007DDC37 /* DeckDetailView.swift */,
+			);
+			path = Deck;
+			sourceTree = "<group>";
+		};
 		78980A502B7D248500E89E68 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +217,7 @@
 			children = (
 				78B8835C2B82AC0D00F099AB /* CardList.swift */,
 				78B8835F2B82ADFE00F099AB /* CardRow.swift */,
+				788A2C4F2D1EEE36007DDC37 /* SmallCardRow.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -339,16 +359,20 @@
 				7883C4F62B7C0EB70087EAB7 /* CubeContentView.swift in Sources */,
 				46BE65AD2D0F4553005F062B /* ContentView.swift in Sources */,
 				78980A542B7D270400E89E68 /* Card.swift in Sources */,
+				788A2C522D1EEE7B007DDC37 /* DeckDetailView.swift in Sources */,
 				78980A522B7D24C700E89E68 /* Cube.swift in Sources */,
 				78980A5D2B7D388500E89E68 /* ImportCubeView.swift in Sources */,
+				788A2C4C2D1EEDC0007DDC37 /* DeckListView.swift in Sources */,
 				78980A572B7D2D5A00E89E68 /* CubeCobraClient.swift in Sources */,
 				7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */,
+				788A2C4E2D1EEE01007DDC37 /* DeckEditor.swift in Sources */,
 				786539B62D1DF6ED00BA056D /* SampleData.swift in Sources */,
 				78980A5F2B7D452D00E89E68 /* CubeView.swift in Sources */,
 				78B883602B82ADFE00F099AB /* CardRow.swift in Sources */,
 				78B8835D2B82AC0D00F099AB /* CardList.swift in Sources */,
 				46B2FA012C43C7AD007794D9 /* TextRecognitionView.swift in Sources */,
 				788A2C472D1EEC2C007DDC37 /* DeckCard.swift in Sources */,
+				788A2C502D1EEE36007DDC37 /* SmallCardRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
