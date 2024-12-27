@@ -24,5 +24,8 @@ extension Cube {
     context.mainContext.insert(Card.blackLotus)
     sampleCube.mainboard = [Card.blackLotus]
     context.mainContext.insert(sampleCube)
+
+    context.mainContext.insert(Deck.sampleDeck)
+    Deck.sampleDeck.cards = [Card.blackLotus]
   }
 }

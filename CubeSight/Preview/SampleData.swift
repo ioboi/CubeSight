@@ -5,7 +5,7 @@ struct SampleData: PreviewModifier {
 
   static func makeSharedContext() async throws -> ModelContainer {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try ModelContainer(for: Cube.self, Card.self, configurations: config)
+    let container = try ModelContainer(for: Cube.self, Card.self, DeckCard.self, Deck.self ,configurations: config)
     Cube.makeSampleCube(in: container)
     return container
   }
