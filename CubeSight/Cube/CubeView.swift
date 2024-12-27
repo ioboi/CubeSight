@@ -31,6 +31,10 @@ struct CubeView: View {
             .badge(cube.mainboard.count)
         }
       }
+
+      NavigationLink(destination: DeckListView(cube: cube)) {
+        Text("Decks")
+      }
     }
   }
 }
