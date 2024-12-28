@@ -107,7 +107,7 @@ extension Card {
 }
 
 extension Card {
-  static let blackLotus = Card(
+  @MainActor static let blackLotus = Card(
     id: UUID(uuidString: "bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd")!,
     name: "Black Lotus",
     imageSmall:

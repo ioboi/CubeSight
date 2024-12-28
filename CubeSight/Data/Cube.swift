@@ -17,7 +17,7 @@ import SwiftData
 }
 
 extension Cube {
-  static let sampleCube = Cube(id: UUID().uuidString, shortId: "dimlas4", name: "Vintage Cube")
+  @MainActor static let sampleCube = Cube(id: UUID().uuidString, shortId: "dimlas4", name: "Vintage Cube")
 
   @MainActor
   static func makeSampleCube(in context: ModelContainer) {
