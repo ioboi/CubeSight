@@ -443,7 +443,7 @@
 		};
 		7883C5152B7C0EB80087EAB7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78980A4E2B7D135800E89E68 /* CubeSight.xcconfig */;
+			baseConfigurationReference = 78980A4D2B7D103300E89E68 /* CubeSight-release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
