@@ -16,6 +16,5 @@ struct SampleData: PreviewModifier {
 }
 
 extension PreviewTrait where T == Preview.ViewTraits {
-  @available(iOS 18.0, *)
   @MainActor static var sampleData: Self = .modifier(SampleData())
 }
