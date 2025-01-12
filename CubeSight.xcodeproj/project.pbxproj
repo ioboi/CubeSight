@@ -3,28 +3,8 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
-
-/* Begin PBXBuildFile section */
-		46B2FA012C43C7AD007794D9 /* TextRecognitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */; };
-		46BE65AD2D0F4553005F062B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE65AC2D0F4553005F062B /* ContentView.swift */; };
-		786539B62D1DF6ED00BA056D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786539B52D1DF6ED00BA056D /* SampleData.swift */; };
-		7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */; };
-		7883C4F62B7C0EB70087EAB7 /* CubeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C4F52B7C0EB70087EAB7 /* CubeContentView.swift */; };
-		7883C4FA2B7C0EB80087EAB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */; };
-		7883C4FD2B7C0EB80087EAB7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7883C4FC2B7C0EB80087EAB7 /* Preview Assets.xcassets */; };
-		7883C5072B7C0EB80087EAB7 /* CubeSightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C5062B7C0EB80087EAB7 /* CubeSightTests.swift */; };
-		7883C5112B7C0EB80087EAB7 /* CubeSightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C5102B7C0EB80087EAB7 /* CubeSightUITests.swift */; };
-		7883C5132B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883C5122B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift */; };
-		78980A522B7D24C700E89E68 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A512B7D24C700E89E68 /* Cube.swift */; };
-		78980A542B7D270400E89E68 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A532B7D270400E89E68 /* Card.swift */; };
-		78980A572B7D2D5A00E89E68 /* CubeCobraClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A562B7D2D5A00E89E68 /* CubeCobraClient.swift */; };
-		78980A5D2B7D388500E89E68 /* ImportCubeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A5C2B7D388500E89E68 /* ImportCubeView.swift */; };
-		78980A5F2B7D452D00E89E68 /* CubeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78980A5E2B7D452D00E89E68 /* CubeView.swift */; };
-		78B8835D2B82AC0D00F099AB /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8835C2B82AC0D00F099AB /* CardList.swift */; };
-		78B883602B82ADFE00F099AB /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8835F2B82ADFE00F099AB /* CardRow.swift */; };
-/* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		7883C5032B7C0EB80087EAB7 /* PBXContainerItemProxy */ = {
@@ -44,29 +24,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionView.swift; sourceTree = "<group>"; };
-		46BE65AC2D0F4553005F062B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		786539B52D1DF6ED00BA056D /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		7883C4F02B7C0EB70087EAB7 /* CubeSight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeSight.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightApp.swift; sourceTree = "<group>"; };
-		7883C4F52B7C0EB70087EAB7 /* CubeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeContentView.swift; sourceTree = "<group>"; };
-		7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7883C4FC2B7C0EB80087EAB7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7883C5022B7C0EB80087EAB7 /* CubeSightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeSightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7883C5062B7C0EB80087EAB7 /* CubeSightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightTests.swift; sourceTree = "<group>"; };
 		7883C50C2B7C0EB80087EAB7 /* CubeSightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeSightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7883C5102B7C0EB80087EAB7 /* CubeSightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightUITests.swift; sourceTree = "<group>"; };
-		7883C5122B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSightUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		78980A4D2B7D103300E89E68 /* CubeSight-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CubeSight-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		78980A4E2B7D135800E89E68 /* CubeSight.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CubeSight.xcconfig; sourceTree = "<group>"; };
-		78980A512B7D24C700E89E68 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
-		78980A532B7D270400E89E68 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		78980A562B7D2D5A00E89E68 /* CubeCobraClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeCobraClient.swift; sourceTree = "<group>"; };
-		78980A5C2B7D388500E89E68 /* ImportCubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportCubeView.swift; sourceTree = "<group>"; };
-		78980A5E2B7D452D00E89E68 /* CubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeView.swift; sourceTree = "<group>"; wrapsLines = 1; };
-		78B8835C2B82AC0D00F099AB /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
-		78B8835F2B82ADFE00F099AB /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		7876C9022D343E23002CDFF6 /* CubeSight */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CubeSight; sourceTree = "<group>"; };
+		7876C9122D343E27002CDFF6 /* CubeSightTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CubeSightTests; sourceTree = "<group>"; };
+		7876C9162D343E2E002CDFF6 /* CubeSightUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CubeSightUITests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7883C4ED2B7C0EB70087EAB7 /* Frameworks */ = {
@@ -93,34 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		46BE65AB2D0F44BF005F062B /* Cube */ = {
-			isa = PBXGroup;
-			children = (
-				46B2FA002C43C7AA007794D9 /* TextRecognitionView.swift */,
-				78980A562B7D2D5A00E89E68 /* CubeCobraClient.swift */,
-				78980A5E2B7D452D00E89E68 /* CubeView.swift */,
-				78980A5C2B7D388500E89E68 /* ImportCubeView.swift */,
-				7883C4F52B7C0EB70087EAB7 /* CubeContentView.swift */,
-			);
-			path = Cube;
-			sourceTree = "<group>";
-		};
-		786539B42D1DF6D500BA056D /* Preview */ = {
-			isa = PBXGroup;
-			children = (
-				786539B52D1DF6ED00BA056D /* SampleData.swift */,
-			);
-			path = Preview;
-			sourceTree = "<group>";
-		};
 		7883C4E72B7C0EB70087EAB7 = {
 			isa = PBXGroup;
 			children = (
 				78980A4E2B7D135800E89E68 /* CubeSight.xcconfig */,
 				78980A4D2B7D103300E89E68 /* CubeSight-release.xcconfig */,
-				7883C4F22B7C0EB70087EAB7 /* CubeSight */,
-				7883C5052B7C0EB80087EAB7 /* CubeSightTests */,
-				7883C50F2B7C0EB80087EAB7 /* CubeSightUITests */,
+				7876C9022D343E23002CDFF6 /* CubeSight */,
+				7876C9122D343E27002CDFF6 /* CubeSightTests */,
+				7876C9162D343E2E002CDFF6 /* CubeSightUITests */,
 				7883C4F12B7C0EB70087EAB7 /* Products */,
 			);
 			indentWidth = 2;
@@ -138,64 +87,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7883C4F22B7C0EB70087EAB7 /* CubeSight */ = {
-			isa = PBXGroup;
-			children = (
-				786539B42D1DF6D500BA056D /* Preview */,
-				46BE65AB2D0F44BF005F062B /* Cube */,
-				78980A502B7D248500E89E68 /* Data */,
-				78B8835E2B82ADE200F099AB /* Card */,
-				7883C4F32B7C0EB70087EAB7 /* CubeSightApp.swift */,
-				7883C4F92B7C0EB80087EAB7 /* Assets.xcassets */,
-				7883C4FB2B7C0EB80087EAB7 /* Preview Content */,
-				46BE65AC2D0F4553005F062B /* ContentView.swift */,
-			);
-			path = CubeSight;
-			sourceTree = "<group>";
-		};
-		7883C4FB2B7C0EB80087EAB7 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				7883C4FC2B7C0EB80087EAB7 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		7883C5052B7C0EB80087EAB7 /* CubeSightTests */ = {
-			isa = PBXGroup;
-			children = (
-				7883C5062B7C0EB80087EAB7 /* CubeSightTests.swift */,
-			);
-			path = CubeSightTests;
-			sourceTree = "<group>";
-		};
-		7883C50F2B7C0EB80087EAB7 /* CubeSightUITests */ = {
-			isa = PBXGroup;
-			children = (
-				7883C5102B7C0EB80087EAB7 /* CubeSightUITests.swift */,
-				7883C5122B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift */,
-			);
-			path = CubeSightUITests;
-			sourceTree = "<group>";
-		};
-		78980A502B7D248500E89E68 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				78980A512B7D24C700E89E68 /* Cube.swift */,
-				78980A532B7D270400E89E68 /* Card.swift */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		78B8835E2B82ADE200F099AB /* Card */ = {
-			isa = PBXGroup;
-			children = (
-				78B8835C2B82AC0D00F099AB /* CardList.swift */,
-				78B8835F2B82ADFE00F099AB /* CardRow.swift */,
-			);
-			path = Card;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -210,6 +101,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				7876C9022D343E23002CDFF6 /* CubeSight */,
 			);
 			name = CubeSight;
 			productName = CubeSight;
@@ -229,6 +123,9 @@
 			dependencies = (
 				7883C5042B7C0EB80087EAB7 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				7876C9122D343E27002CDFF6 /* CubeSightTests */,
+			);
 			name = CubeSightTests;
 			productName = CubeSightTests;
 			productReference = 7883C5022B7C0EB80087EAB7 /* CubeSightTests.xctest */;
@@ -246,6 +143,9 @@
 			);
 			dependencies = (
 				7883C50E2B7C0EB80087EAB7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				7876C9162D343E2E002CDFF6 /* CubeSightUITests */,
 			);
 			name = CubeSightUITests;
 			productName = CubeSightUITests;
@@ -303,8 +203,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7883C4FD2B7C0EB80087EAB7 /* Preview Assets.xcassets in Resources */,
-				7883C4FA2B7C0EB80087EAB7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,18 +227,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7883C4F62B7C0EB70087EAB7 /* CubeContentView.swift in Sources */,
-				46BE65AD2D0F4553005F062B /* ContentView.swift in Sources */,
-				78980A542B7D270400E89E68 /* Card.swift in Sources */,
-				78980A522B7D24C700E89E68 /* Cube.swift in Sources */,
-				78980A5D2B7D388500E89E68 /* ImportCubeView.swift in Sources */,
-				78980A572B7D2D5A00E89E68 /* CubeCobraClient.swift in Sources */,
-				7883C4F42B7C0EB70087EAB7 /* CubeSightApp.swift in Sources */,
-				786539B62D1DF6ED00BA056D /* SampleData.swift in Sources */,
-				78980A5F2B7D452D00E89E68 /* CubeView.swift in Sources */,
-				78B883602B82ADFE00F099AB /* CardRow.swift in Sources */,
-				78B8835D2B82AC0D00F099AB /* CardList.swift in Sources */,
-				46B2FA012C43C7AD007794D9 /* TextRecognitionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +234,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7883C5072B7C0EB80087EAB7 /* CubeSightTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,8 +241,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7883C5112B7C0EB80087EAB7 /* CubeSightUITests.swift in Sources */,
-				7883C5132B7C0EB80087EAB7 /* CubeSightUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
