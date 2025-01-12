@@ -252,7 +252,6 @@ struct TextRecognitionView: View {
   }
 }
 
-@available(iOS 18.0, *)
 #Preview(traits: .sampleData) {
   TextRecognitionView()
 }

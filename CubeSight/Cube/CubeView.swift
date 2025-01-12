@@ -35,7 +35,6 @@ struct CubeView: View {
   }
 }
 
-@available(iOS 18.0, *)
 #Preview(traits: .sampleData) {
   CubeView(cube: Cube.sampleCube)
 }
