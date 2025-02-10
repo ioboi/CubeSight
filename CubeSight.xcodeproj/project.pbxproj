@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4613AA6B2DB3C1BA00BD6291 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 4613AA6A2DB3C1BA00BD6291 /* Numerics */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		78A308432D9985B8009AE57E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4613AA6B2DB3C1BA00BD6291 /* Numerics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +123,7 @@
 			);
 			name = CubeSight;
 			packageProductDependencies = (
+				4613AA6A2DB3C1BA00BD6291 /* Numerics */,
 			);
 			productName = CubeSight;
 			productReference = 78A308302D9985B8009AE57E /* CubeSight.app */;
@@ -203,6 +209,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				78C25B112D9A9557006FFEFB /* XCRemoteSwiftPackageReference "swift-format" */,
+				4613AA692DB3C1BA00BD6291 /* XCRemoteSwiftPackageReference "swift-numerics" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 78A308312D9985B8009AE57E /* Products */;
@@ -567,6 +574,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4613AA692DB3C1BA00BD6291 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-numerics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
 		78C25B112D9A9557006FFEFB /* XCRemoteSwiftPackageReference "swift-format" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swiftlang/swift-format";
@@ -576,6 +591,14 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4613AA6A2DB3C1BA00BD6291 /* Numerics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4613AA692DB3C1BA00BD6291 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = Numerics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 78A308282D9985B7009AE57E /* Project object */;
 }
