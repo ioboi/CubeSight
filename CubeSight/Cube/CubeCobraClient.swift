@@ -72,8 +72,9 @@ struct CubeCobraClient {
   private var decoder: JSONDecoder = JSONDecoder()
 
   func cube(shortId: String) async -> Cube? {
-    logger.info("Fetch cube with shortId=\(shortId)")
-    let request = URLRequest(url: URL(string: "\(cubeJSONEndpoint)\(shortId)")!)
+    let url = URL(string: "\(cubeJSONEndpoint)\(shortId)")!
+    logger.info("Fetch cube with shortId=\(shortId), url=\(url.absoluteString)")
+    let request = URLRequest(url: url)
     do {
       let (data, _) = try await URLSession.shared.data(for: request)
       let result = try decoder.decode(Cube.self, from: data)
