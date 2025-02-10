@@ -34,7 +34,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		7876C9022D343E23002CDFF6 /* CubeSight */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CubeSight; sourceTree = "<group>"; };
 		7876C9122D343E27002CDFF6 /* CubeSightTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CubeSightTests; sourceTree = "<group>"; };
-		7876C9162D343E2E002CDFF6 /* CubeSightUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CubeSightUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +68,6 @@
 				78980A4D2B7D103300E89E68 /* CubeSight-release.xcconfig */,
 				7876C9022D343E23002CDFF6 /* CubeSight */,
 				7876C9122D343E27002CDFF6 /* CubeSightTests */,
-				7876C9162D343E2E002CDFF6 /* CubeSightUITests */,
 				7883C4F12B7C0EB70087EAB7 /* Products */,
 			);
 			indentWidth = 2;
@@ -143,9 +141,6 @@
 			);
 			dependencies = (
 				7883C50E2B7C0EB80087EAB7 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				7876C9162D343E2E002CDFF6 /* CubeSightUITests */,
 			);
 			name = CubeSightUITests;
 			productName = CubeSightUITests;
