@@ -32,14 +32,14 @@ struct CubeCobraClient {
       }
 
       enum Colorcategory: String, Codable {
-        case blue = "u"
-        case green = "g"
-        case red = "r"
-        case white = "w"
-        case black = "b"
-        case colorless = "c"
-        case multicolored = "m"
-        case land = "l"
+        case blue = "Blue"
+        case green = "Green"
+        case red = "Red"
+        case white = "White"
+        case black = "Black"
+        case colorless = "Colorless"
+        case multicolored = "Multicolored"
+        case land = "Lands"
       }
 
       let name: String
