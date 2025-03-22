@@ -6,9 +6,10 @@ import SwiftData
   @Attribute(.unique) var shortId: String
   var name: String
   @Attribute(.externalStorage) var image: Data?
-
+  @Relationship(deleteRule: .cascade, inverse: \CubeDeck.cube) var decks: [CubeDeck] = []
+  
   var mainboard: [Card] = []
-
+  
   init(id: String, shortId: String, name: String) {
     self.id = id
     self.shortId = shortId
@@ -18,7 +19,7 @@ import SwiftData
 
 extension Cube {
   @MainActor static let sampleCube = Cube(id: UUID().uuidString, shortId: "dimlas4", name: "Vintage Cube")
-
+  
   @MainActor
   static func makeSampleCube(in context: ModelContainer) {
     context.mainContext.insert(Card.blackLotus)

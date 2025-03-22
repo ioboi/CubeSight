@@ -5,17 +5,17 @@ import SwiftUI
 struct CubeSightApp: App {
   var sharedModelContainer: ModelContainer = {
     let schema = Schema([
-      Card.self, Cube.self,
+      Card.self, Cube.self, CubeDeckCard.self, CubeDeck.self
     ])
     let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+    
     do {
       return try ModelContainer(for: schema, configurations: [modelConfiguration])
     } catch {
       fatalError("Could not create ModelContainer: \(error)")
     }
   }()
-
+  
   var body: some Scene {
     WindowGroup {
       ContentView()
