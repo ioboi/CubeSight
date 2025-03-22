@@ -9,9 +9,12 @@ struct CardList: View {
   var body: some View {
     ScrollView(.vertical) {
       LazyVStack(spacing: 10) {
-        CardsSearchResults(cube: cube, searchText: $searchText)
+        CardsSearchResults(cube: cube, searchText: $searchText) { card in
+          CardGridItem(card: card)
+        }
       }
       .scrollTargetLayout()
+      .padding()
     }
     .scrollTargetBehavior(.viewAligned)
     .safeAreaPadding(.vertical, 20)

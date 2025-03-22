@@ -1,23 +1,30 @@
 import SwiftData
 import SwiftUI
 
-struct CardsSearchResults: View {
-  private let cube: Cube
+struct CardsSearchResults<Content: View>: View {
   @Binding var searchText: String
+  private let cube: Cube
   @Query private var cards: [Card]
-  
-  init(cube: Cube, searchText: Binding<String>) {
-    self.cube = cube
+  private var content: (Card) -> Content
+
+  init(
+    cube: Cube,
+    searchText: Binding<String>,
+    @ViewBuilder content: @escaping (Card) -> Content
+  ) {
     _searchText = searchText
     _cards = Query(
-      filter: Card.predicate(cubeId: cube.id, searchText: searchText.wrappedValue),
-      sort: [SortDescriptor(\.rawColorcategory), SortDescriptor(\.manaValue)])
+      filter: Card.predicate(
+        cubeId: cube.id,
+        searchText: searchText.wrappedValue
+      ),
+      sort: [SortDescriptor(\.rawColorcategory), SortDescriptor(\.manaValue)]
+    )
+    self.cube = cube
+    self.content = content
   }
-  
+
   var body: some View {
-    ForEach(cards) { card in
-      CardRow(card: card)
-        .padding(.horizontal)
-    }
+    ForEach(cards, content: content)
   }
 }
