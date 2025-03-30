@@ -3,56 +3,73 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		78A3088A2D99873A009AE57E /* CubeSight.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 78A308892D99873A009AE57E /* CubeSight.xcconfig */; };
+		78A3088C2D998745009AE57E /* CubeSight-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 78A3088B2D998745009AE57E /* CubeSight-release.xcconfig */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
-		7883C5032B7C0EB80087EAB7 /* PBXContainerItemProxy */ = {
+		78A308432D9985B8009AE57E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7883C4E82B7C0EB70087EAB7 /* Project object */;
+			containerPortal = 78A308282D9985B7009AE57E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7883C4EF2B7C0EB70087EAB7;
+			remoteGlobalIDString = 78A3082F2D9985B8009AE57E;
 			remoteInfo = CubeSight;
 		};
-		7883C50D2B7C0EB80087EAB7 /* PBXContainerItemProxy */ = {
+		78A3084D2D9985B8009AE57E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7883C4E82B7C0EB70087EAB7 /* Project object */;
+			containerPortal = 78A308282D9985B7009AE57E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7883C4EF2B7C0EB70087EAB7;
+			remoteGlobalIDString = 78A3082F2D9985B8009AE57E;
 			remoteInfo = CubeSight;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7883C4F02B7C0EB70087EAB7 /* CubeSight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeSight.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7883C5022B7C0EB80087EAB7 /* CubeSightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeSightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7883C50C2B7C0EB80087EAB7 /* CubeSightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeSightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		78980A4D2B7D103300E89E68 /* CubeSight-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CubeSight-release.xcconfig"; sourceTree = SOURCE_ROOT; };
-		78980A4E2B7D135800E89E68 /* CubeSight.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CubeSight.xcconfig; sourceTree = "<group>"; };
+		78A308302D9985B8009AE57E /* CubeSight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeSight.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		78A308422D9985B8009AE57E /* CubeSightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeSightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		78A3084C2D9985B8009AE57E /* CubeSightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeSightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		78A308892D99873A009AE57E /* CubeSight.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CubeSight.xcconfig; sourceTree = "<group>"; };
+		78A3088B2D998745009AE57E /* CubeSight-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CubeSight-release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7876C9022D343E23002CDFF6 /* CubeSight */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CubeSight; sourceTree = "<group>"; };
-		7876C9122D343E27002CDFF6 /* CubeSightTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CubeSightTests; sourceTree = "<group>"; };
-		7876C9162D343E2E002CDFF6 /* CubeSightUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CubeSightUITests; sourceTree = "<group>"; };
+		78A308322D9985B8009AE57E /* CubeSight */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CubeSight;
+			sourceTree = "<group>";
+		};
+		78A308452D9985B8009AE57E /* CubeSightTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CubeSightTests;
+			sourceTree = "<group>";
+		};
+		78A3084F2D9985B8009AE57E /* CubeSightUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CubeSightUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7883C4ED2B7C0EB70087EAB7 /* Frameworks */ = {
+		78A3082D2D9985B8009AE57E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7883C4FF2B7C0EB80087EAB7 /* Frameworks */ = {
+		78A3083F2D9985B8009AE57E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7883C5092B7C0EB80087EAB7 /* Frameworks */ = {
+		78A308492D9985B8009AE57E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,27 +79,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7883C4E72B7C0EB70087EAB7 = {
+		78A308272D9985B7009AE57E = {
 			isa = PBXGroup;
 			children = (
-				78980A4E2B7D135800E89E68 /* CubeSight.xcconfig */,
-				78980A4D2B7D103300E89E68 /* CubeSight-release.xcconfig */,
-				7876C9022D343E23002CDFF6 /* CubeSight */,
-				7876C9122D343E27002CDFF6 /* CubeSightTests */,
-				7876C9162D343E2E002CDFF6 /* CubeSightUITests */,
-				7883C4F12B7C0EB70087EAB7 /* Products */,
+				78A308322D9985B8009AE57E /* CubeSight */,
+				78A308452D9985B8009AE57E /* CubeSightTests */,
+				78A3084F2D9985B8009AE57E /* CubeSightUITests */,
+				78A308312D9985B8009AE57E /* Products */,
+				78A308892D99873A009AE57E /* CubeSight.xcconfig */,
+				78A3088B2D998745009AE57E /* CubeSight-release.xcconfig */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
 			tabWidth = 2;
-			wrapsLines = 0;
 		};
-		7883C4F12B7C0EB70087EAB7 /* Products */ = {
+		78A308312D9985B8009AE57E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7883C4F02B7C0EB70087EAB7 /* CubeSight.app */,
-				7883C5022B7C0EB80087EAB7 /* CubeSightTests.xctest */,
-				7883C50C2B7C0EB80087EAB7 /* CubeSightUITests.xctest */,
+				78A308302D9985B8009AE57E /* CubeSight.app */,
+				78A308422D9985B8009AE57E /* CubeSightTests.xctest */,
+				78A3084C2D9985B8009AE57E /* CubeSightUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,130 +106,139 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7883C4EF2B7C0EB70087EAB7 /* CubeSight */ = {
+		78A3082F2D9985B8009AE57E /* CubeSight */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7883C5162B7C0EB80087EAB7 /* Build configuration list for PBXNativeTarget "CubeSight" */;
+			buildConfigurationList = 78A308562D9985B8009AE57E /* Build configuration list for PBXNativeTarget "CubeSight" */;
 			buildPhases = (
-				7883C4EC2B7C0EB70087EAB7 /* Sources */,
-				7883C4ED2B7C0EB70087EAB7 /* Frameworks */,
-				7883C4EE2B7C0EB70087EAB7 /* Resources */,
+				78A3082C2D9985B8009AE57E /* Sources */,
+				78A3082D2D9985B8009AE57E /* Frameworks */,
+				78A3082E2D9985B8009AE57E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				7876C9022D343E23002CDFF6 /* CubeSight */,
+				78A308322D9985B8009AE57E /* CubeSight */,
 			);
 			name = CubeSight;
+			packageProductDependencies = (
+			);
 			productName = CubeSight;
-			productReference = 7883C4F02B7C0EB70087EAB7 /* CubeSight.app */;
+			productReference = 78A308302D9985B8009AE57E /* CubeSight.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7883C5012B7C0EB80087EAB7 /* CubeSightTests */ = {
+		78A308412D9985B8009AE57E /* CubeSightTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7883C5192B7C0EB80087EAB7 /* Build configuration list for PBXNativeTarget "CubeSightTests" */;
+			buildConfigurationList = 78A308592D9985B8009AE57E /* Build configuration list for PBXNativeTarget "CubeSightTests" */;
 			buildPhases = (
-				7883C4FE2B7C0EB80087EAB7 /* Sources */,
-				7883C4FF2B7C0EB80087EAB7 /* Frameworks */,
-				7883C5002B7C0EB80087EAB7 /* Resources */,
+				78A3083E2D9985B8009AE57E /* Sources */,
+				78A3083F2D9985B8009AE57E /* Frameworks */,
+				78A308402D9985B8009AE57E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7883C5042B7C0EB80087EAB7 /* PBXTargetDependency */,
+				78A308442D9985B8009AE57E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				7876C9122D343E27002CDFF6 /* CubeSightTests */,
+				78A308452D9985B8009AE57E /* CubeSightTests */,
 			);
 			name = CubeSightTests;
+			packageProductDependencies = (
+			);
 			productName = CubeSightTests;
-			productReference = 7883C5022B7C0EB80087EAB7 /* CubeSightTests.xctest */;
+			productReference = 78A308422D9985B8009AE57E /* CubeSightTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7883C50B2B7C0EB80087EAB7 /* CubeSightUITests */ = {
+		78A3084B2D9985B8009AE57E /* CubeSightUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7883C51C2B7C0EB80087EAB7 /* Build configuration list for PBXNativeTarget "CubeSightUITests" */;
+			buildConfigurationList = 78A3085C2D9985B8009AE57E /* Build configuration list for PBXNativeTarget "CubeSightUITests" */;
 			buildPhases = (
-				7883C5082B7C0EB80087EAB7 /* Sources */,
-				7883C5092B7C0EB80087EAB7 /* Frameworks */,
-				7883C50A2B7C0EB80087EAB7 /* Resources */,
+				78A308482D9985B8009AE57E /* Sources */,
+				78A308492D9985B8009AE57E /* Frameworks */,
+				78A3084A2D9985B8009AE57E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7883C50E2B7C0EB80087EAB7 /* PBXTargetDependency */,
+				78A3084E2D9985B8009AE57E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				7876C9162D343E2E002CDFF6 /* CubeSightUITests */,
+				78A3084F2D9985B8009AE57E /* CubeSightUITests */,
 			);
 			name = CubeSightUITests;
+			packageProductDependencies = (
+			);
 			productName = CubeSightUITests;
-			productReference = 7883C50C2B7C0EB80087EAB7 /* CubeSightUITests.xctest */;
+			productReference = 78A3084C2D9985B8009AE57E /* CubeSightUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7883C4E82B7C0EB70087EAB7 /* Project object */ = {
+		78A308282D9985B7009AE57E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1610;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					7883C4EF2B7C0EB70087EAB7 = {
-						CreatedOnToolsVersion = 15.2;
+					78A3082F2D9985B8009AE57E = {
+						CreatedOnToolsVersion = 16.2;
 					};
-					7883C5012B7C0EB80087EAB7 = {
-						CreatedOnToolsVersion = 15.2;
-						TestTargetID = 7883C4EF2B7C0EB70087EAB7;
+					78A308412D9985B8009AE57E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 78A3082F2D9985B8009AE57E;
 					};
-					7883C50B2B7C0EB80087EAB7 = {
-						CreatedOnToolsVersion = 15.2;
-						TestTargetID = 7883C4EF2B7C0EB70087EAB7;
+					78A3084B2D9985B8009AE57E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 78A3082F2D9985B8009AE57E;
 					};
 				};
 			};
-			buildConfigurationList = 7883C4EB2B7C0EB70087EAB7 /* Build configuration list for PBXProject "CubeSight" */;
-			compatibilityVersion = "Xcode 14.0";
+			buildConfigurationList = 78A3082B2D9985B7009AE57E /* Build configuration list for PBXProject "CubeSight" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 7883C4E72B7C0EB70087EAB7;
+			mainGroup = 78A308272D9985B7009AE57E;
+			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				78980A4F2B7D1DDC00E89E68 /* XCRemoteSwiftPackageReference "swift-format" */,
+				78C25B112D9A9557006FFEFB /* XCRemoteSwiftPackageReference "swift-format" */,
 			);
-			productRefGroup = 7883C4F12B7C0EB70087EAB7 /* Products */;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 78A308312D9985B8009AE57E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7883C4EF2B7C0EB70087EAB7 /* CubeSight */,
-				7883C5012B7C0EB80087EAB7 /* CubeSightTests */,
-				7883C50B2B7C0EB80087EAB7 /* CubeSightUITests */,
+				78A3082F2D9985B8009AE57E /* CubeSight */,
+				78A308412D9985B8009AE57E /* CubeSightTests */,
+				78A3084B2D9985B8009AE57E /* CubeSightUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7883C4EE2B7C0EB70087EAB7 /* Resources */ = {
+		78A3082E2D9985B8009AE57E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78A3088A2D99873A009AE57E /* CubeSight.xcconfig in Resources */,
+				78A3088C2D998745009AE57E /* CubeSight-release.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78A308402D9985B8009AE57E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7883C5002B7C0EB80087EAB7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7883C50A2B7C0EB80087EAB7 /* Resources */ = {
+		78A3084A2D9985B8009AE57E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -223,21 +248,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7883C4EC2B7C0EB70087EAB7 /* Sources */ = {
+		78A3082C2D9985B8009AE57E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7883C4FE2B7C0EB80087EAB7 /* Sources */ = {
+		78A3083E2D9985B8009AE57E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7883C5082B7C0EB80087EAB7 /* Sources */ = {
+		78A308482D9985B8009AE57E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -247,22 +272,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7883C5042B7C0EB80087EAB7 /* PBXTargetDependency */ = {
+		78A308442D9985B8009AE57E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7883C4EF2B7C0EB70087EAB7 /* CubeSight */;
-			targetProxy = 7883C5032B7C0EB80087EAB7 /* PBXContainerItemProxy */;
+			target = 78A3082F2D9985B8009AE57E /* CubeSight */;
+			targetProxy = 78A308432D9985B8009AE57E /* PBXContainerItemProxy */;
 		};
-		7883C50E2B7C0EB80087EAB7 /* PBXTargetDependency */ = {
+		78A3084E2D9985B8009AE57E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7883C4EF2B7C0EB70087EAB7 /* CubeSight */;
-			targetProxy = 7883C50D2B7C0EB80087EAB7 /* PBXContainerItemProxy */;
+			target = 78A3082F2D9985B8009AE57E /* CubeSight */;
+			targetProxy = 78A3084D2D9985B8009AE57E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		7883C5142B7C0EB80087EAB7 /* Debug */ = {
+		78A308542D9985B8009AE57E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78980A4E2B7D135800E89E68 /* CubeSight.xcconfig */;
+			baseConfigurationReference = 78A308892D99873A009AE57E /* CubeSight.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -313,7 +338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -324,9 +349,9 @@
 			};
 			name = Debug;
 		};
-		7883C5152B7C0EB80087EAB7 /* Release */ = {
+		78A308552D9985B8009AE57E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78980A4D2B7D103300E89E68 /* CubeSight-release.xcconfig */;
+			baseConfigurationReference = 78A3088B2D998745009AE57E /* CubeSight-release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -371,7 +396,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -381,12 +406,11 @@
 			};
 			name = Release;
 		};
-		7883C5172B7C0EB80087EAB7 /* Debug */ = {
+		78A308572D9985B8009AE57E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CubeSight/Preview Content\"";
@@ -396,9 +420,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -406,19 +429,17 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).CubeSight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		7883C5182B7C0EB80087EAB7 /* Release */ = {
+		78A308582D9985B8009AE57E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CubeSight/Preview Content\"";
@@ -428,9 +449,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -438,22 +458,20 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).CubeSight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		7883C51A2B7C0EB80087EAB7 /* Debug */ = {
+		78A3085A2D9985B8009AE57E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).CubeSightTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -464,15 +482,14 @@
 			};
 			name = Debug;
 		};
-		7883C51B2B7C0EB80087EAB7 /* Release */ = {
+		78A3085B2D9985B8009AE57E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).CubeSightTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -483,14 +500,12 @@
 			};
 			name = Release;
 		};
-		7883C51D2B7C0EB80087EAB7 /* Debug */ = {
+		78A3085D2D9985B8009AE57E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).CubeSightUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -501,14 +516,12 @@
 			};
 			name = Debug;
 		};
-		7883C51E2B7C0EB80087EAB7 /* Release */ = {
+		78A3085E2D9985B8009AE57E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).CubeSightUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -522,38 +535,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7883C4EB2B7C0EB70087EAB7 /* Build configuration list for PBXProject "CubeSight" */ = {
+		78A3082B2D9985B7009AE57E /* Build configuration list for PBXProject "CubeSight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7883C5142B7C0EB80087EAB7 /* Debug */,
-				7883C5152B7C0EB80087EAB7 /* Release */,
+				78A308542D9985B8009AE57E /* Debug */,
+				78A308552D9985B8009AE57E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7883C5162B7C0EB80087EAB7 /* Build configuration list for PBXNativeTarget "CubeSight" */ = {
+		78A308562D9985B8009AE57E /* Build configuration list for PBXNativeTarget "CubeSight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7883C5172B7C0EB80087EAB7 /* Debug */,
-				7883C5182B7C0EB80087EAB7 /* Release */,
+				78A308572D9985B8009AE57E /* Debug */,
+				78A308582D9985B8009AE57E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7883C5192B7C0EB80087EAB7 /* Build configuration list for PBXNativeTarget "CubeSightTests" */ = {
+		78A308592D9985B8009AE57E /* Build configuration list for PBXNativeTarget "CubeSightTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7883C51A2B7C0EB80087EAB7 /* Debug */,
-				7883C51B2B7C0EB80087EAB7 /* Release */,
+				78A3085A2D9985B8009AE57E /* Debug */,
+				78A3085B2D9985B8009AE57E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7883C51C2B7C0EB80087EAB7 /* Build configuration list for PBXNativeTarget "CubeSightUITests" */ = {
+		78A3085C2D9985B8009AE57E /* Build configuration list for PBXNativeTarget "CubeSightUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7883C51D2B7C0EB80087EAB7 /* Debug */,
-				7883C51E2B7C0EB80087EAB7 /* Release */,
+				78A3085D2D9985B8009AE57E /* Debug */,
+				78A3085E2D9985B8009AE57E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -561,9 +574,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		78980A4F2B7D1DDC00E89E68 /* XCRemoteSwiftPackageReference "swift-format" */ = {
+		78C25B112D9A9557006FFEFB /* XCRemoteSwiftPackageReference "swift-format" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-format";
+			repositoryURL = "https://github.com/swiftlang/swift-format";
 			requirement = {
 				kind = exactVersion;
 				version = 600.0.0;
@@ -571,5 +584,5 @@
 		};
 /* End XCRemoteSwiftPackageReference section */
 	};
-	rootObject = 7883C4E82B7C0EB70087EAB7 /* Project object */;
+	rootObject = 78A308282D9985B7009AE57E /* Project object */;
 }
