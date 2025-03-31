@@ -1,4 +1,4 @@
-# CubeSight
+# CubeSight [![iOS](https://github.com/ioboi/CubeSight/actions/workflows/build.yml/badge.svg)](https://github.com/ioboi/CubeSight/actions/workflows/build.yml)
 
 ## Building the Project
 
