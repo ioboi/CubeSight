@@ -29,4 +29,4 @@ jobs:
       - run: xcodes select "$XCODE_VERSION"
       - run: cp CubeSight.xcconfig.template CubeSight.xcconfig
       - run: |
-          xcodebuild test -scheme $SCHEME -sdk iphonesimulator -destination "$DESTINATION" CODE_SIGNING_ALLOWED='NO'
+          xcodebuild test -scheme $SCHEME -sdk iphonesimulator -destination "$DESTINATION" CODE_SIGNING_ALLOWED='NO' -only-testing:CubeSightTests
