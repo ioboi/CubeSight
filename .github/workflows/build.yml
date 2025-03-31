@@ -1,0 +1,32 @@
+name: iOS
+
+on:
+  push:
+    paths-ignore:
+      - "**.md"
+
+env:
+  XCODE_VERSION: "16.2"
+  SCHEME: "CubeSight"
+  DESTINATION: "platform=iOS Simulator,OS=latest,name=iPhone 16"
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: xcodes install "$XCODE_VERSION"
+      - run: xcodes select "$XCODE_VERSION"
+      - run: cp CubeSight.xcconfig.template CubeSight.xcconfig
+      - run: |
+          xcodebuild build -scheme $SCHEME -sdk iphonesimulator -destination "$DESTINATION" CODE_SIGNING_ALLOWED='NO'
+  test:
+    runs-on: macos-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - run: xcodes install "$XCODE_VERSION"
+      - run: xcodes select "$XCODE_VERSION"
+      - run: cp CubeSight.xcconfig.template CubeSight.xcconfig
+      - run: |
+          xcodebuild test -scheme $SCHEME -sdk iphonesimulator -destination "$DESTINATION" CODE_SIGNING_ALLOWED='NO'
