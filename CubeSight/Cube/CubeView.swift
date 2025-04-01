@@ -3,13 +3,9 @@ import SwiftUI
 
 struct CubeView: View {
 
+  let cube: Cube
+
   @State private var searchText: String = ""
-
-  private let cube: Cube
-
-  init(cube: Cube) {
-    self.cube = cube
-  }
 
   var body: some View {
     List {
@@ -30,6 +26,13 @@ struct CubeView: View {
           Text("All")
             .badge(cube.mainboard.count)
         }
+      }
+      NavigationLink(
+        destination: DeckListView(cube: cube)
+          .navigationTitle("Decks")
+      ) {
+        Text("Decks")
+          .badge(cube.decks.count)
       }
     }
   }
