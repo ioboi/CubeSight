@@ -6,11 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		78A3088A2D99873A009AE57E /* CubeSight.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 78A308892D99873A009AE57E /* CubeSight.xcconfig */; };
-		78A3088C2D998745009AE57E /* CubeSight-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 78A3088B2D998745009AE57E /* CubeSight-release.xcconfig */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		78A308432D9985B8009AE57E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -226,8 +221,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78A3088A2D99873A009AE57E /* CubeSight.xcconfig in Resources */,
-				78A3088C2D998745009AE57E /* CubeSight-release.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
