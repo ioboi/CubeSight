@@ -13,7 +13,7 @@ struct CubeContentView: View {
           Label("Card Text Recognition", systemImage: "text.viewfinder")
         }
         ForEach(cubes) { cube in
-          NavigationLink(cube.name, destination: CubeView(cube: cube).navigationTitle(cube.name))
+          NavigationLink(cube.name, destination: CubeDetailView(cube: cube).navigationTitle(cube.name))
         }
       }.overlay {
         if cubes.isEmpty {
