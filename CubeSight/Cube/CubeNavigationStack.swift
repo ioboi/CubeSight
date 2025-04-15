@@ -1,7 +1,7 @@
 import SwiftData
 import SwiftUI
 
-struct CubeContentView: View {
+struct CubeNavigationStack: View {
 
   @Query var cubes: [Cube]
   @State private var importing = false
@@ -40,5 +40,5 @@ struct CubeContentView: View {
 }
 
 #Preview(traits: .sampleData) {
-  CubeContentView()
+  CubeNavigationStack()
 }
