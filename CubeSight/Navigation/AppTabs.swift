@@ -25,7 +25,7 @@ extension AppTabs {
   var content: some View {
     switch self {
     case .cube:
-      CubeContentView()
+      CubeNavigationStack()
     }
   }
 }
