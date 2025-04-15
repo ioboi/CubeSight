@@ -1,7 +1,7 @@
 import SwiftData
 import SwiftUI
 
-struct CubeView: View {
+struct CubeDetailView: View {
   private let cube: Cube
   
   init(cube: Cube) {
@@ -32,5 +32,5 @@ struct CubeView: View {
 }
 
 #Preview(traits: .sampleData) {
-  CubeView(cube: Cube.sampleCube)
+  CubeDetailView(cube: Cube.sampleCube)
 }
