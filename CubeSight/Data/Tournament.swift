@@ -12,9 +12,9 @@ class Tournament {
   private var _performance: [Player: PlayerPerformance]?
 
   var performance: [Player: PlayerPerformance] {
-    if let cached = _performance {
-      return cached
-    }
+    //    if let cached = _performance {
+    //      return cached
+    //    }
     let calculated = calculatePerformance()
     _performance = calculated
     return calculated
