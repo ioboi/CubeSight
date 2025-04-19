@@ -3,9 +3,9 @@ import SwiftData
 
 @Model
 class Tournament {
-  @Relationship(deleteRule: .cascade) var rounds: [Round]
-  @Relationship var players: [Player]
-  var currentRoundIndex: Int
+  @Relationship(deleteRule: .cascade) var rounds: [Round] = []
+  // TODO: to one?
+  @Relationship(inverse: \Player.tournaments) var players: [Player] = []
   var createdAt: Date
 
   @Transient
@@ -41,15 +41,12 @@ class Tournament {
     //  TODO: add guard that previous round is complete
 
     let newMatches = strategy.createPairings(for: players, with: performance)
-    let newRound = Round(matches: newMatches)
+    let newRound = Round(matches: newMatches, roundIndex: rounds.count)
 
     rounds.append(newRound)
   }
 
-  init(players: [Player]) {
-    self.rounds = []
-    self.currentRoundIndex = 0
-    self.players = players
+  init() {
     self.createdAt = Date.now
   }
 }
@@ -59,9 +56,11 @@ class Round {
   var matches: [Match]
   // TODO: make this a round state enum (running, done)
   var isCompleted: Bool
+  var roundIndex: Int
 
-  init(matches: [Match]) {
+  init(matches: [Match], roundIndex: Int) {
     self.matches = matches
     self.isCompleted = false
+    self.roundIndex = roundIndex
   }
 }

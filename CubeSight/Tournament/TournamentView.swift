@@ -16,15 +16,16 @@ struct TournamentView: View {
   var body: some View {
     List {
       NavigationLink("Standings") {
-          StandingsView(tournament: tournament)
+        StandingsView(tournament: tournament)
       }
       Section(
         header:
           // TODO: add asc / desc button?
           Text("Rounds")
       ) {
-        ForEach(tournament.rounds.indices.reversed(), id: \.self) { roundIndex in
+        ForEach(tournament.rounds.indices, id: \.self) { roundIndex in
           Section(header: Text("Round \(roundIndex + 1)")) {
+            // TODO: Put into RoundView?
             ForEach(tournament.rounds[roundIndex].matches.indices, id: \.self) { matchIndex in
               MatchView(
                 match: tournament.rounds[roundIndex].matches[matchIndex])
@@ -64,7 +65,8 @@ struct TournamentView: View {
     Player(name: "David"),
   ]
 
-  let tournament = Tournament(players: players)
+  let tournament = Tournament()
+  tournament.players = players
   tournament.startNextRound(strategy: SwissPairingStrategy())
-  return TournamentView(tournament: tournament)
+  return TournamentView(tournament: tournament).modelContainer(container)
 }

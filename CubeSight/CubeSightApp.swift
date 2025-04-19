@@ -10,7 +10,7 @@ struct CubeSightApp: App {
       Tournament.self,
       Player.self,
       Round.self,
-      Match.self
+      Match.self,
     ])
     let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
