@@ -103,25 +103,21 @@ struct ScoreOptionsView: View {
   @State private var selectedScore: Score?
 
   enum Score: String, CaseIterable {
-    case threeZero = "3-0"
     case twoZero = "2-0"
     case twoOne = "2-1"
     case oneZero = "1-0"
     case oneOne = "1-1"
     case zeroZero = "0-0"
-    case zeroThree = "0-3" // Adding reversed scores
-    case zeroTwo = "0-2"
+    case zeroTwo = "0-2" // Adding reversed scores
     case oneTwo = "1-2"
     case zeroOne = "0-1"
 
     var scores: (player1: Int, player2: Int) {
       switch self {
-      case .threeZero: return (3, 0)
       case .twoZero: return (2, 0)
       case .twoOne: return (2, 1)
       case .oneZero: return (1, 0)
       case .oneOne: return (1, 1)
-      case .zeroThree: return (0, 3)
       case .zeroZero: return (0, 0)
       case .zeroTwo: return (0, 2)
       case .oneTwo: return (1, 2)
@@ -133,9 +129,9 @@ struct ScoreOptionsView: View {
   var availableScores: [Score] {
     switch outcome {
     case .player1Wins:
-      return [.threeZero, .twoOne, .twoZero, .oneZero]
+      return [.twoOne, .twoZero, .oneZero]
     case .player2Wins:
-      return [.zeroThree, .oneTwo, .zeroTwo, .zeroOne]  // Using predefined reversed scores
+      return [.oneTwo, .zeroTwo, .zeroOne]  // Using predefined reversed scores
     case .draw:
       return [.oneOne, .zeroZero]
     }
