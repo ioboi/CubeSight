@@ -151,7 +151,7 @@ struct ScoreOptionsView: View {
             match.complete(
               player1Wins: scores.player1,
               player2Wins: scores.player2,
-              draws: scores.player1 + scores.player2 < 3 ? 1 : 0
+              draws: scores.player1 == scores.player2 ? 1 : 0
             )
             isPresented = false
           }) {

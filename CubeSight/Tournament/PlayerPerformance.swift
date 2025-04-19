@@ -18,7 +18,7 @@ struct PlayerPerformance {
   }
 
   var gamePoints: Int {
-    return gameWins * 3 + draws
+    return gameWins * 3
   }
 
   var totalMatches: Int {
@@ -26,7 +26,7 @@ struct PlayerPerformance {
   }
 
   var totalGames: Int {
-    return gameWins + gameLosses + draws
+    return gameWins + gameLosses
   }
 
   var matchWinRate: Double {

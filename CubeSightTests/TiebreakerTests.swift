@@ -87,8 +87,8 @@ struct TiebreakerTests {
     tournament.rounds.last?.matches.first?.complete(player1Wins: 2, player2Wins: 0, draws: 1)
     tournament.startNextRound(strategy: SwissPairingStrategy())
     #expect(
-      tournament.getPerformance(for: players[0])?.gamePoints == 19,
-      "Player winning matches 2-0-0, 2-1-0, and 2-0-1 should have 19 game points")
+      tournament.getPerformance(for: players[0])?.gamePoints == 18,
+      "Player winning matches 2-0-0, 2-1-0, and 2-0-1 should have 18 game points")
   }
 
   @Test("Match win percentage calculation")
