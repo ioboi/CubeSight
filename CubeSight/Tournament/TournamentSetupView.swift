@@ -83,9 +83,12 @@ struct TournamentSetupView: View {
     // Combine selected and new players
     let allPlayers = selectedPlayers + newPlayers
 
+    // TODO: check before insert!
+    // TODO: probably % 2 == 0
     guard allPlayers.count >= 2 else { return }
 
-    let tournament = Tournament(players: Array(allPlayers))
+    let tournament = Tournament()
+    tournament.players = allPlayers
     tournament.startNextRound(strategy: SwissPairingStrategy())
     modelContext.insert(tournament)
     dismiss()

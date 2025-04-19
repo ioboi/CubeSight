@@ -108,7 +108,7 @@ struct ScoreOptionsView: View {
     case oneZero = "1-0"
     case oneOne = "1-1"
     case zeroZero = "0-0"
-    case zeroTwo = "0-2" // Adding reversed scores
+    case zeroTwo = "0-2"  // Adding reversed scores
     case oneTwo = "1-2"
     case zeroOne = "0-1"
 
