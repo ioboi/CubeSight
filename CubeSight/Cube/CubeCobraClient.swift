@@ -45,6 +45,7 @@ struct CubeCobraClient {
       let name: String
       let imageNormal: String
       let imageSmall: String
+      let artCrop: String
       let colors: [CardColor]
       let colorcategory: Colorcategory
       let cmc: Int
@@ -53,6 +54,7 @@ struct CubeCobraClient {
         case name
         case imageNormal = "image_normal"
         case imageSmall = "image_small"
+        case artCrop = "art_crop"
         case colors
         case colorcategory
         case cmc
