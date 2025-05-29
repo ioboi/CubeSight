@@ -35,15 +35,13 @@ struct ImportCubeView: View {
 
       for card in cards {
         do {
-          guard let url = URL(string: card.imageNormal) else { return }
-          let (data, _) = try await URLSession.shared.data(from: url)
-          card.image = data
-
-          guard let url = URL(string: card.artCropUrl) else { return }
-          let (artCropData, _) = try await URLSession.shared.data(from: url)
-          card.artCrop = artCropData
+          /*card.localImageNormalUrl = try await self.downloadImage(
+            prefix: "normal",
+            url: card.imageNormalUrl
+          )*/
+          try await card.downloadImages()
         } catch {
-          // TODO
+          // TODO: Log the error
           //logger.error("Failed to download cube: \(error)")
         }
       }
@@ -51,9 +49,19 @@ struct ImportCubeView: View {
       cube.mainboard = cards
 
       modelContext.insert(cube)
+      try? modelContext.save()
       dismiss()
     }
     .navigationTitle("Import Cube")
+  }
+
+  private func downloadImage(url: String, to: URL) async throws {
+    guard let urlToDownload = URL(string: url) else { return }
+    let (downloadUrl, _) = try await URLSession.shared.download(
+      from: urlToDownload
+    )
+
+    try FileManager.default.moveItem(at: downloadUrl, to: to)
   }
 }
 

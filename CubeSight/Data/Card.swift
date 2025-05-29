@@ -67,57 +67,58 @@ extension Colorcategory {
 @Model class Card {
   @Attribute(.unique) var id: UUID
   var name: String
-  var imageSmall: String
   var imageNormal: String
-  var artCropUrl: String
-  @Attribute(.externalStorage) var image: Data?
-  @Attribute(.externalStorage) var artCrop: Data?
+  var artCrop: String
   var colors: [CardColor]
   var manaValue: Int
   var rawColorcategory: String
+
+  var scryfallId: String
 
   @Relationship(inverse: \Cube.mainboard) var mainboards: [Cube] = []
 
   init(
     id: UUID,
     name: String,
-    imageSmall: String,
-    imageNormal: String,
+    imageNormalUrl: String,
     artCropUrl: String,
     colors: [CardColor],
     manaValue: Int,
-    colorcategory: Colorcategory
+    colorcategory: Colorcategory,
+    scryfallId: String
   ) {
     self.id = id
     self.name = name
-    self.imageSmall = imageSmall
-    self.imageNormal = imageNormal
-    self.artCropUrl = artCropUrl
+
+    self.imageNormal = imageNormalUrl
+    self.artCrop = artCropUrl
+
     self.colors = colors
     self.manaValue = manaValue
     self.rawColorcategory = colorcategory.rawValue
+    self.scryfallId = scryfallId
   }
 }
 
 extension Card {
   convenience init(_ from: CubeCobraClient.Card) {
-
     self.init(
       id: from.cardId,
       name: from.details.name,
-      imageSmall: from.details.imageSmall,
-      imageNormal: from.details.imageNormal,
+      imageNormalUrl: from.details.imageNormal,
       artCropUrl: from.details.artCrop,
       colors: from.details.colors.map({ c in CardColor.from(c) }),
       manaValue: from.details.cmc,
-      colorcategory: Colorcategory.from(from.details.colorcategory)
+      colorcategory: Colorcategory.from(from.details.colorcategory),
+      scryfallId: from.details.scryfallId
     )
   }
 
   static func predicate(cubeId: String, searchText: String) -> Predicate<Card> {
     return #Predicate<Card> { card in
-      (searchText.isEmpty || card.name.localizedStandardContains(searchText))
-        && card.mainboards.filter { $0.id == cubeId }.count == 1
+      card.mainboards.filter { $0.id == cubeId }.count == 1
+        && (searchText.isEmpty
+          || card.name.localizedStandardContains(searchText))
     }
   }
 }
@@ -126,14 +127,79 @@ extension Card {
   @MainActor static let blackLotus = Card(
     id: UUID(uuidString: "bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd")!,
     name: "Black Lotus",
-    imageSmall:
-      "https://cards.scryfall.io/small/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838",
-    imageNormal:
+    imageNormalUrl:
       "https://cards.scryfall.io/normal/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838",
     artCropUrl:
       "https://cards.scryfall.io/art_crop/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838",
     colors: [],
     manaValue: 0,
-    colorcategory: .colorless
+    colorcategory: .colorless,
+    scryfallId: "bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd"
   )
+}
+
+extension Card {
+  private var imageNormalName: String {
+    "normal_\(scryfallId).jpg"
+  }
+
+  private var artCropName: String {
+    "crop_\(scryfallId).jpg"
+  }
+
+  var imageNormalUrl: URL? {
+    guard
+      let result = FileManager.default.documentDirectory?.appending(
+        path: imageNormalName
+      ),
+      FileManager.default.fileExists(atPath: result.path())
+    else {
+      return URL(string: imageNormal)
+    }
+    return result
+  }
+
+  var artCropUrl: URL? {
+    guard
+      let result = FileManager.default.documentDirectory?.appending(
+        path: artCropName
+      ),
+      FileManager.default.fileExists(atPath: result.path())
+    else {
+      return URL(string: artCrop)
+    }
+    return result
+  }
+
+  func downloadImages() async throws {
+    guard let normalImageUrl = URL(string: self.imageNormal),
+      let artCropUrl = URL(string: self.artCrop)
+    else {
+      return
+    }
+
+    guard let documentDirectory = FileManager.default.documentDirectory else {
+      return
+    }
+
+    let (downloadNormalImage, _) = try await URLSession.shared.download(
+      from: normalImageUrl
+    )
+    try FileManager.default.moveItem(
+      at: downloadNormalImage,
+      to: documentDirectory.appendingPathComponent(
+        imageNormalName
+      )
+    )
+
+    let (downloadArtCrop, _) = try await URLSession.shared.download(
+      from: artCropUrl
+    )
+    try FileManager.default.moveItem(
+      at: downloadArtCrop,
+      to: documentDirectory.appendingPathComponent(
+        artCropName
+      )
+    )
+  }
 }
