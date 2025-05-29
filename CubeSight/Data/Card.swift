@@ -10,7 +10,9 @@ enum CardColor: String, Codable {
 }
 
 extension CardColor {
-  static func from(_ cardColor: CubeCobraClient.Card.Details.CardColor) -> CardColor {
+  static func from(_ cardColor: CubeCobraClient.Card.Details.CardColor)
+    -> CardColor
+  {
     switch cardColor {
     case .blue:
       CardColor.blue
@@ -38,7 +40,9 @@ enum Colorcategory: String, Codable {
 }
 
 extension Colorcategory {
-  static func from(_ colorCateogry: CubeCobraClient.Card.Details.Colorcategory) -> Colorcategory {
+  static func from(_ colorCateogry: CubeCobraClient.Card.Details.Colorcategory)
+    -> Colorcategory
+  {
     switch colorCateogry {
     case .blue:
       .blue
@@ -65,7 +69,9 @@ extension Colorcategory {
   var name: String
   var imageSmall: String
   var imageNormal: String
+  var artCropUrl: String
   @Attribute(.externalStorage) var image: Data?
+  @Attribute(.externalStorage) var artCrop: Data?
   var colors: [CardColor]
   var manaValue: Int
   var rawColorcategory: String
@@ -73,7 +79,12 @@ extension Colorcategory {
   @Relationship(inverse: \Cube.mainboard) var mainboards: [Cube] = []
 
   init(
-    id: UUID, name: String, imageSmall: String, imageNormal: String, colors: [CardColor],
+    id: UUID,
+    name: String,
+    imageSmall: String,
+    imageNormal: String,
+    artCropUrl: String,
+    colors: [CardColor],
     manaValue: Int,
     colorcategory: Colorcategory
   ) {
@@ -81,6 +92,7 @@ extension Colorcategory {
     self.name = name
     self.imageSmall = imageSmall
     self.imageNormal = imageNormal
+    self.artCropUrl = artCropUrl
     self.colors = colors
     self.manaValue = manaValue
     self.rawColorcategory = colorcategory.rawValue
@@ -91,11 +103,15 @@ extension Card {
   convenience init(_ from: CubeCobraClient.Card) {
 
     self.init(
-      id: from.cardId, name: from.details.name, imageSmall: from.details.imageSmall,
+      id: from.cardId,
+      name: from.details.name,
+      imageSmall: from.details.imageSmall,
       imageNormal: from.details.imageNormal,
+      artCropUrl: from.details.artCrop,
       colors: from.details.colors.map({ c in CardColor.from(c) }),
       manaValue: from.details.cmc,
-      colorcategory: Colorcategory.from(from.details.colorcategory))
+      colorcategory: Colorcategory.from(from.details.colorcategory)
+    )
   }
 
   static func predicate(cubeId: String, searchText: String) -> Predicate<Card> {
@@ -114,6 +130,8 @@ extension Card {
       "https://cards.scryfall.io/small/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838",
     imageNormal:
       "https://cards.scryfall.io/normal/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838",
+    artCropUrl:
+      "https://cards.scryfall.io/art_crop/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838",
     colors: [],
     manaValue: 0,
     colorcategory: .colorless

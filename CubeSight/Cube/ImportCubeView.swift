@@ -36,14 +36,16 @@ struct ImportCubeView: View {
       for card in cards {
         do {
           guard let url = URL(string: card.imageNormal) else { return }
-          let request = URLRequest(url: url)
-          let (data, _) = try await URLSession.shared.data(for: request)
+          let (data, _) = try await URLSession.shared.data(from: url)
           card.image = data
+
+          guard let url = URL(string: card.artCropUrl) else { return }
+          let (artCropData, _) = try await URLSession.shared.data(from: url)
+          card.artCrop = artCropData
         } catch {
           // TODO
           //logger.error("Failed to download cube: \(error)")
         }
-
       }
 
       cube.mainboard = cards
