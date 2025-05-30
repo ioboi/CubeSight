@@ -46,8 +46,9 @@ class Tournament {
     rounds.append(newRound)
   }
 
-  init() {
+  init(players: [Player] = []) {
     self.createdAt = Date.now
+    self.players = players
   }
 }
 
