@@ -26,7 +26,7 @@ struct SwissPairingTests {
     let tournament = Tournament(players: players)
     tournament.startNextRound(strategy: strategy)
 
-    guard var matches = tournament.rounds.last?.matches else {
+    guard let matches = tournament.rounds.last?.matches else {
       Issue.record("No matches found")
       return
     }
@@ -41,7 +41,7 @@ struct SwissPairingTests {
 
     //    Check pairings in next round
     tournament.startNextRound(strategy: strategy)
-    guard var matches = tournament.rounds.last?.matches else {
+    guard let matches = tournament.rounds.last?.matches else {
       Issue.record("No matches found")
       return
     }
@@ -63,7 +63,7 @@ struct SwissPairingTests {
     tournament.startNextRound(strategy: strategy)
 
     // Round 1: Alice, Bob, Charlie, David win
-    guard var round = tournament.rounds.last else {
+    guard let round = tournament.rounds.last else {
       Issue.record("Tournament should have first round")
       return
     }
@@ -82,7 +82,7 @@ struct SwissPairingTests {
     tournament.startNextRound(strategy: strategy)
 
     // Round 2: Check winners play winners, losers play losers
-    guard var round = tournament.rounds.last else {
+    guard let round = tournament.rounds.last else {
       Issue.record("Tournament should have first round")
       return
     }
@@ -113,7 +113,7 @@ struct SwissPairingTests {
     let oneWonOneLost = Set(playerNames).subtracting(bothWon.union(bothLost))
 
     tournament.startNextRound(strategy: strategy)
-    guard var round = tournament.rounds.last else {
+    guard let round = tournament.rounds.last else {
       Issue.record("Tournament should have next round")
       return
     }
