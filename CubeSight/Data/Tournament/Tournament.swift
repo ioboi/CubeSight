@@ -3,7 +3,7 @@ import SwiftData
 
 @Model
 class Tournament {
-  @Relationship(deleteRule: .cascade) var rounds: [TournamentRound] = []
+  @Relationship(deleteRule: .cascade, inverse: \TournamentRound.tournament) var rounds: [TournamentRound] = []
   @Relationship(inverse: \TournamentPlayer.tournaments) var players:
     [TournamentPlayer] = []
 
@@ -16,7 +16,8 @@ class Tournament {
       matches: newMatches,
       roundIndex: rounds.count
     )
-
+    
+    self.modelContext?.insert(newRound)
     rounds.append(newRound)
   }
 
