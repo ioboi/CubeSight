@@ -26,9 +26,11 @@ struct TournamentView: View {
         ForEach(tournament.rounds.indices, id: \.self) { roundIndex in
           Section(header: Text("Round \(roundIndex + 1)")) {
             // TODO: Put into RoundView?
-            ForEach(tournament.rounds[roundIndex].matches.indices, id: \.self) { matchIndex in
+            ForEach(tournament.rounds[roundIndex].matches.indices, id: \.self) {
+              matchIndex in
               MatchView(
-                match: tournament.rounds[roundIndex].matches[matchIndex])
+                match: tournament.rounds[roundIndex].matches[matchIndex]
+              )
             }
           }
         }
@@ -53,20 +55,11 @@ struct TournamentView: View {
   }
 }
 
-#Preview {
-  let config = ModelConfiguration(isStoredInMemoryOnly: true)
-  let container = try! ModelContainer(
-    for: TournamentPlayer.self, Tournament.self, TournamentRound.self, TournamentMatch.self, configurations: config)
-
-  let players = [
-    TournamentPlayer(name: "Alice"),
-    TournamentPlayer(name: "Bob"),
-    TournamentPlayer(name: "Charlie"),
-    TournamentPlayer(name: "David"),
-  ]
-
-  let tournament = Tournament()
-  tournament.players = players
-  tournament.startNextRound(strategy: SwissPairingStrategy())
-  return TournamentView(tournament: tournament).modelContainer(container)
+#Preview(traits: .sampleData) {
+  TournamentView(tournament: Tournament.previewTournament)
+    .onAppear {
+      Tournament.previewTournament.startNextRound(
+        strategy: SwissPairingStrategy()
+      )
+    }
 }

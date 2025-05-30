@@ -94,3 +94,7 @@ struct TournamentSetupView: View {
     dismiss()
   }
 }
+
+#Preview(traits: .sampleData) {
+  TournamentSetupView()
+}

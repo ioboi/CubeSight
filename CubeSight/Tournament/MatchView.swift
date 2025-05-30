@@ -65,20 +65,30 @@ struct MatchResultSelection: View {
       Section {
         NavigationLink(
           destination: ScoreOptionsView(
-            match: match, outcome: .player1Wins, isPresented: $isPresented)
+            match: match,
+            outcome: .player1Wins,
+            isPresented: $isPresented
+          )
         ) {
           Text("\(match.player1.name) Wins")
         }
 
         NavigationLink(
           destination: ScoreOptionsView(
-            match: match, outcome: .player2Wins, isPresented: $isPresented)
+            match: match,
+            outcome: .player2Wins,
+            isPresented: $isPresented
+          )
         ) {
           Text("\(match.player2.name) Wins")
         }
 
         NavigationLink(
-          destination: ScoreOptionsView(match: match, outcome: .draw, isPresented: $isPresented)
+          destination: ScoreOptionsView(
+            match: match,
+            outcome: .draw,
+            isPresented: $isPresented
+          )
         ) {
           Text("Draw")
         }
@@ -172,7 +182,8 @@ struct ScoreOptionsView: View {
       match: TournamentMatch(
         player1: TournamentPlayer(name: "Alice"),
         player2: TournamentPlayer(name: "Bob")
-      ))
+      )
+    )
 
     // Complete match with a result
     MatchView(
@@ -183,7 +194,8 @@ struct ScoreOptionsView: View {
         )
         match.complete(player1Wins: 2, player2Wins: 1, draws: 0)
         return match
-      }())
+      }()
+    )
 
     // Complete match with no games
     MatchView(
@@ -194,6 +206,7 @@ struct ScoreOptionsView: View {
         )
         match.complete(player1Wins: 0, player2Wins: 0, draws: 0)
         return match
-      }())
+      }()
+    )
   }
 }
