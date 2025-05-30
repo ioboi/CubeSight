@@ -21,7 +21,7 @@ struct TournamentNavigationStack: View {
         )
       }
       .sheet(isPresented: $isTournamentSetupPresented) {
-        TournamentSetupView()
+        TournamentEditor(tournament: nil)
       }
       .navigationTitle("Tournaments")
       .navigationDestination(for: Tournament.self) { tournament in
