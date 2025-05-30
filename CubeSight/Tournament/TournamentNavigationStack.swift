@@ -1,7 +1,7 @@
 import SwiftData
 import SwiftUI
 
-struct TournamentContentView: View {
+struct TournamentNavigationStack: View {
   @Query(sort: \Tournament.createdAt, order: .reverse) var tournaments:
     [Tournament]
   @State private var showingSetupSheet = false
@@ -52,5 +52,5 @@ struct TournamentRowView: View {
 }
 
 #Preview(traits: .sampleData) {
-  TournamentContentView()
+  TournamentNavigationStack()
 }
