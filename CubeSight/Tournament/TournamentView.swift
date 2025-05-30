@@ -73,7 +73,19 @@ struct TournamentView: View {
         Button("Drop Round", role: .destructive, action: dropRound)
       }
     )
-    .navigationTitle("Tournament")
+    .toolbar {
+      ToolbarItem(placement: .primaryAction) {
+        Button("Finish", action: finishTournament)
+          .disabled(!lastRoundComplete)
+      }
+      ToolbarItem(placement: .principal) {
+        Text("Tournament")
+      }
+    }
+  }
+
+  private func finishTournament() {
+    tournament.status = .finished
   }
 
   private func confirmDropRound(_ round: TournamentRound) {

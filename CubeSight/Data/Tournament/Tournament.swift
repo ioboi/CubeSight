@@ -3,11 +3,13 @@ import SwiftData
 
 @Model
 class Tournament {
-  @Relationship(deleteRule: .cascade, inverse: \TournamentRound.tournament) var rounds: [TournamentRound] = []
+  @Relationship(deleteRule: .cascade, inverse: \TournamentRound.tournament)
+  var rounds: [TournamentRound] = []
   @Relationship(inverse: \TournamentPlayer.tournaments) var players:
     [TournamentPlayer] = []
 
   var createdAt: Date
+  var status: TournamentStatus = TournamentStatus.inProgress
 
   func startNextRound(strategy: PairingStrategy = SwissPairingStrategy()) {
     let newMatches = strategy.createPairings(for: players, with: performance)
@@ -16,7 +18,7 @@ class Tournament {
       matches: newMatches,
       roundIndex: rounds.count
     )
-    
+
     self.modelContext?.insert(newRound)
     rounds.append(newRound)
   }

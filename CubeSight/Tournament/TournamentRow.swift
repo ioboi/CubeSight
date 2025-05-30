@@ -5,8 +5,13 @@ struct TournamentRow: View {
 
   var body: some View {
     HStack {
-      Text(tournament.createdAt, style: .date)
-        .bold()
+      VStack(alignment: .leading) {
+        Text(tournament.createdAt, style: .date)
+          .bold()
+        Text(tournament.status == .inProgress ? "In Progress" : "Finished")
+          .font(.caption)
+      }
+      
       Spacer()
       Label("\(tournament.players.count) participants", systemImage: "person.3")
     }
