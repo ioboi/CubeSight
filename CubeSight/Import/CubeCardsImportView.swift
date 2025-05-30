@@ -175,8 +175,8 @@ private struct CardsOCRView: View {
         }
       guard let possibleCard else { continue }
 
-      // Card is found with max 3 errors
-      if possibleCard.0 <= 3 {
+      // Card is found with max 2 errors
+      if possibleCard.0 <= 2 {
         cardObservations.append(
           CardObservation(
             card: possibleCard.1,
