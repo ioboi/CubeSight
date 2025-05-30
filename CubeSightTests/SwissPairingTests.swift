@@ -7,7 +7,6 @@ import Testing
 @MainActor
 struct SwissPairingTests {
   let context: ModelContext
-  let strategy: PairingStrategy = SwissPairingStrategy()
 
   init() async throws {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
@@ -24,7 +23,7 @@ struct SwissPairingTests {
     let players = playerNames.map { TournamentPlayer(name: $0) }
 
     let tournament = Tournament(players: players)
-    tournament.startNextRound(strategy: strategy)
+    tournament.startNextRound()
 
     guard let matches = tournament.rounds.last?.matches else {
       Issue.record("No matches found")
@@ -40,7 +39,7 @@ struct SwissPairingTests {
     }
 
     //    Check pairings in next round
-    tournament.startNextRound(strategy: strategy)
+    tournament.startNextRound()
     guard let matches = tournament.rounds.last?.matches else {
       Issue.record("No matches found")
       return
@@ -60,7 +59,7 @@ struct SwissPairingTests {
     let playerNames = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry"]
     let players = playerNames.map { TournamentPlayer(name: $0) }
     let tournament = Tournament(players: players)
-    tournament.startNextRound(strategy: strategy)
+    tournament.startNextRound()
 
     // Round 1: Alice, Bob, Charlie, David win
     guard let round = tournament.rounds.last else {
@@ -79,7 +78,7 @@ struct SwissPairingTests {
         draws: 0
       )
     }
-    tournament.startNextRound(strategy: strategy)
+    tournament.startNextRound()
 
     // Round 2: Check winners play winners, losers play losers
     guard let round = tournament.rounds.last else {
@@ -112,7 +111,7 @@ struct SwissPairingTests {
     let bothLost = losersRoundOne.intersection(losersRoundTwo)
     let oneWonOneLost = Set(playerNames).subtracting(bothWon.union(bothLost))
 
-    tournament.startNextRound(strategy: strategy)
+    tournament.startNextRound()
     guard let round = tournament.rounds.last else {
       Issue.record("Tournament should have next round")
       return

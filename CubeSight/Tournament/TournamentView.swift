@@ -39,7 +39,7 @@ struct TournamentView: View {
       if currentRoundComplete {
         Section {
           Button(action: {
-            tournament.startNextRound(strategy: SwissPairingStrategy())
+            tournament.startNextRound()
           }) {
             HStack {
               Text("Start Round \(tournament.rounds.count + 1)")
@@ -58,8 +58,6 @@ struct TournamentView: View {
 #Preview(traits: .sampleData) {
   TournamentView(tournament: Tournament.previewTournament)
     .onAppear {
-      Tournament.previewTournament.startNextRound(
-        strategy: SwissPairingStrategy()
-      )
+      Tournament.previewTournament.startNextRound()
     }
 }

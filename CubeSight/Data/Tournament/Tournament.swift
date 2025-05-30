@@ -9,7 +9,7 @@ class Tournament {
 
   var createdAt: Date
 
-  func startNextRound(strategy: PairingStrategy) {
+  func startNextRound(strategy: PairingStrategy = SwissPairingStrategy()) {
     let newMatches = strategy.createPairings(for: players, with: performance)
     let newRound = TournamentRound(
       matches: newMatches,
