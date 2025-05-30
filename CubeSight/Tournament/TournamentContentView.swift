@@ -2,7 +2,8 @@ import SwiftData
 import SwiftUI
 
 struct TournamentContentView: View {
-  @Query(sort: \Tournament.createdAt, order: .reverse) var tournaments: [Tournament]
+  @Query(sort: \Tournament.createdAt, order: .reverse) var tournaments:
+    [Tournament]
   @State private var showingSetupSheet = false
 
   var body: some View {
@@ -40,7 +41,8 @@ struct TournamentRowView: View {
     HStack {
       Label(
         "\(tournament.players.count) participants",
-        systemImage: "person.3")
+        systemImage: "person.3"
+      )
       Spacer()
       Text(tournament.createdAt, style: .date)
         .foregroundStyle(.secondary)
@@ -49,7 +51,6 @@ struct TournamentRowView: View {
   }
 }
 
-#Preview {
+#Preview(traits: .sampleData) {
   TournamentContentView()
-    .modelContainer(for: Tournament.self, inMemory: true)
 }

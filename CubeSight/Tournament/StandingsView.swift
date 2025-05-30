@@ -48,32 +48,25 @@ struct PlayerStandingRow: View {
   }
 }
 
-#Preview {
-  let config = ModelConfiguration(isStoredInMemoryOnly: true)
-  let container = try! ModelContainer(for: Tournament.self, configurations: config)
+#Preview(traits: .sampleData) {
+  StandingsView(tournament: Tournament.previewTournament)
+    .onAppear {
+      let players = Tournament.previewTournament.players
 
-  let players = [
-    TournamentPlayer(name: "Player 1"),
-    TournamentPlayer(name: "Player 2"),
-    TournamentPlayer(name: "Player 3"),
-    TournamentPlayer(name: "Player 4"),
-  ]
+      //Create some match results for preview
+      let match1 = TournamentMatch(player1: players[0], player2: players[1])
+      match1.complete(player1Wins: 2, player2Wins: 0, draws: 0)
 
-  let tournament = Tournament()
-  tournament.players = players
+      let match2 = TournamentMatch(player1: players[2], player2: players[3])
+      match2.complete(player1Wins: 1, player2Wins: 1, draws: 1)
 
-  //Create some match results for preview
-  let match1 = TournamentMatch(player1: players[0], player2: players[1])
-  match1.complete(player1Wins: 2, player2Wins: 0, draws: 0)
+      let match3 = TournamentMatch(player1: players[4], player2: players[5])
+      match2.complete(player1Wins: 0, player2Wins: 2, draws: 0)
 
-  let match2 = TournamentMatch(player1: players[2], player2: players[3])
-  match2.complete(player1Wins: 1, player2Wins: 1, draws: 1)
-
-  let round1 = TournamentRound(matches: [match1, match2], roundIndex: 0)
-  tournament.rounds.append(round1)
-
-  container.mainContext.insert(tournament)
-
-  return StandingsView(tournament: tournament)
-    .modelContainer(container)
+      let round1 = TournamentRound(
+        matches: [match1, match2, match3],
+        roundIndex: 0
+      )
+      Tournament.previewTournament.rounds.append(round1)
+    }
 }
