@@ -17,15 +17,12 @@ struct ImportCubeView: View {
       }
       let cube = Cube(id: result.id, shortId: result.shortId, name: result.name)
 
-      if let coverImage = result.image {
+      if let coverImageUrl = result.image?.uri {
+        cube.image = coverImageUrl
         do {
-          guard let url = URL(string: coverImage.uri) else { return }
-          let request = URLRequest(url: url)
-          let (data, _) = try await URLSession.shared.data(for: request)
-          cube.image = data
+          try await cube.downloadImage()
         } catch {
-          // TODO
-          //logger.error("Failed to download cube: \(error)")
+          // TODO: Log the error
         }
       }
 
