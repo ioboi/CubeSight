@@ -95,6 +95,7 @@ struct PlayerStandingRow: View {
       match2.complete(player1Wins: 0, player2Wins: 2, draws: 0)
 
       let round1 = TournamentRound(
+        tournament: Tournament.previewTournament,
         matches: [match1, match2, match3],
         roundIndex: 0
       )

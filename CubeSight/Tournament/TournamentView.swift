@@ -2,15 +2,29 @@ import SwiftData
 import SwiftUI
 
 struct TournamentView: View {
-  private let tournament: Tournament
+  let tournament: Tournament
+
+  @State private var isConfirmationRoundDeletionPresented: Bool = false
+  @State private var roundToDelete: TournamentRound?
+
+  @Query private var rounds: [TournamentRound]
+  @Environment(\.modelContext) private var modelContext: ModelContext
 
   init(tournament: Tournament) {
     self.tournament = tournament
+
+    let tournamentId = tournament.id
+    let roundsPredicate = #Predicate<TournamentRound> { round in
+      round.tournament.id == tournamentId
+    }
+    self._rounds = Query(
+      filter: roundsPredicate,
+      sort: [SortDescriptor(\.roundIndex)]
+    )
   }
 
-  private var currentRoundComplete: Bool {
-    guard let currentRound = tournament.rounds.last else { return true }
-    return currentRound.matches.allSatisfy { $0.isComplete }
+  private var lastRoundComplete: Bool {
+    rounds.last?.matches.allSatisfy { $0.isComplete } ?? true
   }
 
   var body: some View {
@@ -18,40 +32,64 @@ struct TournamentView: View {
       NavigationLink("Standings") {
         StandingsView(tournament: tournament)
       }
-      Section(
-        header:
-          // TODO: add asc / desc button?
-          Text("Rounds")
-      ) {
-        ForEach(tournament.rounds.indices, id: \.self) { roundIndex in
-          Section(header: Text("Round \(roundIndex + 1)")) {
-            // TODO: Put into RoundView?
-            ForEach(tournament.rounds[roundIndex].matches.indices, id: \.self) {
-              matchIndex in
-              MatchView(
-                match: tournament.rounds[roundIndex].matches[matchIndex]
-              )
+
+      ForEach(rounds) { round in
+        Section {
+          ForEach(round.matches) { match in
+            MatchView(match: match)
+              .disabled(round != rounds.last)  // Only score last round?
+          }
+        } header: {
+          HStack {
+            Text("Round \(round.roundIndex + 1)")
+            if round == rounds.last && round != rounds.first {
+              Spacer()
+              Button("Drop Round", systemImage: "trash", role: .destructive) {
+                withAnimation {
+                  confirmDropRound(round)
+                }
+              }
+              .font(.headline)
+              .labelStyle(.iconOnly)
             }
           }
         }
+        .headerProminence(.increased)
       }
 
-      if currentRoundComplete {
-        Section {
-          Button(action: {
-            tournament.startNextRound()
-          }) {
-            HStack {
-              Text("Start Round \(tournament.rounds.count + 1)")
-              Spacer()
-              Image(systemName: "plus.circle.fill")
-            }
+      Section {
+        Button("Next Round", systemImage: "arrow.trianglehead.clockwise") {
+          withAnimation {
+            startNextRound()
           }
-          .foregroundColor(.blue)
         }
+        .disabled(!lastRoundComplete)
       }
     }
+    .confirmationDialog(
+      "Drop Round?",
+      isPresented: $isConfirmationRoundDeletionPresented,
+      actions: {
+        Button("Drop Round", role: .destructive, action: dropRound)
+      }
+    )
     .navigationTitle("Tournament")
+  }
+
+  private func confirmDropRound(_ round: TournamentRound) {
+    roundToDelete = round
+    isConfirmationRoundDeletionPresented = true
+  }
+
+  private func dropRound() {
+    guard let roundToDelete else { return }
+    modelContext.delete(roundToDelete)
+    self.roundToDelete = nil
+    self.isConfirmationRoundDeletionPresented = false
+  }
+
+  private func startNextRound() {
+    tournament.startNextRound()
   }
 }
 
