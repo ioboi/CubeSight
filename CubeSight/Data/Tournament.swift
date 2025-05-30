@@ -3,15 +3,15 @@ import SwiftData
 
 @Model
 class Tournament {
-  @Relationship(deleteRule: .cascade) var rounds: [Round] = []
+  @Relationship(deleteRule: .cascade) var rounds: [TournamentRound] = []
   // TODO: to one?
-  @Relationship(inverse: \Player.tournaments) var players: [Player] = []
+  @Relationship(inverse: \TournamentPlayer.tournaments) var players: [TournamentPlayer] = []
   var createdAt: Date
 
   @Transient
-  private var _performance: [Player: PlayerPerformance]?
+  private var _performance: [TournamentPlayer: PlayerPerformance]?
 
-  var performance: [Player: PlayerPerformance] {
+  var performance: [TournamentPlayer: PlayerPerformance] {
     //    if let cached = _performance {
     //      return cached
     //    }
@@ -20,13 +20,17 @@ class Tournament {
     return calculated
   }
 
-  func getPerformance(for player: Player) -> PlayerPerformance? {
+  func getPerformance(for player: TournamentPlayer) -> PlayerPerformance? {
     performance[player]
   }
 
-  private func calculatePerformance() -> [Player: PlayerPerformance] {
-    let matches: [Match] = rounds.flatMap { $0.matches }.filter { $0.isComplete() }
-    var performance = Dictionary(uniqueKeysWithValues: players.map { ($0, PlayerPerformance()) })
+  private func calculatePerformance() -> [TournamentPlayer: PlayerPerformance] {
+    let matches: [TournamentMatch] = rounds.flatMap { $0.matches }.filter {
+      $0.isComplete()
+    }
+    var performance = Dictionary(
+      uniqueKeysWithValues: players.map { ($0, PlayerPerformance()) }
+    )
     matches.forEach { $0.process(into: &performance) }
     return performance
   }
@@ -41,27 +45,16 @@ class Tournament {
     //  TODO: add guard that previous round is complete
 
     let newMatches = strategy.createPairings(for: players, with: performance)
-    let newRound = Round(matches: newMatches, roundIndex: rounds.count)
+    let newRound = TournamentRound(
+      matches: newMatches,
+      roundIndex: rounds.count
+    )
 
     rounds.append(newRound)
   }
 
-  init(players: [Player] = []) {
+  init(players: [TournamentPlayer] = []) {
     self.createdAt = Date.now
     self.players = players
-  }
-}
-
-@Model
-class Round {
-  var matches: [Match]
-  // TODO: make this a round state enum (running, done)
-  var isCompleted: Bool
-  var roundIndex: Int
-
-  init(matches: [Match], roundIndex: Int) {
-    self.matches = matches
-    self.isCompleted = false
-    self.roundIndex = roundIndex
   }
 }

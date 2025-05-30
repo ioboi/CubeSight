@@ -11,13 +11,13 @@ struct TiebreakerTests {
   init() async throws {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try ModelContainer(
-      for: Player.self, Tournament.self, Round.self, Match.self, configurations: config)
+      for: TournamentPlayer.self, Tournament.self, TournamentRound.self, TournamentMatch.self, configurations: config)
     context = container.mainContext
   }
 
   @Test("Match points calculation")
   func testMatchPoints() throws {
-    let players = [Player(name: "Player1"), Player(name: "Player2")]
+    let players = [TournamentPlayer(name: "Player1"), TournamentPlayer(name: "Player2")]
     var tournament = Tournament(players: players)
 
     //    TODO: maybe make strategy a member var?
@@ -68,7 +68,7 @@ struct TiebreakerTests {
 
   @Test("Game points calculation")
   func testGamePoints() throws {
-    let players = [Player(name: "Player1"), Player(name: "Player2")]
+    let players = [TournamentPlayer(name: "Player1"), TournamentPlayer(name: "Player2")]
     let tournament = Tournament(players: players)
     tournament.startNextRound(strategy: SwissPairingStrategy())
 
@@ -93,7 +93,7 @@ struct TiebreakerTests {
 
   @Test("Match win percentage calculation")
   func testMatchWinPercentage() throws {
-    let players = [Player(name: "Player1"), Player(name: "Player2")]
+    let players = [TournamentPlayer(name: "Player1"), TournamentPlayer(name: "Player2")]
     var tournament = Tournament(players: players)
     tournament.startNextRound(strategy: SwissPairingStrategy())
 
@@ -162,7 +162,7 @@ struct TiebreakerTests {
 
   @Test("Game win percentage calculation")
   func testGameWinPercentage() throws {
-    let players = [Player(name: "Player1"), Player(name: "Player2")]
+    let players = [TournamentPlayer(name: "Player1"), TournamentPlayer(name: "Player2")]
     var tournament = Tournament(players: players)
     tournament.startNextRound(strategy: SwissPairingStrategy())
 
