@@ -37,27 +37,29 @@ enum CubeDetail: Codable, Hashable, Identifiable {
 struct CubeDetailView: View {
   private let cube: Cube
 
+  @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
   init(cube: Cube) {
     self.cube = cube
   }
 
-  @ViewBuilder
-  var cubeBanner: some View {
-    if cube.image != nil {
-      AsyncImage(url: cube.imageUrl) { image in
-        image
-          .resizable()
-          .aspectRatio(contentMode: .fill)
-      } placeholder: {
-        ProgressView()
-      }
-      .listRowInsets(EdgeInsets())
+  var cubeImage: some View {
+    AsyncImage(url: cube.imageUrl) { image in
+      image
+        .resizable()
+        .scaledToFill()
+    } placeholder: {
+      ProgressView()
     }
+    .frame(height: horizontalSizeClass == .compact ? 88 : 2 * 88)
+    .listRowInsets(EdgeInsets())
   }
 
   var body: some View {
     List {
-      cubeBanner
+      if cube.image != nil {
+        cubeImage
+      }
       Section("Cards") {
         CubeDetail.allCards.view
       }
