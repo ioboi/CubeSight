@@ -35,7 +35,7 @@ struct StandingsView: View {
 
 struct PlayerStandingRow: View {
   let player: TournamentPlayer
-  let performance: PlayerPerformance
+  let performance: TournamentPlayerPerformance
 
   var body: some View {
     HStack {

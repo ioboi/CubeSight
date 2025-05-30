@@ -10,9 +10,9 @@ class Tournament {
   var createdAt: Date
 
   @Transient
-  private var _performance: [TournamentPlayer: PlayerPerformance]?
+  private var _performance: [TournamentPlayer: TournamentPlayerPerformance]?
 
-  var performance: [TournamentPlayer: PlayerPerformance] {
+  var performance: [TournamentPlayer: TournamentPlayerPerformance] {
     //    if let cached = _performance {
     //      return cached
     //    }
@@ -21,16 +21,16 @@ class Tournament {
     return calculated
   }
 
-  func getPerformance(for player: TournamentPlayer) -> PlayerPerformance? {
+  func getPerformance(for player: TournamentPlayer) -> TournamentPlayerPerformance? {
     performance[player]
   }
 
-  private func calculatePerformance() -> [TournamentPlayer: PlayerPerformance] {
+  private func calculatePerformance() -> [TournamentPlayer: TournamentPlayerPerformance] {
     let matches: [TournamentMatch] = rounds.flatMap { $0.matches }.filter {
       $0.isComplete()
     }
     var performance = Dictionary(
-      uniqueKeysWithValues: players.map { ($0, PlayerPerformance()) }
+      uniqueKeysWithValues: players.map { ($0, TournamentPlayerPerformance()) }
     )
     matches.forEach { $0.process(into: &performance) }
     return performance

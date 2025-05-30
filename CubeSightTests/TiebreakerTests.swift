@@ -125,7 +125,7 @@ struct TiebreakerTests {
       "Player with 5-2-1 record should have 5*3+1 / 8*3 = 0.667 match-win percentage")
     #expect(
       (tournament.performance[players[1]]?.matchWinRate ?? 0).isApproximatelyEqual(
-        to: PlayerPerformance.miniumPercentage),
+        to: TournamentPlayerPerformance.miniumPercentage),
       "Player with 2-5-1 record should have 0.33 (minimum) match-win percentage")
 
     // Reset tournament
@@ -153,7 +153,7 @@ struct TiebreakerTests {
 
     #expect(
       (tournament.performance[players[0]]?.matchWinRate ?? 0).isApproximatelyEqual(
-        to: PlayerPerformance.miniumPercentage),
+        to: TournamentPlayerPerformance.miniumPercentage),
       "Player with 1-3-0 record in 4 rounds should have 0.33 match-win percentage (minimum)")
     #expect(
       (tournament.performance[players[1]]?.matchWinRate ?? 0).isApproximatelyEqual(to: 0.75),
@@ -179,7 +179,7 @@ struct TiebreakerTests {
       "Player with 21 game points in 10 games should have 0.70 game-win percentage")
     #expect(
       (tournament.performance[players[1]]?.gameWinRate ?? 0).isApproximatelyEqual(
-        to: PlayerPerformance.miniumPercentage),
+        to: TournamentPlayerPerformance.miniumPercentage),
       "Player with 9 game points in 10 games should have 0.33 game-win percentage")
 
     // Reset tournament
@@ -207,7 +207,7 @@ struct TiebreakerTests {
 
     #expect(
       (tournament.getPerformance(for: players[0])?.gameWinRate ?? 0).isApproximatelyEqual(
-        to: PlayerPerformance.miniumPercentage),
+        to: TournamentPlayerPerformance.miniumPercentage),
       "Player with 9 game points in 11 games should have 0.33 game-win percentage (minimum)")
     #expect(
       (tournament.getPerformance(for: players[1])?.gameWinRate ?? 0).isApproximatelyEqual(
