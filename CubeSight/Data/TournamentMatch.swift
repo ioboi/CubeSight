@@ -1,15 +1,15 @@
 import SwiftData
 
 @Model
-class Match {
-  var player1: Player
-  var player2: Player
+class TournamentMatch {
+  var player1: TournamentPlayer
+  var player2: TournamentPlayer
   var player1Wins: Int
   var player2Wins: Int
   var draws: Int
-  var winner: Player?
+  var winner: TournamentPlayer?
 
-  init(player1: Player, player2: Player) {
+  init(player1: TournamentPlayer, player2: TournamentPlayer) {
     self.player1 = player1
     self.player2 = player2
     self.player1Wins = 0
@@ -36,7 +36,7 @@ class Match {
   }
 
   //  TODO(performance): test with borrowing / inout
-  func process(into performance: inout [Player: PlayerPerformance]) {
+  func process(into performance: inout [TournamentPlayer: PlayerPerformance]) {
     guard var performance1 = performance[player1],
       var performance2 = performance[player2]
     else {

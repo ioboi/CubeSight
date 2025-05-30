@@ -9,7 +9,7 @@ struct PlayerPerformance {
   //  TODO(bye): add variable
 
   // TODO: is this only storing the PlayerID?
-  var opponents: [Player] = []
+  var opponents: [TournamentPlayer] = []
 
   init() {}
 
@@ -55,12 +55,12 @@ struct PlayerPerformance {
     return opponents.reduce(into: 0.0) { $0 += $1.gameWinRate } / Double(opponents.count)
   }
 
-  func matchWinRate(for opponentsMap: [Player: PlayerPerformance]) -> Double {
+  func matchWinRate(for opponentsMap: [TournamentPlayer: PlayerPerformance]) -> Double {
     return opponents.reduce(into: 0.0) { $0 += opponentsMap[$1]?.matchWinRate ?? 0.0 }
       / Double(opponentsMap.count)
   }
 
-  func gameWinRate(for opponentsMap: [Player: PlayerPerformance]) -> Double {
+  func gameWinRate(for opponentsMap: [TournamentPlayer: PlayerPerformance]) -> Double {
     return opponents.reduce(into: 0.0) { $0 += opponentsMap[$1]?.gameWinRate ?? 0.0 }
       / Double(opponentsMap.count)
   }

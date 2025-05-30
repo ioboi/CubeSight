@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Player {
+class TournamentPlayer {
   var id: UUID
   var name: String
   var tournaments = [Tournament]()

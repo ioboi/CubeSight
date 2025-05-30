@@ -10,9 +10,9 @@ struct CubeSightApp: App {
       CubeDeckCard.self,
       CubeDeck.self,
       Tournament.self,
-      Player.self,
-      Round.self,
-      Match.self,
+      TournamentRound.self,
+      TournamentPlayer.self,
+      TournamentMatch.self,
     ])
     let modelConfiguration = ModelConfiguration(
       schema: schema,

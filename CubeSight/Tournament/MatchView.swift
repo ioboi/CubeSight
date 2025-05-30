@@ -2,7 +2,7 @@ import SwiftData
 import SwiftUI
 
 struct MatchView: View {
-  let match: Match
+  let match: TournamentMatch
   @State private var showingScoreSheet = false
 
   var body: some View {
@@ -51,7 +51,7 @@ struct MatchView: View {
 }
 
 struct MatchResultSelection: View {
-  let match: Match
+  let match: TournamentMatch
   @Binding var isPresented: Bool
 
   enum Outcome: String, CaseIterable {
@@ -97,7 +97,7 @@ struct MatchResultSelection: View {
 }
 
 struct ScoreOptionsView: View {
-  let match: Match
+  let match: TournamentMatch
   let outcome: MatchResultSelection.Outcome
   @Binding var isPresented: Bool
   @State private var selectedScore: Score?
@@ -169,17 +169,17 @@ struct ScoreOptionsView: View {
   List {
     // Incomplete match
     MatchView(
-      match: Match(
-        player1: Player(name: "Alice"),
-        player2: Player(name: "Bob")
+      match: TournamentMatch(
+        player1: TournamentPlayer(name: "Alice"),
+        player2: TournamentPlayer(name: "Bob")
       ))
 
     // Complete match with a result
     MatchView(
       match: {
-        let match = Match(
-          player1: Player(name: "Carol"),
-          player2: Player(name: "David")
+        let match = TournamentMatch(
+          player1: TournamentPlayer(name: "Carol"),
+          player2: TournamentPlayer(name: "David")
         )
         match.complete(player1Wins: 2, player2Wins: 1, draws: 0)
         return match
@@ -188,9 +188,9 @@ struct ScoreOptionsView: View {
     // Complete match with no games
     MatchView(
       match: {
-        let match = Match(
-          player1: Player(name: "Eve"),
-          player2: Player(name: "Frank")
+        let match = TournamentMatch(
+          player1: TournamentPlayer(name: "Eve"),
+          player2: TournamentPlayer(name: "Frank")
         )
         match.complete(player1Wins: 0, player2Wins: 0, draws: 0)
         return match

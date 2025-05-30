@@ -12,7 +12,7 @@ struct SwissPairingTests {
   init() async throws {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try ModelContainer(
-      for: Player.self, Tournament.self, Round.self, Match.self, configurations: config)
+      for: TournamentPlayer.self, Tournament.self, TournamentRound.self, TournamentMatch.self, configurations: config)
     context = container.mainContext
   }
 
@@ -21,7 +21,7 @@ struct SwissPairingTests {
     let winnerNames = ["Alice", "Bob", "Charlie", "David"]
     let looserNames = ["Eve", "Frank", "Grace", "Henry"]
     let playerNames = winnerNames + looserNames
-    let players = playerNames.map { Player(name: $0) }
+    let players = playerNames.map { TournamentPlayer(name: $0) }
 
     let tournament = Tournament(players: players)
     tournament.startNextRound(strategy: strategy)
@@ -58,7 +58,7 @@ struct SwissPairingTests {
 
     // Initial players - we'll track their expected records
     let playerNames = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry"]
-    let players = playerNames.map { Player(name: $0) }
+    let players = playerNames.map { TournamentPlayer(name: $0) }
     let tournament = Tournament(players: players)
     tournament.startNextRound(strategy: strategy)
 

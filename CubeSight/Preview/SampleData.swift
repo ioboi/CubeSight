@@ -12,9 +12,9 @@ struct SampleData: PreviewModifier {
       CubeDeckCard.self,
       CubeDeck.self,
       Tournament.self,
-      Player.self,
-      Round.self,
-      Match.self,
+      TournamentRound.self,
+      TournamentPlayer.self,
+      TournamentMatch.self,
       configurations: config
     )
     Cube.makeSampleCube(in: container)

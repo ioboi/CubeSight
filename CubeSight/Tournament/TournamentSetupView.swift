@@ -4,10 +4,10 @@ import SwiftUI
 struct TournamentSetupView: View {
   @Environment(\.dismiss) private var dismiss
   @Environment(\.modelContext) private var modelContext
-  @Query private var existingPlayers: [Player]
+  @Query private var existingPlayers: [TournamentPlayer]
 
   // Track selected existing players and new player names separately
-  @State private var selectedPlayers: Set<Player> = []
+  @State private var selectedPlayers: Set<TournamentPlayer> = []
   @State private var newPlayerNames: [String] = []
   @State private var showingAddPlayer = false
 
@@ -76,7 +76,7 @@ struct TournamentSetupView: View {
       newPlayerNames
       .map { $0.trimmingCharacters(in: .whitespaces) }
       .filter { !$0.isEmpty }
-      .map { Player(name: $0) }
+      .map { TournamentPlayer(name: $0) }
 
     newPlayers.forEach { modelContext.insert($0) }
 

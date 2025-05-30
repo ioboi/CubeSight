@@ -56,13 +56,13 @@ struct TournamentView: View {
 #Preview {
   let config = ModelConfiguration(isStoredInMemoryOnly: true)
   let container = try! ModelContainer(
-    for: Player.self, Tournament.self, Round.self, Match.self, configurations: config)
+    for: TournamentPlayer.self, Tournament.self, TournamentRound.self, TournamentMatch.self, configurations: config)
 
   let players = [
-    Player(name: "Alice"),
-    Player(name: "Bob"),
-    Player(name: "Charlie"),
-    Player(name: "David"),
+    TournamentPlayer(name: "Alice"),
+    TournamentPlayer(name: "Bob"),
+    TournamentPlayer(name: "Charlie"),
+    TournamentPlayer(name: "David"),
   ]
 
   let tournament = Tournament()
