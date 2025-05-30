@@ -26,10 +26,11 @@ import SwiftData
 
   var mainboard: [Card] = []
 
-  init(id: String, shortId: String, name: String) {
+  init(id: String, shortId: String, name: String, image: String? = nil) {
     self.id = id
     self.shortId = shortId
     self.name = name
+    self.image = image
   }
 }
 
@@ -54,7 +55,9 @@ extension Cube {
   @MainActor static let sampleCube = Cube(
     id: UUID().uuidString,
     shortId: "dimlas4",
-    name: "Vintage Cube"
+    name: "Vintage Cube",
+    image:
+      "https://cards.scryfall.io/art_crop/front/b/c/bc0de77a-c503-4000-9eb5-aa28a5e91082.jpg?1690005636"
   )
 
   @MainActor
