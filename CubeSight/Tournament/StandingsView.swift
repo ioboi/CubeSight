@@ -4,23 +4,9 @@ import SwiftUI
 struct StandingsView: View {
   var tournament: Tournament
 
-  var body: some View {
-    List {
-      Section("Standings") {
-        ForEach(sortedPlayers(), id: \.self) { player in
-          if let performance = tournament.getPerformance(for: player) {
-            PlayerStandingRow(player: player, performance: performance)
-          } else {
-            Text("No perfomance found for \(player.name)")
-          }
-        }
-      }
-    }
-    .listStyle(.plain)
-    .navigationTitle("Standings")
-  }
-
-  private func sortedPlayers() -> [TournamentPlayer] {
+  private var sortedPlayerPerformances:
+    [(TournamentPlayer, TournamentPlayerPerformance)]
+  {
     tournament.performance.sorted {
       if $0.value.matchPoints != $1.value.matchPoints {
         return $0.value.matchPoints > $1.value.matchPoints
@@ -29,7 +15,17 @@ struct StandingsView: View {
       } else {
         return $0.key.name < $1.key.name
       }
-    }.map { $0.key }
+    }
+  }
+
+  var body: some View {
+    List {
+      ForEach(sortedPlayerPerformances, id: \.0) { (player, performance) in
+        PlayerStandingRow(player: player, performance: performance)
+      }
+    }
+    .listStyle(.plain)
+    .navigationTitle("Standings")
   }
 }
 
