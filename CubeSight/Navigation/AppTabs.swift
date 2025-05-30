@@ -32,7 +32,7 @@ extension AppTabs {
     case .cube:
       CubeNavigationStack()
     case .tournament:
-      TournamentContentView()
+      TournamentNavigationStack()
     }
   }
 }
