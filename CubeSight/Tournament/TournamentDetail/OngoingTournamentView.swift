@@ -1,7 +1,7 @@
 import SwiftData
 import SwiftUI
 
-struct TournamentView: View {
+struct OngoingTournamentView: View {
   let tournament: Tournament
 
   @State private var isConfirmationRoundDeletionPresented: Bool = false
@@ -75,7 +75,7 @@ struct TournamentView: View {
     )
     .toolbar {
       ToolbarItem(placement: .primaryAction) {
-        Button("Finish", action: finishTournament)
+        Button("End", action: finishTournament)
           .disabled(!lastRoundComplete)
       }
       ToolbarItem(placement: .principal) {
@@ -85,7 +85,7 @@ struct TournamentView: View {
   }
 
   private func finishTournament() {
-    tournament.status = .finished
+    tournament.status = .ended
   }
 
   private func confirmDropRound(_ round: TournamentRound) {

@@ -9,7 +9,7 @@ class Tournament {
     [TournamentPlayer] = []
 
   var createdAt: Date
-  var status: TournamentStatus = TournamentStatus.inProgress
+  var status: TournamentStatus = TournamentStatus.ongoing
 
   func startNextRound(strategy: PairingStrategy = SwissPairingStrategy()) {
     let newMatches = strategy.createPairings(for: players, with: performance)
