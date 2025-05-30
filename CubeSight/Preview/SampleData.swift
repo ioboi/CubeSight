@@ -19,6 +19,7 @@ struct SampleData: PreviewModifier {
     )
     Cube.makeSampleCube(in: container)
     CubeDeck.makeSampleCubeDecks(in: container)
+    Tournament.makeSampleTournaments(in: container)
     return container
   }
 
