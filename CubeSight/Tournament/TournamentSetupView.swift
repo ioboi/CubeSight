@@ -89,7 +89,7 @@ struct TournamentSetupView: View {
 
     let tournament = Tournament()
     tournament.players = allPlayers
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
     modelContext.insert(tournament)
     dismiss()
   }

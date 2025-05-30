@@ -31,7 +31,7 @@ struct TiebreakerTests {
 
     // Simulate 6 wins, 2 losses for player1
     for _ in 0..<6 {
-      tournament.startNextRound(strategy: SwissPairingStrategy())
+      tournament.startNextRound()
       tournament.rounds.last?.matches.first?.complete(
         player1Wins: 2,
         player2Wins: 0,
@@ -39,14 +39,14 @@ struct TiebreakerTests {
       )
     }
     for _ in 0..<2 {
-      tournament.startNextRound(strategy: SwissPairingStrategy())
+      tournament.startNextRound()
       tournament.rounds.last?.matches.first?.complete(
         player1Wins: 0,
         player2Wins: 2,
         draws: 0
       )
     }
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
 
     #expect(
       tournament.performance[players[0]]?.matchPoints == 18,
@@ -57,7 +57,7 @@ struct TiebreakerTests {
 
     // Simulate 4 wins, 2 losses, 2 draws for player2
     for i in 0..<8 {
-      tournament.startNextRound(strategy: SwissPairingStrategy())
+      tournament.startNextRound()
       let match = tournament.rounds.last?.matches.first
       if i < 4 {
         if match?.player1 == players[0] {
@@ -76,7 +76,7 @@ struct TiebreakerTests {
       }
     }
 
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
     #expect(
       tournament.performance[players[1]]?.matchPoints == 14,
       "Player with 4-2-2 record should have 14 match points"
@@ -89,14 +89,14 @@ struct TiebreakerTests {
       TournamentPlayer(name: "Player1"), TournamentPlayer(name: "Player2"),
     ]
     let tournament = Tournament(players: players)
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
 
     tournament.rounds.last?.matches.first?.complete(
       player1Wins: 2,
       player2Wins: 0,
       draws: 0
     )
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
     #expect(
       tournament.performance[players[0]]?.gamePoints == 6,
       "Player winning a match 2-0-0 should have 6 game points"
@@ -107,7 +107,7 @@ struct TiebreakerTests {
       player2Wins: 1,
       draws: 0
     )
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
     #expect(
       tournament.performance[players[0]]?.gamePoints == 12,
       "Player winning matches 2-0-0 and 2-1-0 should have 12 game points"
@@ -118,7 +118,7 @@ struct TiebreakerTests {
       player2Wins: 0,
       draws: 1
     )
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
     #expect(
       tournament.performance[players[0]]?.gamePoints == 18,
       "Player winning matches 2-0-0, 2-1-0, and 2-0-1 should have 18 game points"
@@ -131,7 +131,7 @@ struct TiebreakerTests {
       TournamentPlayer(name: "Player1"), TournamentPlayer(name: "Player2"),
     ]
     var tournament = Tournament(players: players)
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
 
     // Simulate 5 wins, 2 losses, 1 draw
     for _ in 0..<5 {
@@ -141,7 +141,7 @@ struct TiebreakerTests {
       } else {
         match?.complete(player1Wins: 0, player2Wins: 2, draws: 0)
       }
-      tournament.startNextRound(strategy: SwissPairingStrategy())
+      tournament.startNextRound()
     }
     for _ in 0..<2 {
       let match = tournament.rounds.last?.matches.first
@@ -150,7 +150,7 @@ struct TiebreakerTests {
       } else {
         match?.complete(player1Wins: 2, player2Wins: 0, draws: 0)
       }
-      tournament.startNextRound(strategy: SwissPairingStrategy())
+      tournament.startNextRound()
     }
 
     tournament.rounds.last?.matches.first?.complete(
@@ -158,7 +158,7 @@ struct TiebreakerTests {
       player2Wins: 0,
       draws: 1
     )
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
 
     #expect(
       (tournament.performance[players[0]]?.matchWinRate ?? 0)
@@ -175,7 +175,7 @@ struct TiebreakerTests {
 
     // Reset tournament
     tournament = Tournament(players: players)
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
 
     // Simulate 1 win, 3 losses for player 1
     for i in 0..<4 {
@@ -193,7 +193,7 @@ struct TiebreakerTests {
           match?.complete(player1Wins: 2, player2Wins: 0, draws: 0)
         }
       }
-      tournament.startNextRound(strategy: SwissPairingStrategy())
+      tournament.startNextRound()
     }
 
     #expect(
@@ -216,7 +216,7 @@ struct TiebreakerTests {
       TournamentPlayer(name: "Player1"), TournamentPlayer(name: "Player2"),
     ]
     var tournament = Tournament(players: players)
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
 
     // Simulate 7 game wins, 3 game losses
     for _ in 0..<3 {
@@ -225,14 +225,14 @@ struct TiebreakerTests {
         player2Wins: 1,
         draws: 0
       )
-      tournament.startNextRound(strategy: SwissPairingStrategy())
+      tournament.startNextRound()
     }
     tournament.rounds.last?.matches.first?.complete(
       player1Wins: 1,
       player2Wins: 0,
       draws: 0
     )
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
 
     #expect(
       (tournament.performance[players[0]]?.gameWinRate ?? 0)
@@ -249,7 +249,7 @@ struct TiebreakerTests {
 
     // Reset tournament
     tournament = Tournament(players: players)
-    tournament.startNextRound(strategy: SwissPairingStrategy())
+    tournament.startNextRound()
 
     // Simulate 3 game wins, 8 game losses
     for i in 0..<4 {
@@ -267,7 +267,7 @@ struct TiebreakerTests {
           match?.complete(player1Wins: 2, player2Wins: 0, draws: 0)
         }
       }
-      tournament.startNextRound(strategy: SwissPairingStrategy())
+      tournament.startNextRound()
     }
 
     #expect(
