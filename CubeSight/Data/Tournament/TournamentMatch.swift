@@ -36,7 +36,7 @@ class TournamentMatch {
   }
 
   //  TODO(performance): test with borrowing / inout
-  func process(into performance: inout [TournamentPlayer: PlayerPerformance]) {
+  func process(into performance: inout [TournamentPlayer: TournamentPlayerPerformance]) {
     guard var performance1 = performance[player1],
       var performance2 = performance[player2]
     else {

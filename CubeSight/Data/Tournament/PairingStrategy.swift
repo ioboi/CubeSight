@@ -1,14 +1,20 @@
 protocol PairingStrategy {
-  func createPairings(for players: [TournamentPlayer], with performance: [TournamentPlayer: PlayerPerformance])
+  func createPairings(
+    for players: [TournamentPlayer],
+    with performance: [TournamentPlayer: TournamentPlayerPerformance]
+  )
     -> [TournamentMatch]
 }
 
 struct SwissPairingStrategy: PairingStrategy {
   func createPairings(
-    for players: [TournamentPlayer], with performance: [TournamentPlayer: PlayerPerformance]
+    for players: [TournamentPlayer],
+    with performance: [TournamentPlayer: TournamentPlayerPerformance]
   ) -> [TournamentMatch] {
 
-    func hasPlayed(_ player1: TournamentPlayer, _ player2: TournamentPlayer) -> Bool {
+    func hasPlayed(_ player1: TournamentPlayer, _ player2: TournamentPlayer)
+      -> Bool
+    {
       return performance[player1]?.opponents.contains(player2) ?? false
     }
 
@@ -26,7 +32,9 @@ struct SwissPairingStrategy: PairingStrategy {
     while remainingPlayers.count >= 2 {
       let player1 = remainingPlayers.removeFirst()
 
-      if let player2Index = remainingPlayers.firstIndex(where: { !hasPlayed(player1, $0) }) {
+      if let player2Index = remainingPlayers.firstIndex(where: {
+        !hasPlayed(player1, $0)
+      }) {
         let player2 = remainingPlayers.remove(at: player2Index)
         matches.append(TournamentMatch(player1: player1, player2: player2))
       } else {
