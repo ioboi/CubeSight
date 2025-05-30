@@ -8,7 +8,7 @@ struct TournamentRow: View {
       VStack(alignment: .leading) {
         Text(tournament.createdAt, style: .date)
           .bold()
-        Text(tournament.status == .inProgress ? "In Progress" : "Finished")
+        Text(tournament.status == .ongoing ? "Ongoing" : "Ended")
           .font(.caption)
       }
       
