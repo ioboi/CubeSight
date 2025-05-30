@@ -4,9 +4,9 @@ import SwiftUI
 enum CubeDetail: Codable, Hashable, Identifiable {
   case allCards
   case decks
-  
+
   var id: CubeDetail { self }
-  
+
   var name: String {
     switch self {
     case .allCards:
@@ -15,12 +15,12 @@ enum CubeDetail: Codable, Hashable, Identifiable {
       String(localized: "Decks", comment: "CubeDetail show all decks")
     }
   }
-  
+
   @ViewBuilder
   var view: some View {
     NavigationLink(self.name, value: self)
   }
-  
+
   @ViewBuilder
   func destination(with cube: Cube) -> some View {
     switch self {
@@ -36,21 +36,25 @@ enum CubeDetail: Codable, Hashable, Identifiable {
 
 struct CubeDetailView: View {
   private let cube: Cube
-  
+
   init(cube: Cube) {
     self.cube = cube
   }
-  
+
   @ViewBuilder
   var cubeBanner: some View {
-    if let imageData = cube.image {
-      Image(uiImage: UIImage(data: imageData)!)
-        .resizable()
-        .aspectRatio(contentMode: .fill)
-        .listRowInsets(EdgeInsets())
+    if cube.image != nil {
+      AsyncImage(url: cube.imageUrl) { image in
+        image
+          .resizable()
+          .aspectRatio(contentMode: .fill)
+      } placeholder: {
+        ProgressView()
+      }
+      .listRowInsets(EdgeInsets())
     }
   }
-  
+
   var body: some View {
     List {
       cubeBanner
@@ -64,7 +68,6 @@ struct CubeDetailView: View {
     }
   }
 }
-
 
 #Preview(traits: .sampleData) {
   CubeDetailView(cube: Cube.sampleCube)
