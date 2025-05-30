@@ -1,7 +1,7 @@
+import Foundation
 import SwiftData
 
-@Model
-class TournamentMatch {
+@Model class TournamentMatch {
   var player1: TournamentPlayer
   var player2: TournamentPlayer
   var player1Wins: Int
@@ -33,43 +33,5 @@ class TournamentMatch {
     } else {
       winner = nil
     }
-  }
-
-  //  TODO(performance): test with borrowing / inout
-  func process(into performance: inout [TournamentPlayer: TournamentPlayerPerformance]) {
-    guard var performance1 = performance[player1],
-      var performance2 = performance[player2]
-    else {
-      //      TODO(log): maybe we want to log this event?
-      //      TODO(bye): support
-      return  // Skip if either player's performance is not found
-    }
-
-    // Update player 1 performance
-    performance1.gameWins += player1Wins
-    performance1.gameLosses += player2Wins
-    performance1.opponents.append(player2)
-
-    // Update player 2 performance
-    performance2.gameWins += player2Wins
-    performance2.gameLosses += player1Wins
-    performance2.opponents.append(player1)
-
-    // Update match results
-    if winner != nil {
-      if player1Wins > player2Wins {
-        performance1.matchWins += 1
-        performance2.matchLosses += 1
-      } else {
-        performance1.matchLosses += 1
-        performance2.matchWins += 1
-      }
-    }
-
-    performance1.draws += draws
-    performance2.draws += draws
-
-    performance[player1] = performance1
-    performance[player2] = performance2
   }
 }

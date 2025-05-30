@@ -4,47 +4,12 @@ import SwiftData
 @Model
 class Tournament {
   @Relationship(deleteRule: .cascade) var rounds: [TournamentRound] = []
-  // TODO: to one?
   @Relationship(inverse: \TournamentPlayer.tournaments) var players:
     [TournamentPlayer] = []
+
   var createdAt: Date
 
-  @Transient
-  private var _performance: [TournamentPlayer: TournamentPlayerPerformance]?
-
-  var performance: [TournamentPlayer: TournamentPlayerPerformance] {
-    //    if let cached = _performance {
-    //      return cached
-    //    }
-    let calculated = calculatePerformance()
-    _performance = calculated
-    return calculated
-  }
-
-  func getPerformance(for player: TournamentPlayer) -> TournamentPlayerPerformance? {
-    performance[player]
-  }
-
-  private func calculatePerformance() -> [TournamentPlayer: TournamentPlayerPerformance] {
-    let matches: [TournamentMatch] = rounds.flatMap { $0.matches }.filter {
-      $0.isComplete()
-    }
-    var performance = Dictionary(
-      uniqueKeysWithValues: players.map { ($0, TournamentPlayerPerformance()) }
-    )
-    matches.forEach { $0.process(into: &performance) }
-    return performance
-  }
-
-  func invalidatePerformanceCache() {
-    _performance = nil
-  }
-
   func startNextRound(strategy: PairingStrategy) {
-    //  TODO(performance): only add current round peformance, i.e. update tournament.performance instead
-    invalidatePerformanceCache()
-    //  TODO: add guard that previous round is complete
-
     let newMatches = strategy.createPairings(for: players, with: performance)
     let newRound = TournamentRound(
       matches: newMatches,
@@ -57,6 +22,52 @@ class Tournament {
   init(players: [TournamentPlayer] = []) {
     self.createdAt = Date.now
     self.players = players
+  }
+}
+
+extension Tournament {
+
+  var performance: [TournamentPlayer: TournamentPlayerPerformance] {
+    var performance = Dictionary(
+      uniqueKeysWithValues: self.players.map {
+        ($0, TournamentPlayerPerformance())
+      }
+    )
+
+    let completeMatches =
+      rounds
+      .flatMap { $0.matches }
+      .filter { $0.isComplete() }
+
+    for match in completeMatches {
+      var player1Performance = performance[match.player1]
+      player1Performance?.gameWins += match.player1Wins
+      player1Performance?.gameLosses += match.player2Wins
+      player1Performance?.draws += match.draws
+      player1Performance?.opponents.append(match.player2)
+
+      var player2Performance = performance[match.player2]
+      player2Performance?.gameWins += match.player2Wins
+      player2Performance?.gameLosses += match.player1Wins
+      player2Performance?.draws += match.draws
+      player2Performance?.opponents.append(match.player1)
+
+      // Update match results
+      if match.winner != nil {
+        if match.player1Wins > match.player2Wins {
+          player1Performance?.matchWins += 1
+          player2Performance?.matchLosses += 1
+        } else {
+          player1Performance?.matchLosses += 1
+          player2Performance?.matchWins += 1
+        }
+      }
+
+      performance[match.player1] = player1Performance
+      performance[match.player2] = player2Performance
+    }
+
+    return performance
   }
 }
 
