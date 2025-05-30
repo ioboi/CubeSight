@@ -12,6 +12,7 @@ class Tournament {
   func startNextRound(strategy: PairingStrategy = SwissPairingStrategy()) {
     let newMatches = strategy.createPairings(for: players, with: performance)
     let newRound = TournamentRound(
+      tournament: self,
       matches: newMatches,
       roundIndex: rounds.count
     )
