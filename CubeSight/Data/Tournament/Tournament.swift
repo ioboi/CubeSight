@@ -37,7 +37,7 @@ extension Tournament {
     let completeMatches =
       rounds
       .flatMap { $0.matches }
-      .filter { $0.isComplete() }
+      .filter { $0.isComplete }
 
     for match in completeMatches {
       var player1Performance = performance[match.player1]
