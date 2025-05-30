@@ -5,13 +5,17 @@ struct TournamentNavigationStack: View {
   @Query(sort: \Tournament.createdAt, order: .reverse) private var tournaments:
     [Tournament]
   @State private var isTournamentSetupPresented = false
+  @Environment(\.modelContext) var modelContext: ModelContext
 
   var body: some View {
     NavigationStack {
-      List(tournaments) { tournament in
-        NavigationLink(value: tournament) {
-          TournamentRow(tournament: tournament)
+      List {
+        ForEach(tournaments) { tournament in
+          NavigationLink(value: tournament) {
+            TournamentRow(tournament: tournament)
+          }
         }
+        .onDelete(perform: deleteTournaments)
       }
       .toolbar {
         Button(
@@ -27,6 +31,12 @@ struct TournamentNavigationStack: View {
       .navigationDestination(for: Tournament.self) { tournament in
         TournamentView(tournament: tournament)
       }
+    }
+  }
+
+  private func deleteTournaments(indexSet: IndexSet) {
+    for index in indexSet {
+      modelContext.delete(tournaments[index])
     }
   }
 
