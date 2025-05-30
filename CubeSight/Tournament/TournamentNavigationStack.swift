@@ -2,52 +2,36 @@ import SwiftData
 import SwiftUI
 
 struct TournamentNavigationStack: View {
-  @Query(sort: \Tournament.createdAt, order: .reverse) var tournaments:
+  @Query(sort: \Tournament.createdAt, order: .reverse) private var tournaments:
     [Tournament]
-  @State private var showingSetupSheet = false
+  @State private var isTournamentSetupPresented = false
 
   var body: some View {
     NavigationStack {
-      List {
-        ForEach(tournaments) { tournament in
-          NavigationLink(value: tournament) {
-            TournamentRowView(tournament: tournament)
-          }
+      List(tournaments) { tournament in
+        NavigationLink(value: tournament) {
+          TournamentRow(tournament: tournament)
         }
+      }
+      .toolbar {
+        Button(
+          "Add tournament",
+          systemImage: "plus",
+          action: showTournamentSetup
+        )
+      }
+      .sheet(isPresented: $isTournamentSetupPresented) {
+        TournamentSetupView()
       }
       .navigationTitle("Tournaments")
       .navigationDestination(for: Tournament.self) { tournament in
         TournamentView(tournament: tournament)
       }
-      .toolbar {
-        ToolbarItem(placement: .primaryAction) {
-          Button(action: { showingSetupSheet = true }) {
-            Image(systemName: "plus.circle.fill")
-              .imageScale(.large)
-          }
-        }
-      }
-      .sheet(isPresented: $showingSetupSheet) {
-        TournamentSetupView()
-      }
     }
   }
-}
 
-struct TournamentRowView: View {
-  let tournament: Tournament
-
-  var body: some View {
-    HStack {
-      Label(
-        "\(tournament.players.count) participants",
-        systemImage: "person.3"
-      )
-      Spacer()
-      Text(tournament.createdAt, style: .date)
-        .foregroundStyle(.secondary)
-    }
-    .font(.subheadline)
+  private func showTournamentSetup() {
+    self.isTournamentSetupPresented = true
   }
 }
 
