@@ -10,7 +10,7 @@ struct TournamentView: View {
 
   private var currentRoundComplete: Bool {
     guard let currentRound = tournament.rounds.last else { return true }
-    return currentRound.matches.allSatisfy { $0.isComplete() }
+    return currentRound.matches.allSatisfy { $0.isComplete }
   }
 
   var body: some View {

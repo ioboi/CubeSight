@@ -17,10 +17,10 @@ import SwiftData
     self.draws = 0
   }
 
-  func isComplete() -> Bool {
-    return winner != nil || player1Wins + player2Wins + draws > 0
+  var isComplete: Bool {
+    winner != nil || player1Wins + player2Wins + draws > 0
   }
-
+  
   func complete(player1Wins: Int, player2Wins: Int, draws: Int) {
     self.player1Wins = player1Wins
     self.player2Wins = player2Wins

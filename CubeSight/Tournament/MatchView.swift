@@ -12,7 +12,7 @@ struct MatchView: View {
 
       Spacer()
 
-      if match.isComplete() {
+      if match.isComplete {
         Text(resultText)
           .foregroundColor(.secondary)
       } else {
@@ -31,7 +31,7 @@ struct MatchView: View {
       }
     }
     .swipeActions(edge: .trailing) {
-      if match.isComplete() {
+      if match.isComplete {
         Button {
           showingScoreSheet = true
         } label: {
