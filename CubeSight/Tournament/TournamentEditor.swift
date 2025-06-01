@@ -65,6 +65,7 @@ struct TournamentEditor: View {
       let newTournament = Tournament(players: Array(selectedPlayers))
       newTournament.createdAt = date
       modelContext.insert(newTournament)
+      try? modelContext.save()
     }
   }
 }
