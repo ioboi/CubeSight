@@ -95,12 +95,16 @@ struct OngoingTournamentView: View {
   private func dropRound() {
     guard let roundToDelete else { return }
     modelContext.delete(roundToDelete)
+    // Make sure that tournaments is up-to-date for the next "startNextRound"
+    try? modelContext.save()
     self.roundToDelete = nil
     self.isConfirmationRoundDeletionPresented = false
   }
 
   private func startNextRound() {
     tournament.startNextRound()
+    // Make sure that tournaments is up-to-date for the next "startNextRound"
+    try? modelContext.save()
   }
 }
 
