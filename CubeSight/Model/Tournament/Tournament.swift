@@ -11,6 +11,7 @@ class Tournament {
   var createdAt: Date
   var status: TournamentStatus
 
+  @available(*, deprecated, message: "Find another way to abstract. Strage UI behaviour results of this.")
   func startNextRound(strategy: PairingStrategy = SwissPairingStrategy()) {
     let newMatches = strategy.createPairings(for: players, with: performance)
     let newRound = TournamentRound(

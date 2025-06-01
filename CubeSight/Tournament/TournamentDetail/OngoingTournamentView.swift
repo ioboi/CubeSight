@@ -34,10 +34,8 @@ struct OngoingTournamentView: View {
 
       ForEach(tournament.rounds) { round in
         Section {
-          ForEach(round.matches) { match in
-            MatchView(match: match)
-              .disabled(round != rounds.last)  // Only score last round?
-          }
+          Matches(round: round)
+            .disabled(round != rounds.last)
         } header: {
           HStack {
             Text("Round \(round.roundIndex + 1)")
@@ -102,9 +100,26 @@ struct OngoingTournamentView: View {
   }
 
   private func startNextRound() {
-    tournament.startNextRound()
-    // Make sure that tournaments is up-to-date for the next "startNextRound"
+    let newMatches = SwissPairingStrategy().createPairings(
+      for: tournament.players,
+      with: tournament.performance
+    )
+    let newRound = TournamentRound(
+      tournament: tournament,
+      matches: newMatches,
+      roundIndex: rounds.count
+    )
+    modelContext.insert(newRound)
     try? modelContext.save()
+  }
+}
+
+private struct Matches: View {
+  let round: TournamentRound
+  var body: some View {
+    ForEach(round.matches) { match in
+      MatchView(match: match)
+    }
   }
 }
 
