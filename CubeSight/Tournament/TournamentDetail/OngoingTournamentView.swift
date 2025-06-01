@@ -4,7 +4,6 @@ import SwiftUI
 struct OngoingTournamentView: View {
   let tournament: Tournament
   @State private var isConfirmationRoundDeletionPresented: Bool = false
-  @State private var roundToDelete: TournamentRound?
 
   @Query private var rounds: [TournamentRound]
   @Environment(\.modelContext) private var modelContext: ModelContext
@@ -42,9 +41,7 @@ struct OngoingTournamentView: View {
             if round == rounds.last && round != rounds.first {
               Spacer()
               Button("Drop Round", systemImage: "trash", role: .destructive) {
-                withAnimation {
-                  confirmDropRound(round)
-                }
+                isConfirmationRoundDeletionPresented = true
               }
               .font(.headline)
               .labelStyle(.iconOnly)
@@ -52,7 +49,13 @@ struct OngoingTournamentView: View {
                 "Drop Round?",
                 isPresented: $isConfirmationRoundDeletionPresented,
                 actions: {
-                  Button("Drop Round", role: .destructive, action: dropRound)
+                  Button("Drop Round", role: .destructive) {
+                    isConfirmationRoundDeletionPresented = false
+                    withAnimation {
+                      modelContext.delete(round)
+                      try? modelContext.save()
+                    }
+                  }
                 }
               )
             }
@@ -60,13 +63,15 @@ struct OngoingTournamentView: View {
           .headerProminence(.increased)
         }
       }
-      
+
       Section {
-        Button("Next Round", systemImage: "arrow.trianglehead.clockwise") {
-          withAnimation {
-            startNextRound()
+        Button(
+          "Next Round",
+          systemImage: "arrow.trianglehead.clockwise") {
+            withAnimation {
+              startNextRound()
+            }
           }
-        }
         .disabled(!lastRoundComplete)
       }
     }
@@ -83,20 +88,6 @@ struct OngoingTournamentView: View {
 
   private func finishTournament() {
     tournament.status = .ended
-  }
-
-  private func confirmDropRound(_ round: TournamentRound) {
-    roundToDelete = round
-    isConfirmationRoundDeletionPresented = true
-  }
-
-  private func dropRound() {
-    guard let roundToDelete else { return }
-    modelContext.delete(roundToDelete)
-    // Make sure that tournaments is up-to-date for the next "startNextRound"
-    try? modelContext.save()
-    self.roundToDelete = nil
-    self.isConfirmationRoundDeletionPresented = false
   }
 
   private func startNextRound() {
