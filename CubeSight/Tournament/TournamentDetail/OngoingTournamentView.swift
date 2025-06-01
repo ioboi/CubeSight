@@ -13,7 +13,7 @@ struct OngoingTournamentView: View {
 
     let tournamentId = tournament.persistentModelID
     let roundsPredicate = #Predicate<TournamentRound> { round in
-      round.tournament.persistentModelID == tournamentId
+      round.tournament?.persistentModelID == tournamentId
     }
     self._rounds = Query(
       filter: roundsPredicate,
