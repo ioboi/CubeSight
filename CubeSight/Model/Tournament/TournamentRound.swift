@@ -2,7 +2,7 @@ import SwiftData
 
 @Model
 class TournamentRound {
-  var tournament: Tournament
+  var tournament: Tournament?
   var matches: [TournamentMatch]
   var roundIndex: Int
 
