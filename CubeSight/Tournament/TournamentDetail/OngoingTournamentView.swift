@@ -55,21 +55,12 @@ struct OngoingTournamentView: View {
                   Button("Drop Round", role: .destructive, action: dropRound)
                 }
               )
-              .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                  Button("End", action: finishTournament)
-                    .disabled(!lastRoundComplete)
-                }
-                ToolbarItem(placement: .principal) {
-                  Text("Tournament")
-                }
-              }
             }
           }
+          .headerProminence(.increased)
         }
-        .headerProminence(.increased)
       }
-
+      
       Section {
         Button("Next Round", systemImage: "arrow.trianglehead.clockwise") {
           withAnimation {
@@ -77,6 +68,15 @@ struct OngoingTournamentView: View {
           }
         }
         .disabled(!lastRoundComplete)
+      }
+    }
+    .toolbar {
+      ToolbarItem(placement: .primaryAction) {
+        Button("End", action: finishTournament)
+          .disabled(!lastRoundComplete)
+      }
+      ToolbarItem(placement: .principal) {
+        Text("Tournament")
       }
     }
   }
