@@ -3,7 +3,6 @@ import SwiftUI
 
 struct OngoingTournamentView: View {
   let tournament: Tournament
-
   @State private var isConfirmationRoundDeletionPresented: Bool = false
   @State private var roundToDelete: TournamentRound?
 
@@ -13,9 +12,9 @@ struct OngoingTournamentView: View {
   init(tournament: Tournament) {
     self.tournament = tournament
 
-    let tournamentId = tournament.id
+    let tournamentId = tournament.persistentModelID
     let roundsPredicate = #Predicate<TournamentRound> { round in
-      round.tournament.id == tournamentId
+      round.tournament.persistentModelID == tournamentId
     }
     self._rounds = Query(
       filter: roundsPredicate,
@@ -33,7 +32,7 @@ struct OngoingTournamentView: View {
         StandingsView(tournament: tournament)
       }
 
-      ForEach(rounds) { round in
+      ForEach(tournament.rounds) { round in
         Section {
           ForEach(round.matches) { match in
             MatchView(match: match)
