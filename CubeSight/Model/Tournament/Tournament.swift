@@ -18,8 +18,6 @@ class Tournament {
       matches: newMatches,
       roundIndex: rounds.count
     )
-
-    self.modelContext?.insert(newRound)
     rounds.append(newRound)
   }
 
