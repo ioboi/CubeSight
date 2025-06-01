@@ -48,6 +48,22 @@ struct OngoingTournamentView: View {
               }
               .font(.headline)
               .labelStyle(.iconOnly)
+              .confirmationDialog(
+                "Drop Round?",
+                isPresented: $isConfirmationRoundDeletionPresented,
+                actions: {
+                  Button("Drop Round", role: .destructive, action: dropRound)
+                }
+              )
+              .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                  Button("End", action: finishTournament)
+                    .disabled(!lastRoundComplete)
+                }
+                ToolbarItem(placement: .principal) {
+                  Text("Tournament")
+                }
+              }
             }
           }
         }
@@ -61,22 +77,6 @@ struct OngoingTournamentView: View {
           }
         }
         .disabled(!lastRoundComplete)
-      }
-    }
-    .confirmationDialog(
-      "Drop Round?",
-      isPresented: $isConfirmationRoundDeletionPresented,
-      actions: {
-        Button("Drop Round", role: .destructive, action: dropRound)
-      }
-    )
-    .toolbar {
-      ToolbarItem(placement: .primaryAction) {
-        Button("End", action: finishTournament)
-          .disabled(!lastRoundComplete)
-      }
-      ToolbarItem(placement: .principal) {
-        Text("Tournament")
       }
     }
   }
