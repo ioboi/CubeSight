@@ -17,16 +17,16 @@ private struct CubeDeckList: View {
   
   init(cube: Cube) {
     self.cube = cube
-    let id = cube.id
+    let id = cube.persistentModelID
     let predicate = #Predicate<CubeDeck> { deck in
-      deck.cube.id == id
+      deck.cube.persistentModelID == id
     }
     _decks = Query(filter: predicate, sort: \.createdAt, order: .reverse)
   }
   
   var body: some View {
     List {
-      ForEach(cube.decks.sorted(by: { $0.createdAt < $1.createdAt})) { cubeDeck in
+      ForEach(decks) { cubeDeck in
         CubeDeckRow(cubeDeck: cubeDeck)
       }
       .onDelete(perform: removeDecks)
