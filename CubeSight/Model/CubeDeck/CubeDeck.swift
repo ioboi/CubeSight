@@ -13,7 +13,7 @@ import SwiftData
     self.id = UUID()
     self.cube = cube
     self.name = name
-    self.createdAt = createdAt
+    self.createdAt = Calendar.current.startOfDay(for: createdAt)
   }
 }
 
