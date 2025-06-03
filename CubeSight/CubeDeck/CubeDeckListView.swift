@@ -1,9 +1,9 @@
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct CubeDeckListView: View {
   let cube: Cube
-  
+
   var body: some View {
     CubeDeckList(cube: cube)
   }
@@ -12,18 +12,25 @@ struct CubeDeckListView: View {
 private struct CubeDeckList: View {
   let cube: Cube
   @Environment(\.modelContext) private var modelContext
-  @Query(sort: \CubeDeck.createdAt, order: .reverse) private var decks: [CubeDeck]
+  @Query private var decks: [CubeDeck]
   @State private var isCubeDeckEditorPresented: Bool = false
-  
+
   init(cube: Cube) {
     self.cube = cube
     let id = cube.persistentModelID
     let predicate = #Predicate<CubeDeck> { deck in
       deck.cube.persistentModelID == id
     }
-    _decks = Query(filter: predicate, sort: \.createdAt, order: .reverse)
+
+    _decks = Query(
+      filter: predicate,
+      sort: [
+        SortDescriptor(\CubeDeck.createdAt, order: .reverse),
+        SortDescriptor(\CubeDeck.name),
+      ]
+    )
   }
-  
+
   var body: some View {
     List {
       ForEach(decks) { cubeDeck in
@@ -52,7 +59,7 @@ private struct CubeDeckList: View {
       CubeDeckDetailView(deck: cubeDeck)
     }
   }
-  
+
   private func removeDecks(at indexSet: IndexSet) {
     for index in indexSet {
       modelContext.delete(decks[index])
