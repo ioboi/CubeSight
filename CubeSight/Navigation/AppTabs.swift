@@ -11,9 +11,9 @@ extension AppTabs {
   var name: String {
     switch self {
     case .cube:
-      String(localized: "Cube", comment: "Tab title")
+      String(localized: "Cubes", comment: "Tab title")
     case .tournament:
-      String(localized: "Tournament", comment: "Tab title")
+      String(localized: "Tournaments", comment: "Tab title")
     }
   }
 
