@@ -27,6 +27,11 @@ struct OngoingTournamentView: View {
 
   var body: some View {
     List {
+      NavigationLink("Initial Seating") {
+        List {
+          SeatingView(tournament: tournament)
+        }
+      }
       NavigationLink("Standings") {
         StandingsView(tournament: tournament)
       }

@@ -1,31 +1,6 @@
 import SwiftData
 import SwiftUI
 
-private struct Players: View {
-
-  @Query private var tournamentPlayers: [TournamentPlayer] = []
-
-  init(tournament: Tournament) {
-    let id = tournament.persistentModelID
-    let predicate = #Predicate<TournamentPlayer> {
-      $0.tournament?.persistentModelID == id
-    }
-    _tournamentPlayers = Query(
-      filter: predicate,
-      sort: \TournamentPlayer.seating
-    )
-  }
-
-  var body: some View {
-    ForEach(tournamentPlayers) { tournamentPlayer in
-      HStack {
-        Image(systemName: "person")
-        Text(tournamentPlayer.player.name)
-      }
-    }
-  }
-}
-
 struct SeatingTournamentView: View {
   var tournament: Tournament
 
@@ -35,7 +10,7 @@ struct SeatingTournamentView: View {
 
   var body: some View {
     List {
-      Players(tournament: tournament)
+      SeatingView(tournament: tournament)
       if tournament.players.isEmpty {
         Button("Add players", systemImage: "person.badge.plus") {
           isPlayerPickerPresented = true
