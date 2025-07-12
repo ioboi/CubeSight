@@ -28,10 +28,10 @@ struct OngoingTournamentView: View {
 
   var body: some View {
     List {
-      NavigationLink("Initial Seating") {
+      NavigationLink("Players") {
         List {
           SeatingView(tournament: tournament)
-        }
+        }.navigationTitle("Players")
       }
       NavigationLink("Standings") {
         StandingsView(tournament: tournament)
