@@ -17,6 +17,12 @@ struct TournamentNavigationStack: View {
         }
         .onDelete(perform: deleteTournaments)
       }
+      .navigationDestination(
+        for: CubeDeck.self,
+        destination: { cubeDeck in
+          CubeDeckDetailView(deck: cubeDeck)
+        }
+      )
       .toolbar {
         Button(
           "Add tournament",

@@ -9,6 +9,10 @@ struct OngoingTournamentView: View {
   @Query private var rounds: [TournamentRound]
   @Environment(\.modelContext) private var modelContext: ModelContext
 
+  // TODO: Should be a "set" of a tournament/draft in the future
+  @Query private var cubes: [Cube]
+  @State private var draftedDeck: CubeDeck?
+
   init(tournament: Tournament) {
     self.tournament = tournament
 
@@ -28,10 +32,26 @@ struct OngoingTournamentView: View {
 
   var body: some View {
     List {
-      NavigationLink("Players") {
-        List {
-          SeatingView(tournament: tournament)
-        }.navigationTitle("Players")
+      Section {
+        NavigationLink("Decks") {
+          List {
+            SeatingView(tournament: tournament) { tournamentPlayer in
+              Button {
+                showDraftedDeck(tournamentPlayer: tournamentPlayer)
+              } label: {
+                HStack {
+                  if !(tournamentPlayer.draftedDeck?.cards.isEmpty ?? true) {
+                    Image(systemName: "checkmark.circle.fill")
+                      .foregroundColor(.green)
+                  } else {
+                    Image(systemName: "circlebadge")
+                  }
+                  Text(tournamentPlayer.player.name)
+                }
+              }
+            }
+          }.navigationTitle("Drafted Decks")
+        }
       }
       NavigationLink("Standings") {
         StandingsView(tournament: tournament)
@@ -111,6 +131,23 @@ struct OngoingTournamentView: View {
         }
       }
     }
+    .fullScreenCover(item: $draftedDeck) { cubeDeck in
+      ExtractedView(cubeDeck: cubeDeck)
+    }
+  }
+
+  private func showDraftedDeck(tournamentPlayer: TournamentPlayer) {
+    guard let cube = cubes.first else { return }  // TODO: Fix with "set"
+    if tournamentPlayer.draftedDeck == nil {
+      tournamentPlayer.draftedDeck = CubeDeck(
+        cube: cube,
+        name: "\(tournamentPlayer.player.name)",
+        createdAt: Calendar.current.startOfDay(for: tournament.createdAt)
+      )
+      modelContext.insert(tournamentPlayer.draftedDeck!)
+      try? modelContext.save()
+    }
+    draftedDeck = tournamentPlayer.draftedDeck
   }
 
   private func finishTournament() {
@@ -137,6 +174,23 @@ private struct Matches: View {
   var body: some View {
     ForEach(round.matches) { match in
       MatchView(match: match)
+    }
+  }
+}
+
+private struct ExtractedView: View {
+  let cubeDeck: CubeDeck
+
+  @Environment(\.dismiss) private var dismiss: DismissAction
+
+  var body: some View {
+    NavigationStack {
+      CubeDeckDetailView(deck: cubeDeck)
+        .toolbar {
+          ToolbarItem(placement: .primaryAction) {
+            Button("Done") { dismiss() }
+          }
+        }
     }
   }
 }

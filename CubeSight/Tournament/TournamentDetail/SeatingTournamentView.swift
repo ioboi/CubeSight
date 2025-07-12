@@ -10,7 +10,12 @@ struct SeatingTournamentView: View {
 
   var body: some View {
     List {
-      SeatingView(tournament: tournament)
+      SeatingView(tournament: tournament) { tournamentPlayer in
+        HStack {
+          Image(systemName: "person")
+          Text(tournamentPlayer.player.name)
+        }
+      }
       if tournament.players.isEmpty {
         Button("Add players", systemImage: "person.badge.plus") {
           isPlayerPickerPresented = true

@@ -8,6 +8,7 @@ import SwiftData
 
   var cube: Cube
   var cards: [CubeDeckCard] = []
+  @Relationship(inverse: \TournamentPlayer.draftedDeck) var tournamentPlayer: TournamentPlayer?
 
   init(cube: Cube, name: String = "", createdAt: Date = Date()) {
     self.id = UUID()

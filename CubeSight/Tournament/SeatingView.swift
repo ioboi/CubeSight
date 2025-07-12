@@ -2,10 +2,13 @@ import SwiftUI
 import SwiftData
 
 // TODO: Rename to proper name?
-struct SeatingView: View {
+struct SeatingView<Content: View>: View {
   @Query private var tournamentPlayers: [TournamentPlayer] = []
+  
+  private let content: (TournamentPlayer) -> Content
 
-  init(tournament: Tournament) {
+  init(tournament: Tournament, @ViewBuilder content: @escaping (TournamentPlayer) -> Content) {
+    self.content = content
     let id = tournament.persistentModelID
     let predicate = #Predicate<TournamentPlayer> {
       $0.tournament?.persistentModelID == id
@@ -17,11 +20,6 @@ struct SeatingView: View {
   }
 
   var body: some View {
-    ForEach(tournamentPlayers) { tournamentPlayer in
-      HStack {
-        Image(systemName: "person")
-        Text(tournamentPlayer.player.name)
-      }
-    }
+    ForEach(tournamentPlayers, content: content)
   }
 }
