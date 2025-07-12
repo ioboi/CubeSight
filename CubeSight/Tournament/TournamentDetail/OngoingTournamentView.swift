@@ -4,6 +4,7 @@ import SwiftUI
 struct OngoingTournamentView: View {
   let tournament: Tournament
   @State private var isConfirmationRoundDeletionPresented: Bool = false
+  @State private var isPairingEditorPresented: Bool = false
 
   @Query private var rounds: [TournamentRound]
   @Environment(\.modelContext) private var modelContext: ModelContext
@@ -69,14 +70,19 @@ struct OngoingTournamentView: View {
         }
       }
 
+      Button("Adjust pairings") {
+        isPairingEditorPresented = true
+      }
+
       Section {
         Button(
           "Next Round",
-          systemImage: "arrow.trianglehead.clockwise") {
-            withAnimation {
-              startNextRound()
-            }
+          systemImage: "arrow.trianglehead.clockwise"
+        ) {
+          withAnimation {
+            startNextRound()
           }
+        }
         .disabled(!lastRoundComplete)
       }
     }
@@ -87,6 +93,22 @@ struct OngoingTournamentView: View {
       }
       ToolbarItem(placement: .principal) {
         Text("Tournament")
+      }
+    }
+    .sheet(isPresented: $isPairingEditorPresented) {
+      NavigationStack {
+        if let round = rounds.last {
+          // TODO: Handle this better
+          // TODO: Implement temporary editor, so that cancel is possible
+          TournamentRoundEditor(tournamentRound: round)
+            .toolbar {
+              ToolbarItem(placement: .primaryAction) {
+                Button("Done") {
+                  isPairingEditorPresented = false
+                }
+              }
+            }
+        }
       }
     }
   }
