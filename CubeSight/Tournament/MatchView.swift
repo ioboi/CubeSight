@@ -130,8 +130,8 @@ struct MatchView: View {
   List {
     MatchView(
       match: TournamentMatch(
-        player1: TournamentPlayer(name: "Alice"),
-        player2: TournamentPlayer(name: "Bob")
+        player1: TournamentPlayer(player: Player(name: "Alice")),
+        player2: TournamentPlayer(player: Player(name: "Bob"))
       )
     )
   }

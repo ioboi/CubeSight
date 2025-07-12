@@ -17,14 +17,6 @@ struct TournamentEditor: View {
     NavigationStack {
       Form {
         DatePicker("Date", selection: $date, displayedComponents: [.date])
-        Section {
-          NavigationLink(
-            destination: TournamentPlayerPicker(selection: $selectedPlayers)
-          ) {
-            Label("Select Players", systemImage: "person.3")
-              .badge(selectedPlayers.count)
-          }
-        }
       }
       .toolbar {
         ToolbarItem(placement: .principal) {
@@ -38,8 +30,6 @@ struct TournamentEditor: View {
               dismiss()
             }
           }
-          // Require at least 2 players
-          .disabled(selectedPlayers.count < 2)
         }
 
         ToolbarItem(placement: .cancellationAction) {
@@ -60,9 +50,10 @@ struct TournamentEditor: View {
   private func save() {
     if let tournament {
       tournament.createdAt = date
-      tournament.players = Array(selectedPlayers)
     } else {
-      let newTournament = Tournament(players: Array(selectedPlayers))
+      // TODO: Change constructor to only need "createdAt".
+      // TODO: Players will be set in "seating"
+      let newTournament = Tournament(players: [])
       newTournament.createdAt = date
       modelContext.insert(newTournament)
       try? modelContext.save()

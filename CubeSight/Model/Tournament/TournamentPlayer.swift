@@ -3,12 +3,13 @@ import SwiftData
 
 @Model
 class TournamentPlayer {
-  var id: UUID
-  var name: String
-  var tournaments = [Tournament]()
+  @Relationship(inverse: \Tournament.players) var tournament: Tournament?
+  var player: Player
+  var seating: Int?
 
-  init(name: String) {
-    self.id = UUID()
-    self.name = name
+  var name: String { player.name }
+
+  init(player: Player) {
+    self.player = player
   }
 }

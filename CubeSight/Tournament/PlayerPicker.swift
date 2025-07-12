@@ -1,10 +1,10 @@
 import SwiftData
 import SwiftUI
 
-struct TournamentPlayerPicker: View {
-  @Binding var selection: Set<TournamentPlayer>
-  @Query(sort: [SortDescriptor(\TournamentPlayer.name)])
-  private var availablePlayers: [TournamentPlayer]
+struct PlayerPicker: View {
+  @Binding var selection: Set<Player>
+  @Query(sort: [SortDescriptor(\Player.name)]) private var availablePlayers:
+    [Player]
   @Environment(\.modelContext) private var modelContext: ModelContext
 
   @State private var newPlayerName: String = ""
@@ -56,7 +56,7 @@ struct TournamentPlayerPicker: View {
     }
   }
 
-  private func selectOrDeselect(player: TournamentPlayer) {
+  private func selectOrDeselect(player: Player) {
     if selection.contains(player) {
       selection.remove(player)
     } else {
@@ -67,7 +67,7 @@ struct TournamentPlayerPicker: View {
   private func addNewPlayer() {
     guard !newPlayerName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     else { return }
-    let newPlayer = TournamentPlayer(
+    let newPlayer = Player(
       name: newPlayerName.trimmingCharacters(in: .whitespacesAndNewlines)
     )
     modelContext.insert(newPlayer)
@@ -77,8 +77,8 @@ struct TournamentPlayerPicker: View {
 }
 
 #Preview(traits: .sampleData) {
-  @Previewable @State var selection: Set<TournamentPlayer> = []
+  @Previewable @State var selection: Set<Player> = []
   NavigationStack {
-    TournamentPlayerPicker(selection: $selection)
+    PlayerPicker(selection: $selection)
   }
 }

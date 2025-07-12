@@ -12,6 +12,7 @@ struct CubeSightApp: App {
       Tournament.self,
       TournamentRound.self,
       TournamentPlayer.self,
+      Player.self,
       TournamentMatch.self,
     ])
     let modelConfiguration = ModelConfiguration(

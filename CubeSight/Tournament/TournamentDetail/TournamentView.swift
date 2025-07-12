@@ -6,6 +6,8 @@ struct TournamentView: View {
 
   var body: some View {
     switch tournament.status {
+    case .seating:
+      SeatingTournamentView(tournament: tournament)
     case .ongoing:
       OngoingTournamentView(tournament: tournament)
     case .ended:
@@ -16,7 +18,4 @@ struct TournamentView: View {
 
 #Preview(traits: .sampleData) {
   TournamentView(tournament: Tournament.previewTournament)
-    .onAppear {
-      Tournament.previewTournament.startNextRound()
-    }
 }

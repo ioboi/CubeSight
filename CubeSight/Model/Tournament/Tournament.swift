@@ -5,7 +5,7 @@ import SwiftData
 class Tournament {
   @Relationship(deleteRule: .cascade, inverse: \TournamentRound.tournament)
   var rounds: [TournamentRound] = []
-  @Relationship(inverse: \TournamentPlayer.tournaments) var players:
+  @Relationship var players:
     [TournamentPlayer] = []
 
   var createdAt: Date
@@ -25,7 +25,7 @@ class Tournament {
   init(players: [TournamentPlayer] = []) {
     self.createdAt = Date.now
     self.players = players
-    self.status = .ongoing
+    self.status = .seating
   }
 }
 
@@ -77,12 +77,12 @@ extension Tournament {
 
 extension Tournament {
   @MainActor static var previewTournament: Tournament = Tournament(players: [
-    TournamentPlayer(name: "Alice"),
-    TournamentPlayer(name: "Bob"),
-    TournamentPlayer(name: "Carol"),
-    TournamentPlayer(name: "David"),
-    TournamentPlayer(name: "Eve"),
-    TournamentPlayer(name: "Frank"),
+    TournamentPlayer(player: Player(name: "Alice")),
+    TournamentPlayer(player: Player(name: "Bob")),
+    TournamentPlayer(player: Player(name: "Carol")),
+    TournamentPlayer(player: Player(name: "David")),
+    TournamentPlayer(player: Player(name: "Eve")),
+    TournamentPlayer(player: Player(name: "Frank")),
   ])
 
   @MainActor static func makeSampleTournaments(in context: ModelContainer) {
