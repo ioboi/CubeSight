@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4613AA6B2DB3C1BA00BD6291 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 4613AA6A2DB3C1BA00BD6291 /* Numerics */; };
+		784041F02E240400007805E3 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 784041EF2E240400007805E3 /* Zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				784041F02E240400007805E3 /* Zip in Frameworks */,
 				4613AA6B2DB3C1BA00BD6291 /* Numerics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +126,7 @@
 			name = CubeSight;
 			packageProductDependencies = (
 				4613AA6A2DB3C1BA00BD6291 /* Numerics */,
+				784041EF2E240400007805E3 /* Zip */,
 			);
 			productName = CubeSight;
 			productReference = 78A308302D9985B8009AE57E /* CubeSight.app */;
@@ -210,6 +213,7 @@
 			packageReferences = (
 				78C25B112D9A9557006FFEFB /* XCRemoteSwiftPackageReference "swift-format" */,
 				4613AA692DB3C1BA00BD6291 /* XCRemoteSwiftPackageReference "swift-numerics" */,
+				784041EE2E240400007805E3 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 78A308312D9985B8009AE57E /* Products */;
@@ -584,6 +588,14 @@
 				minimumVersion = 1.0.3;
 			};
 		};
+		784041EE2E240400007805E3 /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.2;
+			};
+		};
 		78C25B112D9A9557006FFEFB /* XCRemoteSwiftPackageReference "swift-format" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swiftlang/swift-format";
@@ -599,6 +611,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4613AA692DB3C1BA00BD6291 /* XCRemoteSwiftPackageReference "swift-numerics" */;
 			productName = Numerics;
+		};
+		784041EF2E240400007805E3 /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 784041EE2E240400007805E3 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
