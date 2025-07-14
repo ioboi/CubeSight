@@ -11,6 +11,7 @@ struct SampleData: PreviewModifier {
       Cube.self,
       CubeDeckCard.self,
       CubeDeck.self,
+      DeckArchetype.self,
       Tournament.self,
       TournamentRound.self,
       TournamentPlayer.self,
@@ -18,6 +19,7 @@ struct SampleData: PreviewModifier {
       configurations: config
     )
     Cube.makeSampleCube(in: container)
+    DeckArchetype.makeSampleCubeDeckArchetypes(in: container)
     CubeDeck.makeSampleCubeDecks(in: container)
     Tournament.makeSampleTournaments(in: container)
     return container

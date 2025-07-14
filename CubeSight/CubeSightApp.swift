@@ -9,6 +9,7 @@ struct CubeSightApp: App {
       Cube.self,
       CubeDeckCard.self,
       CubeDeck.self,
+      DeckArchetype.self,
       Tournament.self,
       TournamentRound.self,
       TournamentPlayer.self,
@@ -33,7 +34,22 @@ struct CubeSightApp: App {
   var body: some Scene {
     WindowGroup {
       ContentView()
+        .onAppear {
+          seedInitialData()
+        }
     }
     .modelContainer(sharedModelContainer)
+  }
+
+  private func seedInitialData() {
+    guard
+      let count = try? sharedModelContainer.mainContext.fetchCount(
+        FetchDescriptor<DeckArchetype>()
+      ), count == 0
+    else { return }
+
+    // Insert default archetypes
+    DeckArchetype.makeSampleCubeDeckArchetypes(in: sharedModelContainer)
+    try? sharedModelContainer.mainContext.save()
   }
 }

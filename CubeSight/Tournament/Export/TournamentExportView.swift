@@ -93,6 +93,7 @@ struct TournamentExportView: View {
         let player: String
         let scryfallId: String
         let quantity: Int
+        let archetype: String
       }
 
       let tournamentDate = Calendar.current.startOfDay(
@@ -107,7 +108,8 @@ struct TournamentExportView: View {
               tournament: tournamentDate,
               player: draftedDeck.tournamentPlayer!.name,
               scryfallId: card.card.scryfallId,
-              quantity: card.quantity
+              quantity: card.quantity,
+              archetype: draftedDeck.archetype?.name ?? ""
             )
           }
         }

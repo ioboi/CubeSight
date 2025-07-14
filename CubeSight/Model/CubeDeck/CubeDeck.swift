@@ -6,11 +6,18 @@ import SwiftData
   @Attribute var createdAt: Date
   @Attribute var name: String
 
+  var archetype: DeckArchetype?
   var cube: Cube
   var cards: [CubeDeckCard] = []
-  @Relationship(inverse: \TournamentPlayer.draftedDeck) var tournamentPlayer: TournamentPlayer?
+  @Relationship(inverse: \TournamentPlayer.draftedDeck) var tournamentPlayer:
+    TournamentPlayer?
 
-  init(cube: Cube, name: String = "", createdAt: Date = Date()) {
+  init(
+    cube: Cube,
+    name: String = "",
+    createdAt: Date = Date(),
+    archetype: DeckArchetype? = nil
+  ) {
     self.id = UUID()
     self.cube = cube
     self.name = name
@@ -20,7 +27,11 @@ import SwiftData
 
 extension CubeDeck {
   @MainActor static var previewCubeDecks: [CubeDeck] = [
-    CubeDeck(cube: Cube.sampleCube, name: "Sample Aggro Deck"),
+    CubeDeck(
+      cube: Cube.sampleCube,
+      name: "Sample Aggro Deck",
+      archetype: DeckArchetype.aggro
+    ),
     CubeDeck(cube: Cube.sampleCube),
   ]
 

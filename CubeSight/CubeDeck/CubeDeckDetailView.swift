@@ -7,8 +7,9 @@ enum CubeDeckScreen: Hashable {
 
 struct CubeDeckDetailView: View {
   var deck: CubeDeck
-  
+
   @State private var isCubeDeckCardPickerPresented = false
+  @State private var isCubeDeckEditorPresented = false
   @State private var importedCards: Set<Card> = []
   @Environment(\.modelContext) private var modelContext
 
@@ -18,6 +19,21 @@ struct CubeDeckDetailView: View {
 
   var body: some View {
     List {
+      Section {
+        // TODO: Check if we can to a free text using keyboard etc.
+        HStack {
+          Text("Archetype")
+          Spacer()
+          Menu {
+            ArchetypeSearchResults(searchTerm: "") { archetype in
+              Button(archetype.name) { deck.archetype = archetype }
+            }
+          } label: {
+            Text(deck.archetype?.name ?? "Set Archetype")
+          }
+
+        }
+      }
       if !deck.cards.isEmpty {
         NavigationLink(value: CubeDeckScreen.cards(deck)) {
           Text("Cards")
@@ -46,8 +62,11 @@ struct CubeDeckDetailView: View {
     ) {
       CardPicker(cube: deck.cube, selection: $importedCards)
     }
+    .sheet(isPresented: $isCubeDeckEditorPresented) {
+      CubeDeckEditor(cube: deck.cube, deck: deck)
+    }
   }
-  
+
   private func addSelectedCardsToDeck() {
     withAnimation {
       for card in importedCards {

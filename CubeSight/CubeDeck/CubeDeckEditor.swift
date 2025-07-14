@@ -10,21 +10,38 @@ struct CubeDeckEditor: View {
 
   @State private var name: String = ""
   @State private var createdAt: Date = Date()
-  @FocusState private var nameFieldIsFocused: Bool
+  @State private var archetype: String = ""
+
+  enum FocusedField: CaseIterable {
+    case name
+    case date
+    case archetype
+  }
+
+  @FocusState
+  private var focusedField: FocusedField?
 
   @Environment(\.dismiss) private var dismiss
   @Environment(\.modelContext) private var modelContext
 
   var body: some View {
     NavigationStack {
-      Form {
-        TextField("Name", text: $name)
-          .focused($nameFieldIsFocused)
+      List {
+        Section("Name") {
+          TextField("Enter name", text: $name)
+            .focused($focusedField, equals: .name)
+        }
         DatePicker(
-          "Created At",
+          "Date",
           selection: $createdAt,
           displayedComponents: [.date]
         )
+        .focused($focusedField, equals: .date)
+        .toolbar {
+          ToolbarItem(placement: .keyboard) {
+            Text("Hello")
+          }
+        }
       }
       .toolbar {
         ToolbarItem(placement: .principal) {
@@ -50,8 +67,9 @@ struct CubeDeckEditor: View {
         if let deck {
           name = deck.name
           createdAt = deck.createdAt
+          archetype = deck.archetype?.name ?? ""
         }
-        nameFieldIsFocused = true
+        //focusedField = .name
       }
     }
   }
@@ -69,6 +87,29 @@ struct CubeDeckEditor: View {
   }
 }
 
+private struct DeckArchetypeSuggestions: View {
+  let searchTerm: String
+  let action: (DeckArchetype) -> Void
+
+  var body: some View {
+    ScrollView(.horizontal, showsIndicators: false) {
+      HStack {
+        ArchetypeSearchResults(searchTerm: searchTerm, fetchLimit: 10) {
+          archetype in
+          Button(archetype.name) {
+            action(archetype)
+          }
+          .buttonStyle(.bordered)
+        }
+      }
+    }
+  }
+}
+
 #Preview("Add deck", traits: .sampleData) {
   CubeDeckEditor(cube: Cube.sampleCube, deck: nil)
+}
+
+#Preview("Archetypes suggestions", traits: .sampleData) {
+  DeckArchetypeSuggestions(searchTerm: "") { _ in }
 }
