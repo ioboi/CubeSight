@@ -6,6 +6,8 @@ import SwiftData
   @Attribute var createdAt: Date
   @Attribute var name: String
 
+  // TODO: Check if we want to make it optional?
+  var decktype: String = ""
   var archetype: DeckArchetype?
   var cube: Cube
   var cards: [CubeDeckCard] = []

@@ -6,7 +6,7 @@ enum CubeDeckScreen: Hashable {
 }
 
 struct CubeDeckDetailView: View {
-  var deck: CubeDeck
+  @Bindable var deck: CubeDeck
 
   @State private var isCubeDeckCardPickerPresented = false
   @State private var isCubeDeckEditorPresented = false
@@ -34,6 +34,11 @@ struct CubeDeckDetailView: View {
 
         }
       }
+      
+      Section("Decktype") {
+        TextField("Decktype", text: $deck.decktype)
+      }
+      
       if !deck.cards.isEmpty {
         NavigationLink(value: CubeDeckScreen.cards(deck)) {
           Text("Cards")
