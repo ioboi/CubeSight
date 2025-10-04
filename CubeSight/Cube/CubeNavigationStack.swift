@@ -14,7 +14,7 @@ struct CubeNavigationStack: View {
       Text("Import cubes from Cube Cobra.")
     } actions: {
       Button(action: { importing = true }) {
-        Label("Import \"Vintage Cube Season 4\"", systemImage: "square.and.arrow.down")
+        Label("Import \"Vintage Cube Season 5\"", systemImage: "square.and.arrow.down")
       }
     }
   }
@@ -28,7 +28,7 @@ struct CubeNavigationStack: View {
       }
       .sheet(isPresented: $importing) {
         NavigationStack {
-          ImportCubeView(shortId: "dimlas4")
+          ImportCubeView(shortId: "dimlas5")
         }.interactiveDismissDisabled()
       }
       .overlay {
