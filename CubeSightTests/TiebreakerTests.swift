@@ -23,7 +23,7 @@ struct TiebreakerTests {
   @Test("Match points calculation")
   func testMatchPoints() throws {
     let players = [
-      TournamentPlayer(name: "Player1"), TournamentPlayer(name: "Player2"),
+      TournamentPlayer(player: Player(name: "Player1")), TournamentPlayer(player: Player(name: "Player2")),
     ]
     var tournament = Tournament(players: players)
 
@@ -86,7 +86,7 @@ struct TiebreakerTests {
   @Test("Game points calculation")
   func testGamePoints() throws {
     let players = [
-      TournamentPlayer(name: "Player1"), TournamentPlayer(name: "Player2"),
+      TournamentPlayer(player: Player(name: "Player1")), TournamentPlayer(player: Player(name: "Player2")),
     ]
     let tournament = Tournament(players: players)
     tournament.startNextRound()
@@ -128,7 +128,7 @@ struct TiebreakerTests {
   @Test("Match win percentage calculation")
   func testMatchWinPercentage() throws {
     let players = [
-      TournamentPlayer(name: "Player1"), TournamentPlayer(name: "Player2"),
+      TournamentPlayer(player: Player(name: "Player1")), TournamentPlayer(player: Player(name: "Player2")),
     ]
     var tournament = Tournament(players: players)
     tournament.startNextRound()
@@ -213,7 +213,7 @@ struct TiebreakerTests {
   @Test("Game win percentage calculation")
   func testGameWinPercentage() throws {
     let players = [
-      TournamentPlayer(name: "Player1"), TournamentPlayer(name: "Player2"),
+      TournamentPlayer(player: Player(name: "Player1")), TournamentPlayer(player: Player(name: "Player2")),
     ]
     var tournament = Tournament(players: players)
     tournament.startNextRound()

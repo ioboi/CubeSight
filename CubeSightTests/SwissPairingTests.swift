@@ -20,7 +20,7 @@ struct SwissPairingTests {
     let winnerNames = ["Alice", "Bob", "Charlie", "David"]
     let looserNames = ["Eve", "Frank", "Grace", "Henry"]
     let playerNames = winnerNames + looserNames
-    let players = playerNames.map { TournamentPlayer(name: $0) }
+    let players = playerNames.map { TournamentPlayer(player: Player(name: $0)) }
 
     let tournament = Tournament(players: players)
     tournament.startNextRound()
@@ -57,7 +57,7 @@ struct SwissPairingTests {
 
     // Initial players - we'll track their expected records
     let playerNames = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry"]
-    let players = playerNames.map { TournamentPlayer(name: $0) }
+    let players = playerNames.map { TournamentPlayer(player: Player(name: $0)) }
     let tournament = Tournament(players: players)
     tournament.startNextRound()
 
