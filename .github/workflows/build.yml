@@ -6,9 +6,9 @@ on:
       - "**.md"
 
 env:
-  XCODE_VERSION: "16.2"
+  XCODE_VERSION: "26.0.1"
   SCHEME: "CubeSight"
-  DESTINATION: "platform=iOS Simulator,OS=latest,name=iPhone 16"
+  DESTINATION: "platform=iOS Simulator,OS=latest,name=iPhone 17"
 
 jobs:
   build:
