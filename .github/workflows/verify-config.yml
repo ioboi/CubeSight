@@ -1,0 +1,45 @@
+name: Verify Build Configuration
+on:
+  pull_request:
+    paths:
+      - "CubeSight.xcodeproj/project.pbxproj"
+      - ".github/workflows/verify-config.yml"
+
+jobs:
+  verify-development-team-uses-variables:
+    name: Verify Development Team Configuration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check DEVELOPMENT_TEAM configuration
+        run: |
+          echo "Checking DEVELOPMENT_TEAM configuration..."
+
+          # Find all DEVELOPMENT_TEAM assignments
+          TEAM_LINES=$(grep -n "DEVELOPMENT_TEAM = " CubeSight.xcodeproj/project.pbxproj || true)
+
+          if [ -z "$TEAM_LINES" ]; then
+            echo "⚠️  No DEVELOPMENT_TEAM found in project"
+            exit 0
+          fi
+
+          echo "Found DEVELOPMENT_TEAM entries:"
+          echo "$TEAM_LINES"
+          echo ""
+
+          # Check for lines that DON'T use variable reference syntax
+          BAD_LINES=$(echo "$TEAM_LINES" | grep -v 'DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";' || true)
+
+          if [ -n "$BAD_LINES" ]; then
+            echo "❌ Found DEVELOPMENT_TEAM entries not using variable reference:"
+            echo "$BAD_LINES"
+            echo ""
+            echo "All entries should use: DEVELOPMENT_TEAM = \"\$(DEVELOPMENT_TEAM)\";"
+            echo ""
+            echo "This ensures the team ID comes from Xcode's build settings"
+            echo "rather than being hardcoded in the project file."
+            exit 1
+          fi
+
+          echo "✅ All DEVELOPMENT_TEAM entries correctly use variable references"
