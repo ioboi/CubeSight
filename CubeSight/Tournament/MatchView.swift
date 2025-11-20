@@ -1,138 +1,158 @@
 import SwiftData
 import SwiftUI
 
-private enum Score: String, CaseIterable {
-  case none = "No score"
-  case twoZero = "2-0"
-  case twoOne = "2-1"
-  case oneZero = "1-0"
-  case oneOne = "1-1"
-  case zeroZero = "0-0"
-  case zeroOne = "0-1"
-  case oneTwo = "1-2"
-  case zeroTwo = "0-2"
-
-  var wins: (player1Wins: Int, player2Wins: Int) {
-    switch self {
-    case .twoZero: return (2, 0)
-    case .twoOne: return (2, 1)
-    case .oneZero: return (1, 0)
-    case .oneOne: return (1, 1)
-    case .zeroZero: return (0, 0)
-    // Define none as 0-0, TODO: check if this is correct
-    case .none: return (0, 0)
-    case .zeroTwo: return (0, 2)
-    case .oneTwo: return (1, 2)
-    case .zeroOne: return (0, 1)
-    }
-  }
-
-  static var availableScores: [Score] = [
-    twoZero,
-    twoOne,
-    oneZero,
-    oneOne,
-    zeroZero,
-    zeroOne,
-    oneTwo,
-    zeroTwo,
-  ]
-
-  static func from(_ match: TournamentMatch) -> Score {
-    if !match.isComplete {
-      return Score.none
-    }
-
-    // 2-0
-    if match.player1Wins == 2 && match.player2Wins == 0 {
-      return Score.twoZero
-    }
-    // 2-1
-    if match.player1Wins == 2 && match.player2Wins == 1 {
-      return Score.twoOne
-    }
-
-    // 2-0
-    if match.player1Wins == 2 && match.player2Wins == 0 {
-      return Score.twoZero
-    }
-
-    // 1-0
-    if match.player1Wins == 1 && match.player2Wins == 0 {
-      return Score.oneZero
-    }
-
-    // 1-1
-    if match.player1Wins == 1 && match.player2Wins == 1 {
-      return Score.oneOne
-    }
-
-    // 0-0
-    if match.player1Wins == 0 && match.player2Wins == 0 {
-      return Score.zeroZero
-    }
-
-    // 0-2
-    if match.player1Wins == 0 && match.player2Wins == 2 {
-      return Score.zeroTwo
-    }
-
-    // 1-2
-    if match.player1Wins == 1 && match.player2Wins == 2 {
-      return Score.oneTwo
-    }
-
-    // 0-1
-    if match.player1Wins == 0 && match.player2Wins == 1 {
-      return Score.zeroOne
-    }
-
-    return .none
-  }
-}
+private let maxWins = 3 // picker range and color scale center
 
 struct MatchView: View {
   let match: TournamentMatch
-  @State private var showingScoreSheet = false
+  @State private var player1Wins: Int
+  @State private var player2Wins: Int
+  @State private var hasPendingChanges = false
+  @State private var showingPickerForPlayer1 = false
+  @State private var showingPickerForPlayer2 = false
 
+  init(match: TournamentMatch) {
+    self.match = match
+    _player1Wins = State(initialValue: match.player1Wins)
+    _player2Wins = State(initialValue: match.player2Wins)
+  }
+  
   var body: some View {
-    HStack {
-      Text(match.player1.name)
-        .bold()
-        + Text(" vs ")
-        + Text(match.player2.name)
-        .bold()
-      Spacer()
-      Menu {
-        ForEach(Score.availableScores, id: \.self) { score in
-          Button(action: { scoreMatch(score: score) }) {
-            Text(score.rawValue)
-          }
+    VStack {
+      HStack {
+        // Player 1
+        playerColumn(
+          name: match.player1.name,
+          wins: $player1Wins,
+          background: backgroundColor(for: player1Wins - player2Wins),
+          isShowingPicker: $showingPickerForPlayer1
+        )
+
+        Text("vs")
+          .bold()
+          .padding()
+
+        // Player 2
+        playerColumn(
+          name: match.player2.name,
+          wins: $player2Wins,
+          background: backgroundColor(for: player2Wins - player1Wins),
+          isShowingPicker: $showingPickerForPlayer2
+        )
+      }
+      .clipShape(RoundedRectangle(cornerRadius: 10))
+      .shadow(radius: 5)
+      .frame(maxWidth: .infinity)
+      
+      if hasPendingChanges {
+        Button("Confirm") {
+          confirmChanges()
         }
-      } label: {
-        let score = Score.from(match)
-        Text(score == .none ? "Score" : score.rawValue)
+        .buttonStyle(.borderedProminent)
+        .transition(.opacity)
+        .frame(maxWidth: .infinity)
       }
     }
+    .frame(maxWidth: .infinity, alignment: .center)
+    .contentShape(Rectangle())
+    .onChange(of: player1Wins) {
+      markPendingChange()
+    }
+    .onChange(of: player2Wins) {
+      markPendingChange()
+    }
+    .animation(.easeInOut, value: hasPendingChanges)
   }
-  private func scoreMatch(score: Score) {
-    if score == .none { return }
-    let (player1Wins, player2Wins) = score.wins
+  
+  private func markPendingChange() {
+    // Show confirm button if user changed anything
+    hasPendingChanges = player1Wins != match.player1Wins || player2Wins != match.player2Wins
+  }
+  
+  private func confirmChanges() {
+    let draws = player1Wins == player2Wins ? 1 : 0
     match.complete(
       player1Wins: player1Wins,
       player2Wins: player2Wins,
-      draws: player1Wins == player2Wins ? 1 : 0
+      draws: draws
     )
+    hasPendingChanges = false
+  }
+  
+  private func playerColumn(
+    name: String,
+    wins: Binding<Int>,
+    background: Color,
+    isShowingPicker: Binding<Bool>
+  ) -> some View {
+    Button {
+      isShowingPicker.wrappedValue = true
+    } label: {
+      VStack(spacing: 4) {
+        Text(name)
+          .bold()
+          .frame(maxWidth: .infinity, alignment: .center)
+
+        Text("Wins: \(wins.wrappedValue)")
+          .foregroundColor(.primary)
+          .frame(maxWidth: .infinity)
+          .padding(.vertical, 4)
+          .background(Color.white.opacity(0.1))
+          .cornerRadius(5)
+      }
+      .padding(6)
+      .frame(maxWidth: .infinity)
+      .background(background)
+    }
+    .buttonStyle(.plain)
+    .confirmationDialog("Select Wins for \(name)", isPresented: isShowingPicker) {
+      ForEach(0..<Int(maxWins+1), id: \.self) { value in
+        Button("\(value)") {
+          wins.wrappedValue = value
+        }
+      }
+    }
+  }
+  
+  private func backgroundColor(for diff: Int) -> Color {
+    if diff == 0 {
+      return Color.yellow.opacity(0.3)
+      
+    }
+
+    // Scale diff relative to configured color steps
+    let clamped = max(-maxWins, min(maxWins, diff))
+    let intensity = Double(abs(clamped)) / Double(maxWins)
+
+    if diff > 0 {
+      return Color.green.opacity(0.3 + 0.6 * intensity)
+    } else {
+      return Color.red.opacity(0.3 + 0.6 * intensity)
+    }
   }
 }
 
 #Preview {
-  List {
+  ScrollView {
     MatchView(
       match: TournamentMatch(
         player1: TournamentPlayer(player: Player(name: "Alice")),
         player2: TournamentPlayer(player: Player(name: "Bob"))
       )
     )
+    MatchView(
+      match: TournamentMatch(
+        player1: TournamentPlayer(player: Player(name: "Jon")),
+        player2: TournamentPlayer(player: Player(name: "Doe"))
+      )
+    )
+    MatchView(
+      match: TournamentMatch(
+        player1: TournamentPlayer(player: Player(name: "Why")),
+        player2: TournamentPlayer(player: Player(name: "Doe"))
+      )
+    )
   }
+//  .frame(maxWidth: .infinity)
+  .background(Color(uiColor: .systemGroupedBackground))
 }
