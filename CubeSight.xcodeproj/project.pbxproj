@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4613AA6B2DB3C1BA00BD6291 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 4613AA6A2DB3C1BA00BD6291 /* Numerics */; };
+		781ABE6F2ED4DA42004DCF67 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 781ABE6E2ED4DA42004DCF67 /* GRDB */; };
+		781ABE722ED4DAAA004DCF67 /* GRDBQuery in Frameworks */ = {isa = PBXBuildFile; productRef = 781ABE712ED4DAAA004DCF67 /* GRDBQuery */; };
 		784041F02E240400007805E3 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 784041EF2E240400007805E3 /* Zip */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +61,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				781ABE6F2ED4DA42004DCF67 /* GRDB in Frameworks */,
 				784041F02E240400007805E3 /* Zip in Frameworks */,
+				781ABE722ED4DAAA004DCF67 /* GRDBQuery in Frameworks */,
 				4613AA6B2DB3C1BA00BD6291 /* Numerics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +131,8 @@
 			packageProductDependencies = (
 				4613AA6A2DB3C1BA00BD6291 /* Numerics */,
 				784041EF2E240400007805E3 /* Zip */,
+				781ABE6E2ED4DA42004DCF67 /* GRDB */,
+				781ABE712ED4DAAA004DCF67 /* GRDBQuery */,
 			);
 			productName = CubeSight;
 			productReference = 78A308302D9985B8009AE57E /* CubeSight.app */;
@@ -214,6 +220,8 @@
 				78C25B112D9A9557006FFEFB /* XCRemoteSwiftPackageReference "swift-format" */,
 				4613AA692DB3C1BA00BD6291 /* XCRemoteSwiftPackageReference "swift-numerics" */,
 				784041EE2E240400007805E3 /* XCRemoteSwiftPackageReference "Zip" */,
+				781ABE6D2ED4DA42004DCF67 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+				781ABE702ED4DAAA004DCF67 /* XCRemoteSwiftPackageReference "GRDBQuery" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 78A308312D9985B8009AE57E /* Products */;
@@ -588,6 +596,22 @@
 				minimumVersion = 1.0.3;
 			};
 		};
+		781ABE6D2ED4DA42004DCF67 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.9.0;
+			};
+		};
+		781ABE702ED4DAAA004DCF67 /* XCRemoteSwiftPackageReference "GRDBQuery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDBQuery";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.11.0;
+			};
+		};
 		784041EE2E240400007805E3 /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip";
@@ -611,6 +635,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4613AA692DB3C1BA00BD6291 /* XCRemoteSwiftPackageReference "swift-numerics" */;
 			productName = Numerics;
+		};
+		781ABE6E2ED4DA42004DCF67 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 781ABE6D2ED4DA42004DCF67 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+		781ABE712ED4DAAA004DCF67 /* GRDBQuery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 781ABE702ED4DAAA004DCF67 /* XCRemoteSwiftPackageReference "GRDBQuery" */;
+			productName = GRDBQuery;
 		};
 		784041EF2E240400007805E3 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
