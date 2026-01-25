@@ -25,11 +25,7 @@ struct CardColorTests {
     let db = try await makeAppDatabase()
 
     let count = try await db.reader.read { db in
-      try GRDBCard.joining(
-        required: GRDBCard.colors.filter { tc.colors.contains($0.color) }
-      )
-      .distinct()
-      .fetchCount(db)
+      return try GRDBCard.all().filter(colors: tc.colors).fetchCount(db)
     }
     #expect(count == tc.expectedCount)
   }
